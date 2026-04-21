@@ -31,7 +31,7 @@
   --color-secondary-700: #312e39;
   --color-secondary-800: #19171c;
   --color-secondary-900: #0c0b0e;
-  --color-secondary-950: #0c0b0e;
+  --color-secondary-950: #09080a;
 
   /* Color — Tertiary */
   --color-tertiary-50: #f9f6f7;
@@ -60,6 +60,7 @@
   --color-error-950: #160504;
 
   /* Color — Neutral */
+  --color-neutral-0: #ffffff;
   --color-neutral-50: #f7f7f8;
   --color-neutral-100: #edecee;
   --color-neutral-200: #d6d3d9;
@@ -70,7 +71,8 @@
   --color-neutral-700: #171519;
   --color-neutral-800: #0d0c0e;
   --color-neutral-900: #0d0c0e;
-  --color-neutral-950: #0d0c0e;
+  --color-neutral-950: #070708;
+  --color-neutral-1000: #000000;
 
   /* Spacing */
   --space-100: 4px;
@@ -139,12 +141,12 @@
   /* Canonical WEB tokens — Tailwind v4 @theme: declare @theme { --color-*: … } mirroring these names → bg-background, text-content-muted, border-border, etc. */
   --color-background-dim:                 var(--color-neutral-100);
   --color-background:                     var(--color-neutral-50);
-  --color-background-bright:              var(--color-neutral-50);
+  --color-background-bright:              var(--color-neutral-0);
   --color-background-container-lowest:    var(--color-neutral-50);
   --color-background-container-low:       var(--color-neutral-100);
   --color-background-container:           var(--color-neutral-200);
   --color-background-container-high:      var(--color-neutral-300);
-  --color-background-container-highest:   var(--color-neutral-50);
+  --color-background-container-highest:   var(--color-neutral-400);
   --color-background-variant:             var(--color-neutral-100);
   --color-content:                   var(--color-neutral-900);
   --color-content-muted:             var(--color-neutral-500);
@@ -259,7 +261,7 @@
 [data-theme="dark"] {
   --color-background-dim:                 var(--color-neutral-950);
   --color-background:                     var(--color-neutral-900);
-  --color-background-bright:              var(--color-neutral-800);
+  --color-background-bright:              var(--color-neutral-1000);
   --color-background-container-lowest:    var(--color-neutral-950);
   --color-background-container-low:       var(--color-neutral-900);
   --color-background-container:           var(--color-neutral-800);
@@ -378,7 +380,7 @@
   :root:not([data-theme="light"]) {
     --color-background-dim:                 var(--color-neutral-950);
     --color-background:                     var(--color-neutral-900);
-    --color-background-bright:              var(--color-neutral-800);
+    --color-background-bright:              var(--color-neutral-1000);
     --color-background-container-lowest:    var(--color-neutral-950);
     --color-background-container-low:       var(--color-neutral-900);
     --color-background-container:           var(--color-neutral-800);
