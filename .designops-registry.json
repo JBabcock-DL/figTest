@@ -32,6 +32,14 @@
       "publishedAt": "2026-04-22T04:40:45.764Z",
       "version": 1,
       "cvaHash": null
+    },
+    "input": {
+      "nodeId": "485:55",
+      "key": "94edb1eb4097da5a7eedc8cc2ce0b2161a9e696f",
+      "pageName": "↳ Text Field",
+      "publishedAt": "2026-04-23T04:24:53.903Z",
+      "version": 1,
+      "cvaHash": null
     }
   }
 }
