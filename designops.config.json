@@ -1,0 +1,11 @@
+{
+  "iconPack": {
+    "choice": "lucide-react",
+    "npm": "lucide-react",
+    "import": "lucide-react",
+    "figmaIconLibraryKey": "uCpQaRsW4oiXW3DsC6cLZm",
+    "defaultIconKey": null,
+    "_note_defaultIconKey": "Provide the component key (hash) from the library inspector for node 417-9815. Edit this field then re-run /create-component to enable INSTANCE_SWAP icon-slot wiring.",
+    "chosenAt": "2026-04-21T00:00:00.000Z"
+  }
+}
