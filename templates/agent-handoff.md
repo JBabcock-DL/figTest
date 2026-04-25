@@ -1,7 +1,7 @@
 ---
 active_file_key: "uCpQaRsW4oiXW3DsC6cLZm"
-active_project_name: "v44 updates"
-last_skill_run: "new-project"
+active_project_name: "v60 updates — Foundations"
+last_skill_run: "create-component checkbox (in progress)"
 variable_slot_catalog_path: ""
 token_css_path: "src/styles/tokens.css"
 open_items:

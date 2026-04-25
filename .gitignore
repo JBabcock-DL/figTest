@@ -1,1 +1,4 @@
 node_modules/
+.figma-run/
+.mcp-*.json
+.cc-handoff.json
