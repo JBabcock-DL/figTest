@@ -40,6 +40,14 @@
       "publishedAt": "2026-04-23T04:24:53.903Z",
       "version": 1,
       "cvaHash": null
+    },
+    "checkbox": {
+      "nodeId": "571:13",
+      "key": "3f9b1e0fff26b595ec918bd3938afae48d24a6fd",
+      "pageName": "↳ Checkbox",
+      "publishedAt": "2026-04-27T04:45:04.011Z",
+      "version": 2,
+      "cvaHash": null
     }
   }
 }

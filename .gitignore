@@ -1,4 +1,13 @@
 node_modules/
 .figma-run/
 .mcp-*.json
+.mcp-*.js
+mcp-invoke-use-figma.json
 .cc-handoff.json
+._*
+._fig_mcp_args.json
+.cc-slice-code.js
+.last-mcp-args.json
+_mcp-b64.txt
+create-component-debug.log
+slice-out.js

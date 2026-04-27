@@ -1,0 +1,17 @@
+{
+  "component": "checkbox",
+  "fileKey": "uCpQaRsW4oiXW3DsC6cLZm",
+  "lastSliceOk": "cc-doc-finalize",
+  "nextSlug": null,
+  "completedSlugs": [
+    "cc-doc-scaffold",
+    "cc-variants",
+    "cc-doc-component",
+    "cc-doc-props",
+    "cc-doc-matrix",
+    "cc-doc-usage",
+    "cc-doc-finalize"
+  ],
+  "lastCodeSha256": "pending",
+  "lastUpdated": "2026-04-27T04:50:00.000Z"
+}

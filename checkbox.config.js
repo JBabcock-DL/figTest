@@ -34,7 +34,7 @@ const CONFIG = {
 
   control: {
     shape: "checkbox",
-    size: 16,
+    size: 24,
     indicatorVar: "color/primary/content",
   },
 
