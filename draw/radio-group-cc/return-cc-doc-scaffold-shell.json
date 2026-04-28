@@ -1,0 +1,7 @@
+{
+  "ok": false,
+  "why": "figma-headless-session",
+  "fileKeyObserved": "headless",
+  "fileKeyExpected": "uCpQaRsW4oiXW3DsC6cLZm",
+  "remediation": "figma.fileKey is \"headless\" — open uCpQaRsW4oiXW3DsC6cLZm in Figma Desktop with MCP linked, then re-run prepare."
+}

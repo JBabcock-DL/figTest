@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "slug": "cc-doc-scaffold-shell",
+  "designopsPluginRoot": "C:\\Users\\jbabc\\Documents\\GitHub\\DesignOps-plugin",
+  "drawDir": "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc",
+  "strategy": "disk",
+  "assembleArgv": [
+    "C:\\Users\\jbabc\\AppData\\Local\\Programs\\cursor\\resources\\app\\resources\\helpers\\node.exe",
+    "C:\\Users\\jbabc\\Documents\\GitHub\\DesignOps-plugin\\scripts\\assemble-slice.mjs",
+    "--step",
+    "cc-doc-scaffold-shell",
+    "--layout",
+    "control",
+    "--config-block",
+    "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\radio-group.config.js",
+    "--registry",
+    "c:/Users/jbabc/Documents/GitHub/figTest/.designops-registry.json",
+    "--handoff",
+    "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\handoff.json",
+    "--file-key",
+    "uCpQaRsW4oiXW3DsC6cLZm",
+    "--plugin-root",
+    "C:\\Users\\jbabc\\Documents\\GitHub\\DesignOps-plugin",
+    "--out",
+    "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\.designops\\staging\\cc-doc-scaffold-shell.code.js",
+    "--emit-mcp-args",
+    "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\.designops\\staging\\mcp-cc-doc-scaffold-shell.json"
+  ],
+  "payload": {
+    "mode": "disk",
+    "diskPaths": {
+      "codeJs": "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\.designops\\staging\\cc-doc-scaffold-shell.code.js",
+      "mcpArgsJson": "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\.designops\\staging\\mcp-cc-doc-scaffold-shell.json"
+    }
+  },
+  "finalizeHint": {
+    "mode": "stdin",
+    "examplePipe": "echo '<return-json>' | node scripts/finalize-slice.mjs cc-doc-scaffold-shell \"c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\handoff.json\"",
+    "returnPathDoc": "Or save return to c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\return-cc-doc-scaffold-shell.json and use finalize-slice --return-path."
+  },
+  "parent_actions": [
+    {
+      "op": "RUN_SHELL",
+      "argv": [
+        "C:\\Users\\jbabc\\AppData\\Local\\Programs\\cursor\\resources\\app\\resources\\helpers\\node.exe",
+        "C:\\Users\\jbabc\\Documents\\GitHub\\DesignOps-plugin\\scripts\\assemble-slice.mjs",
+        "--step",
+        "cc-doc-scaffold-shell",
+        "--layout",
+        "control",
+        "--config-block",
+        "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\radio-group.config.js",
+        "--registry",
+        "c:/Users/jbabc/Documents/GitHub/figTest/.designops-registry.json",
+        "--handoff",
+        "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\handoff.json",
+        "--file-key",
+        "uCpQaRsW4oiXW3DsC6cLZm",
+        "--plugin-root",
+        "C:\\Users\\jbabc\\Documents\\GitHub\\DesignOps-plugin",
+        "--out",
+        "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\.designops\\staging\\cc-doc-scaffold-shell.code.js",
+        "--emit-mcp-args",
+        "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\.designops\\staging\\mcp-cc-doc-scaffold-shell.json"
+      ],
+      "cwd": "C:\\Users\\jbabc\\Documents\\GitHub\\DesignOps-plugin",
+      "exitOnFail": [
+        10,
+        11,
+        17
+      ]
+    },
+    {
+      "op": "READ_PATH",
+      "path": "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\.designops\\staging\\mcp-cc-doc-scaffold-shell.json",
+      "purpose": "mcp-args"
+    },
+    {
+      "op": "CALL_MCP_USE_FIGMA",
+      "fromMcpJson": "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\.designops\\staging\\mcp-cc-doc-scaffold-shell.json"
+    },
+    {
+      "op": "FINALIZE_STDIN",
+      "slug": "cc-doc-scaffold-shell",
+      "handoffPath": "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\handoff.json"
+    }
+  ]
+}
