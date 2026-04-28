@@ -1,17 +1,11 @@
 {
-  "component": "checkbox",
+  "component": "radio-group",
   "fileKey": "uCpQaRsW4oiXW3DsC6cLZm",
-  "lastSliceOk": "cc-doc-finalize",
-  "nextSlug": null,
+  "lastSliceOk": "cc-doc-scaffold-shell",
+  "nextSlug": "cc-doc-scaffold-header",
   "completedSlugs": [
-    "cc-doc-scaffold",
-    "cc-variants",
-    "cc-doc-component",
-    "cc-doc-props",
-    "cc-doc-matrix",
-    "cc-doc-usage",
-    "cc-doc-finalize"
+    "cc-doc-scaffold-shell"
   ],
-  "lastCodeSha256": "pending",
-  "lastUpdated": "2026-04-27T04:50:00.000Z"
+  "lastCodeSha256": "2edbc43dad76f79d38a890813871648caba292522119e5ed95be9d8c1de668df",
+  "lastUpdated": "2026-04-27T21:46:17.198Z"
 }

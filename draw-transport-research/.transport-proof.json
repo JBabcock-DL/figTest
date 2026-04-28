@@ -1,0 +1,74 @@
+{
+  "records": [
+    {
+      "recordedAt": "2026-04-27T16:35:43.710Z",
+      "requestedSize": 5000,
+      "observedBytes": 5232,
+      "pass": true
+    },
+    {
+      "recordedAt": "2026-04-27T16:35:43.781Z",
+      "requestedSize": 2000,
+      "observedBytes": 2204,
+      "pass": true
+    },
+    {
+      "recordedAt": "2026-04-27T18:00:00.000Z",
+      "requestedSize": 2000,
+      "observedBytes": 2198,
+      "pass": true,
+      "fileKey": "uCpQaRsW4oiXW3DsC6cLZm",
+      "figmaPluginReturn": {
+        "ok": true,
+        "observedCodeBytes": 2000,
+        "probe": "parent-transport"
+      },
+      "note": "Real Foundations file (v60-updates — Foundations); parent use_figma with probe-args-real-2k.json bytes; not PROBE_NO_FIGMA_FILE_REQUIRED."
+    },
+    {
+      "recordedAt": "2026-04-27T17:29:40.815Z",
+      "requestedSize": 10000,
+      "observedBytes": 10279,
+      "pass": true
+    }
+  ],
+  "maxProvenSize": 10279,
+  "lastVerifiedAt": "2026-04-27T17:29:40.816Z",
+  "sessionContext": "2026-04-27 Cursor agent session (DesignOps-plugin repo + this draw dir). call_mcp use_figma with 2k/5k synthetic payloads: host returned Figma file-access error, not JSON parse — model-mediated bridge accepted full serialized use_figma args (UTF-8 bytes per observedBytes on success records). 25k probe-args.json in this directory passes npm run check-use-figma-mcp-args (total 25435 B); a single 25k model-mediated call was not automated in this run (size limit on inline tool arg emit). Re-run a 25k Read + one call_mcp in parent and add --record --size 25000 --observed-bytes 25435 when the response is file-access (or ok:true) without JSON/transport errors to raise maxProvenSize to 25435+.",
+  "onDisk25kProbe": {
+    "path": "probe-args.json",
+    "codeBytes": 25000,
+    "totalMcpArgsBytes": 25435,
+    "checkUseFigmaMcpArgs": "PASS from DesignOps-plugin when validated against the emitted JSON"
+  },
+  "onDisk25kRealFileKey": {
+    "path": "probe-args-real-25k.json",
+    "fileKey": "uCpQaRsW4oiXW3DsC6cLZm",
+    "codeBytes": 25000,
+    "totalMcpArgsBytes": 25429,
+    "sha256Utf8File": "0fb0d9769f6f85de0393edb53465b389b3603b05255a04f6ee69b5e705282030",
+    "nextStep": "Parent Read probe-args-real-25k.json + one use_figma; then probe-parent-transport --record --size 25000 --observed-bytes 25429 --target this draw dir",
+    "closureDoc": "DesignOps-plugin docs/research/mcp-transport-closure-report.md (continue build; 25k parent call is optional empirical capstone)",
+    "solutionArchDoc": "DesignOps-plugin docs/research/mcp-transport-solution-architecture-2026.md"
+  },
+  "agentSession20260427": {
+    "smokeUseFigmaOk": true,
+    "parentProvenE2E2026-04-27": {
+      "5k": {
+        "codeBytes": 5000,
+        "totalMcpArgsBytes": 5228,
+        "figmaReturn": { "ok": true, "observedCodeBytes": 5000, "probe": "parent-transport" },
+        "note": "parent call_mcp use_figma; fileKey uCpQaRsW4oiXW3DsC6cLZm; emit-transport-5k.json"
+      },
+      "10k": {
+        "codeBytes": 10000,
+        "totalMcpArgsBytes": 10279,
+        "figmaReturn": { "ok": true, "observedCodeBytes": 10000, "probe": "parent-transport" },
+        "source": "DesignOps-plugin emit-transport-10k.json; recorded in this file"
+      }
+    },
+    "full25kInOneCallMcpTool": "not_completed_on_this_agent_path",
+    "spikeVerdict": "Same session: parent can carry 10279 B UTF-8 serialized use_figma args in one call_mcp (10k code) with Figma ok:true. Subagent: full ~25.4k inline call_mcp_tool fails (Unexpected end of JSON, path as arguments rejected). Parent: cannot emit full 20k/25k code in a single call_mcp_tool without hitting assistant output token limit (empty or truncated tool call → same JSON error). This does not show Figma MCP rejects 25k; on-disk probe-args-real-25k.json still passes check-use-figma-mcp-args. To reach maxProvenSize 25429, use a path that passes full tool JSON without model re-emitting 25k in one turn (e.g. Composer, or a host with file-indirected args if added).",
+    "optionalWrapperForManualInvoke": "mcp-tool-call-wrapper.json (server + toolName + arguments in one line)"
+  }
+}

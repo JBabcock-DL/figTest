@@ -73,8 +73,8 @@ const CONFIG = {
   composes: [],
 };
 var __CREATE_COMPONENT_PHASE__ = 1;
-var __CC_HANDOFF_PAGE_CONTENT_ID__ = "582:10";
-var __CC_HANDOFF_DOC_ROOT_ID__ = "582:11";
+var __CC_HANDOFF_PAGE_CONTENT_ID__ = "601:10";
+var __CC_HANDOFF_DOC_ROOT_ID__ = "601:11";
 // preamble.runtime.figma.js — generated; edit preamble.figma.js + npm run build:min
 const ACTIVE_FILE_KEY = "uCpQaRsW4oiXW3DsC6cLZm";
 const REGISTRY_COMPONENTS = {"card":{"nodeId":"422:28","key":"702cdf99ad8fce84d62bc0eca897e07f20e2ec0f","pageName":"↳ Cards","publishedAt":"2026-04-21T19:41:31.643Z","version":2,"cvaHash":null},"button":{"nodeId":"388:94","key":"8758f2ff272c50819b2c9419bee478519f904a59","pageName":"↳ Buttons","publishedAt":"2026-04-21T03:24:14.701Z","version":1,"cvaHash":null},"label":{"nodeId":"437:14","key":"26efbfb6caec0393083d467e1883a856d26c232a","pageName":"↳ Label","publishedAt":"2026-04-22T04:34:22.298Z","version":1,"cvaHash":null},"separator":{"nodeId":"438:12","key":"cc0a21b126ce3db963d9cd191df9d6ad1b20eed7","pageName":"↳ Dividers","publishedAt":"2026-04-22T04:40:45.764Z","version":1,"cvaHash":null},"input":{"nodeId":"485:55","key":"94edb1eb4097da5a7eedc8cc2ce0b2161a9e696f","pageName":"↳ Text Field","publishedAt":"2026-04-23T04:24:53.903Z","version":1,"cvaHash":null},"checkbox":{"nodeId":"571:13","key":"3f9b1e0fff26b595ec918bd3938afae48d24a6fd","pageName":"↳ Checkbox","publishedAt":"2026-04-27T04:45:04.011Z","version":2,"cvaHash":null}};
