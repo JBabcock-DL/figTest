@@ -3,7 +3,7 @@ import { Button } from './button'
 
 figma.connect(
   Button,
-  'https://www.figma.com/design/uCpQaRsW4oiXW3DsC6cLZm?node-id=388-94',
+  'https://www.figma.com/design/uCpQaRsW4oiXW3DsC6cLZm?node-id=433-334',
   {
     props: {
       variant: figma.enum('variant', {
