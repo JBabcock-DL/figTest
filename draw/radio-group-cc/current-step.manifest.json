@@ -1,14 +1,14 @@
 {
   "version": 1,
-  "slug": "cc-doc-scaffold-shell",
-  "designopsPluginRoot": "C:\\Users\\jbabc\\Documents\\GitHub\\DesignOps-plugin",
+  "slug": "cc-doc-scaffold-table-body",
+  "designopsPluginRoot": "c:\\Users\\jbabc\\Documents\\GitHub\\DesignOps-plugin",
   "drawDir": "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc",
   "strategy": "disk",
   "assembleArgv": [
     "C:\\Users\\jbabc\\AppData\\Local\\Programs\\cursor\\resources\\app\\resources\\helpers\\node.exe",
-    "C:\\Users\\jbabc\\Documents\\GitHub\\DesignOps-plugin\\scripts\\assemble-slice.mjs",
+    "c:\\Users\\jbabc\\Documents\\GitHub\\DesignOps-plugin\\scripts\\assemble-slice.mjs",
     "--step",
-    "cc-doc-scaffold-shell",
+    "cc-doc-scaffold-table-body",
     "--layout",
     "control",
     "--config-block",
@@ -20,32 +20,33 @@
     "--file-key",
     "uCpQaRsW4oiXW3DsC6cLZm",
     "--plugin-root",
-    "C:\\Users\\jbabc\\Documents\\GitHub\\DesignOps-plugin",
+    "c:\\Users\\jbabc\\Documents\\GitHub\\DesignOps-plugin",
     "--out",
-    "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\.designops\\staging\\cc-doc-scaffold-shell.code.js",
+    "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\.designops\\staging\\cc-doc-scaffold-table-body.code.js",
     "--emit-mcp-args",
-    "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\.designops\\staging\\mcp-cc-doc-scaffold-shell.json"
+    "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\.designops\\staging\\mcp-cc-doc-scaffold-table-body.json"
   ],
   "payload": {
     "mode": "disk",
     "diskPaths": {
-      "codeJs": "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\.designops\\staging\\cc-doc-scaffold-shell.code.js",
-      "mcpArgsJson": "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\.designops\\staging\\mcp-cc-doc-scaffold-shell.json"
+      "codeJs": "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\.designops\\staging\\cc-doc-scaffold-table-body.code.js",
+      "mcpArgsJson": "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\.designops\\staging\\mcp-cc-doc-scaffold-table-body.json"
     }
   },
   "finalizeHint": {
-    "mode": "stdin",
-    "examplePipe": "echo '<return-json>' | node scripts/finalize-slice.mjs cc-doc-scaffold-shell \"c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\handoff.json\"",
-    "returnPathDoc": "Or save return to c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\return-cc-doc-scaffold-shell.json and use finalize-slice --return-path."
+    "mode": "return-path",
+    "returnPath": "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\return-cc-doc-scaffold-table-body.json",
+    "exampleFinalize": "node scripts/finalize-slice.mjs cc-doc-scaffold-table-body \"c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\handoff.json\" --return-path \"c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\return-cc-doc-scaffold-table-body.json\"",
+    "integrateOnlyNotes": "invoke `use_figma` only via the IDE-integrated MCP (parent Read staging JSON → call_mcp) — same session as designer auth. No standalone Node/Desktop MCP invoker in this repo."
   },
   "parent_actions": [
     {
       "op": "RUN_SHELL",
       "argv": [
         "C:\\Users\\jbabc\\AppData\\Local\\Programs\\cursor\\resources\\app\\resources\\helpers\\node.exe",
-        "C:\\Users\\jbabc\\Documents\\GitHub\\DesignOps-plugin\\scripts\\assemble-slice.mjs",
+        "c:\\Users\\jbabc\\Documents\\GitHub\\DesignOps-plugin\\scripts\\assemble-slice.mjs",
         "--step",
-        "cc-doc-scaffold-shell",
+        "cc-doc-scaffold-table-body",
         "--layout",
         "control",
         "--config-block",
@@ -57,13 +58,13 @@
         "--file-key",
         "uCpQaRsW4oiXW3DsC6cLZm",
         "--plugin-root",
-        "C:\\Users\\jbabc\\Documents\\GitHub\\DesignOps-plugin",
+        "c:\\Users\\jbabc\\Documents\\GitHub\\DesignOps-plugin",
         "--out",
-        "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\.designops\\staging\\cc-doc-scaffold-shell.code.js",
+        "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\.designops\\staging\\cc-doc-scaffold-table-body.code.js",
         "--emit-mcp-args",
-        "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\.designops\\staging\\mcp-cc-doc-scaffold-shell.json"
+        "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\.designops\\staging\\mcp-cc-doc-scaffold-table-body.json"
       ],
-      "cwd": "C:\\Users\\jbabc\\Documents\\GitHub\\DesignOps-plugin",
+      "cwd": "c:\\Users\\jbabc\\Documents\\GitHub\\DesignOps-plugin",
       "exitOnFail": [
         10,
         11,
@@ -72,17 +73,30 @@
     },
     {
       "op": "READ_PATH",
-      "path": "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\.designops\\staging\\mcp-cc-doc-scaffold-shell.json",
-      "purpose": "mcp-args"
+      "path": "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\.designops\\staging\\mcp-cc-doc-scaffold-table-body.json",
+      "purpose": "Parent loads full staging JSON via Read (complete bytes — same object as emitted by assemble-slice --emit-mcp-args)."
     },
     {
       "op": "CALL_MCP_USE_FIGMA",
-      "fromMcpJson": "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\.designops\\staging\\mcp-cc-doc-scaffold-shell.json"
+      "stagingJsonPath": "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\.designops\\staging\\mcp-cc-doc-scaffold-table-body.json",
+      "writeToolResultTo": "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\return-cc-doc-scaffold-table-body.json",
+      "purpose": "Parse JSON → { fileKey, code, description, skillNames }. Invoke use_figma through the Cursor or Claude Code Figma MCP connector (workspace mcps/…/SERVER_METADATA.json — do not hardcode server id). Writes the MCP tool result JSON to writeToolResultTo before finalize.",
+      "note": "Integrated Figma MCP only (Cursor/Claude connector). Do not substitute a parallel Node MCP client."
     },
     {
-      "op": "FINALIZE_STDIN",
-      "slug": "cc-doc-scaffold-shell",
-      "handoffPath": "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\handoff.json"
+      "op": "FINALIZE_SLICE",
+      "slug": "cc-doc-scaffold-table-body",
+      "handoffPath": "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\handoff.json",
+      "returnPath": "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\return-cc-doc-scaffold-table-body.json",
+      "argv": [
+        "C:\\Users\\jbabc\\AppData\\Local\\Programs\\cursor\\resources\\app\\resources\\helpers\\node.exe",
+        "c:\\Users\\jbabc\\Documents\\GitHub\\DesignOps-plugin\\scripts\\finalize-slice.mjs",
+        "cc-doc-scaffold-table-body",
+        "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\handoff.json",
+        "--return-path",
+        "c:\\Users\\jbabc\\Documents\\GitHub\\figTest\\draw\\radio-group-cc\\return-cc-doc-scaffold-table-body.json"
+      ],
+      "cwd": "c:\\Users\\jbabc\\Documents\\GitHub\\DesignOps-plugin"
     }
   ]
 }

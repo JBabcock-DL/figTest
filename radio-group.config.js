@@ -52,11 +52,9 @@ const CONFIG = {
   },
 
   properties: [
-    ["value", "string", "—", "no", "Controlled selected value."],
-    ["defaultValue", "string", "—", "no", "Uncontrolled initial value."],
-    ["disabled", "boolean", "false", "no", "Disables every item."],
-    ["required", "boolean", "false", "no", "Required in form submission."],
-    ["className", "string", "—", "no", "Tailwind class escape hatch."],
+    ["value", "string", "—", "yes", "Unique value token that identifies this option within the group."],
+    ["disabled", "boolean", "false", "no", "Disables this item independently of the group."],
+    ["id", "string", "—", "no", "HTML id for associating a <label> via htmlFor."],
   ],
 
   usageDo: [

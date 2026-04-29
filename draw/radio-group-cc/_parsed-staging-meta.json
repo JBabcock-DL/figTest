@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "keys": [
+    [
+      "fileKey",
+      "string"
+    ],
+    [
+      "description",
+      "string"
+    ],
+    [
+      "skillNames",
+      "string"
+    ]
+  ],
+  "codeChars": 15599
+}
