@@ -13,8 +13,8 @@
     "cc-matrix",
     "cc-usage"
   ],
-  "startedAt": "2026-04-29T03:33:51.830Z",
-  "updatedAt": "2026-04-29T03:33:52.086Z",
+  "startedAt": "2026-04-29T12:27:28.692Z",
+  "updatedAt": "2026-04-29T12:27:28.960Z",
   "orchestrationOk": true,
   "steps": [
     {
@@ -24,16 +24,16 @@
       "checkPayloadExit": 0,
       "checkMcpArgsExit": null,
       "errors": [],
-      "finishedAt": "2026-04-29T03:33:51.883Z"
+      "finishedAt": "2026-04-29T12:27:28.746Z"
     },
     {
       "slug": "cc-properties",
       "assembledPath": "c:\\Users\\jbabc\\Documents\\GitHub\\figtest\\draw\\assembled-cc-properties.mjs",
-      "charLength": 10243,
+      "charLength": 11472,
       "checkPayloadExit": 0,
       "checkMcpArgsExit": null,
       "errors": [],
-      "finishedAt": "2026-04-29T03:33:51.934Z"
+      "finishedAt": "2026-04-29T12:27:28.798Z"
     },
     {
       "slug": "cc-component-control",
@@ -42,7 +42,7 @@
       "checkPayloadExit": 0,
       "checkMcpArgsExit": null,
       "errors": [],
-      "finishedAt": "2026-04-29T03:33:51.985Z"
+      "finishedAt": "2026-04-29T12:27:28.853Z"
     },
     {
       "slug": "cc-matrix",
@@ -51,7 +51,7 @@
       "checkPayloadExit": 0,
       "checkMcpArgsExit": null,
       "errors": [],
-      "finishedAt": "2026-04-29T03:33:52.036Z"
+      "finishedAt": "2026-04-29T12:27:28.906Z"
     },
     {
       "slug": "cc-usage",
@@ -60,7 +60,7 @@
       "checkPayloadExit": 0,
       "checkMcpArgsExit": null,
       "errors": [],
-      "finishedAt": "2026-04-29T03:33:52.085Z"
+      "finishedAt": "2026-04-29T12:27:28.960Z"
     }
   ],
   "invokeHints": [
