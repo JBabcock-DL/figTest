@@ -2,10 +2,22 @@
 @import "tailwindcss";
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
+  :root,
+  [data-theme="light"] {
+    --checkbox-check: #ffffff;
   }
+
+  [data-theme="dark"] {
+    --checkbox-check: #000000;
+  }
+
+  * {
+    border-color: var(--border);
+    outline-color: var(--ring);
+  }
+
   body {
-    @apply bg-background text-foreground;
+    background: var(--background);
+    color: var(--foreground);
   }
 }

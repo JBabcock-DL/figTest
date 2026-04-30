@@ -1,4 +1,6 @@
 node_modules/
+.next/
+*.tsbuildinfo
 .figma-run/
 .mcp-*.json
 .mcp-*.js

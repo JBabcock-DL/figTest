@@ -1,0 +1,194 @@
+# claude-ops — Agent Workflow Context
+
+This document describes how this project is structured and how work is tracked. All agents operating in this repo should follow this workflow.
+
+---
+
+## Project Goal
+
+<!-- ADD YOUR GOAL HERE — describe what this project is building or solving -->
+[ADD YOUR GOAL HERE]
+
+## Ticket Backend
+
+<!-- CONFIGURE: set to either `github` or `jira` during /project-start. Agents must read this field to know which backend to use. -->
+
+**Backend:** `jira`
+
+Exactly one of the two **Ticket Tracker** sections below applies, based on the backend above. The other section is marked N/A.
+
+---
+
+## Repository Structure
+
+```
+CLAUDE.md                  # Created by /project-start — instructs agents to read/update memory.md without user prompting
+memory.md                  # Short running memory to save agent context (see Conventions)
+.github/
+├── templates/             # Ticket templates and agent workflow context
+│   ├── workflow.md        # This file — agent context document
+│   ├── bug_report.md      # Template for bug tickets
+│   ├── work_order.md      # Template for work order tickets
+│   ├── context.md         # Template for context tickets
+│   └── agent-handoff.md   # Prompt block for new agent sessions
+└── Sprint {N}/            # One folder per sprint
+    └── {TICKET-ID}-{slug}/  # One folder per ticket (BUG-###, WO-###, or CTX-###)
+        ├── ticket.md        # The ticket definition (synced to the backend)
+        ├── plan.md          # Implementation approach and step checklist (not created for CTX tickets until promoted)
+        ├── research/        # Data, findings, reference docs (.md, .json, etc.)
+        └── scripts/         # Any automation, tooling, or helper scripts
+```
+
+### memory.md and CLAUDE.md (recommended)
+
+- **`CLAUDE.md`** at the repository root (created by `/project-start`) tells Claude to **read `memory.md` first** and **update it** when durable facts change—**the user should not have to repeat those instructions.** Keep the **Agent rules** block when editing that file.
+- **`memory.md`** holds short, project-level facts: backend choice, default branch, stack, build/git defaults, naming conventions, integration pointers, and “do not repeat” notes. Read it at session start, then `workflow.md` for the full spec. This keeps sessions cheaper on context and tokens.
+- `ticket.md` / `plan.md` remain the source of truth for a single unit of work; do not duplicate per-ticket steps into `memory.md`.
+
+---
+
+## Ticket Types
+
+| Type | Label | Template | Naming | Lifecycle |
+|---|---|---|---|---|
+| Bug | `bug` | `bug_report.md` | `BUG-{N}-{slug}` | Full lifecycle (create → research → plan → build → vqa) |
+| Work Order | `work-order` | `work_order.md` | `WO-{N}-{slug}` | Full lifecycle (create → research → plan → build → vqa) |
+| Context | `context` | `context.md` | `CTX-{N}-{slug}` | Triage — raw dumps **or** design-handoff scaffold; must be promoted to `bug` or `work-order` before research / planning / building |
+
+Each type has its own sequential numbering (`BUG-001`, `BUG-002`, `WO-001`, `CTX-001`, etc.).
+
+### Context tickets
+
+Context tickets are an intake format for **bulk raw information** — designer notes, research transcripts, meeting dumps, Figma comments, Slack threads, customer interviews, analytics observations.
+
+**`context.md` ships two intake shapes:** (1) **Design handoff (default scaffold)** — Goal, Design reference, Requirements (functional / visual / technical), Acceptance criteria, Out of scope, and Notes for build agent — use this when dropping **Figma → engineering** work or running `/dev-handoff` so a build agent can scope a task **before** promotion. (2) **Raw dump** — lean on Source, Summary, Raw Notes, and Assets & Links; leave structured sections empty or `TBD` when no UI/code scope exists yet. Bug and work-order tickets still use **`bug_report.md`** / **`work_order.md`** for fully structured Requirements / Success Criteria **after** promotion.
+
+A context ticket stays in **Context Backlog** until it is **promoted** into the correct type:
+- `/create-ticket promote {CTX-ID}` — interactively promote a single CTX ticket into a `bug` or `work-order`
+- `/create-backlog` — bulk-triage every unpromoted CTX ticket in the current sprint, classifying each into a `bug` or `work-order` (with user confirmation per ticket)
+
+The `/research`, `/plan`, `/build`, and `/vqa` skills refuse to run on an un-promoted `CTX-*` ticket and will point the user at `/create-ticket promote` or `/create-backlog` first.
+
+---
+
+## Ticket Lifecycle
+
+0. **Intake (optional)** — `/create-ticket ctx "..."` drops raw context into a CTX ticket without forcing structure. CTX tickets are triaged later via `/create-ticket promote {CTX-ID}` (single) or `/create-backlog` (batch), which converts each into a `bug` or `work-order` with the next sequential ID of that type.
+1. **Create ticket** — `/create-ticket` requires a configured **Ticket Backend** in `workflow.md`, creates the **remote** issue first (GitHub Issue + Project, or Jira), then writes the sprint folder, `ticket.md`, and stub `plan.md` (bug / work-order only), with board/status: **Context Backlog**
+2. **Research** *(optional, recommended for unfamiliar work)* — `/research` investigates the problem domain and writes findings to `research/`; moves ticket to **In Research**
+3. **Plan** — `/plan` enters plan mode for interactive review, writes the approved plan to `plan.md` (including a `## Build Agents` section defining parallel phases), and moves ticket to **In Planning**
+4. **Build** — `/build` reads the `## Build Agents` section, moves ticket to **In Build**, and spawns build agents in parallel phases; agents within a phase run simultaneously, phases run sequentially. Individual build skills (`/code-build`, `/doc-build`, `/script-build`, `/api-build`, `/figma-build`) can be used directly for single-domain tickets.
+5. **Verify** — `/vqa` runs a QA pass; moves ticket to **In Review** → **Completed**
+
+> Skip research for well-understood, mechanical tickets where requirements are unambiguous.
+
+The six workflow phases are:
+
+| Phase | Meaning |
+|---|---|
+| Context Backlog | Ticket created, not yet started |
+| In Research | Discovery / investigation underway |
+| In Planning | plan.md being drafted or refined |
+| In Build | Build agents executing the plan |
+| In Review | VQA pass in progress |
+| Completed | Verified, done |
+
+These phases are stored on each ticket:
+- **GitHub backend** → as the Status single-select field on the Project board
+- **Jira backend** → as a `phase:<name>` label on each Jira issue (e.g. `phase:in-build`), because Jira workflow transitions depend on project-level configuration we cannot assume. The Jira Status field is left at whatever default the project workflow provides.
+
+---
+
+## Ticket Tracker — GitHub
+
+**N/A** — this project uses the Jira backend; see the Jira section below.
+
+---
+
+## Ticket Tracker — Jira
+
+All Jira operations go through the **Atlassian MCP server** available to Claude Code (official Atlassian Remote MCP). Agents discover exact tool names through the MCP descriptor / tool list — do NOT shell out or call the Jira REST API directly.
+
+- **Cloud ID:** `a36c44c1-853d-4ac5-b0ca-ed9130bf5e6d`
+- **Site URL:** `https://detroitlabs.jira.com`
+- **Project key:** `JAK`
+- **Project name:** `jakeTest`
+- **Issue type — Bug:** `Bug`
+- **Issue type — Work Order:** `Workorder`
+- **Issue type — Context:** `Context`
+
+### Phase Labels (Jira)
+
+Phases are tracked as **labels** on each Jira issue (not Status), so no workflow customization is required in the target Jira project. Exactly one `phase:*` label should be set at a time — when transitioning phases, remove the previous `phase:*` label and add the new one.
+
+| Phase | Label |
+|---|---|
+| Context Backlog | `phase:context-backlog` |
+| In Research | `phase:in-research` |
+| In Planning | `phase:in-planning` |
+| In Build | `phase:in-build` |
+| In Review | `phase:in-review` |
+| Completed | `phase:completed` |
+
+In addition, every ticket created by this workflow gets a `claude-ops` label for easy JQL filtering, plus exactly one type label: `bug`, `work-order`, or `context`. When a context ticket is promoted via `/create-ticket promote` or `/create-backlog`, the `context` label is removed and replaced with `bug` or `work-order`, and the Jira `issuetype` field is updated accordingly.
+
+### Key Operations (Jira)
+
+Use the Atlassian MCP tools. Typical tool names on the official Atlassian Remote MCP:
+
+| Operation | MCP tool (typical name — confirm via the MCP tool descriptors before calling) |
+|---|---|
+| List cloud IDs | `getAccessibleAtlassianResources` |
+| List Jira projects on a cloud | `getVisibleJiraProjects` |
+| Create a Jira issue | `createJiraIssue` |
+| Read a Jira issue | `getJiraIssue` |
+| Edit fields / labels on a Jira issue | `editJiraIssue` |
+| Transition a Jira issue's Status (if desired) | `transitionJiraIssue` |
+| Search issues (by label, JQL) | `searchJiraIssuesUsingJql` |
+
+Phase-transition pattern (in pseudocode — replace with actual MCP tool call):
+
+```
+# Move ticket to a new phase
+current = getJiraIssue(issueKey)
+newLabels = [l for l in current.labels if not l.startswith("phase:")] + ["phase:in-build"]
+editJiraIssue(issueKey, { labels: newLabels })
+```
+
+JQL to list all claude-ops tickets currently in build:
+
+```
+project = JAK AND labels = "claude-ops" AND labels = "phase:in-build"
+```
+
+---
+
+## MCP Integrations
+
+MCP (Model Context Protocol) servers extend what agents can do within this workflow — connecting to external tools, APIs, and platforms without leaving the ticket lifecycle. Any MCP-driven work should still be tied to a ticket.
+
+### General conventions for MCP work
+- Reference any external resource URLs (files, boards, APIs) in `ticket.md` under **References**
+- Document what was read, written, or changed via MCP in `plan.md` after completion
+- MCP tool calls are treated as implementation steps — they belong in the work phase, after a plan exists
+
+### Available MCP servers
+
+#### Figma
+Read designs, write to the Figma canvas, manage variables and component code connections.
+
+#### Atlassian (Jira / Confluence)
+Used as the ticket backend when **Backend** above is set to `jira`. Also available on `github`-backed projects for reading or cross-posting to a Jira/Confluence workspace when a ticket references one.
+
+---
+
+## Conventions
+
+- `CLAUDE.md` at the repository root (from `/project-start`) must keep its **Agent rules** so Claude reads and updates `memory.md` without the user asking. **`memory.md`** holds short, project-wide facts; update it when something stable and reusable changes. Do not use either file to replace `ticket.md` or `plan.md` for a specific ticket
+- Ticket IDs are sequential per type (`BUG-001`, `BUG-002`, `WO-001`, `WO-002`, `CTX-001`, `CTX-002`) and are always prefixed onto the remote issue title
+- When a `CTX-###` ticket is promoted, the folder is renamed to the next `BUG-###` or `WO-###` in sequence, the ticket body is re-templated, and the remote issue is relabeled / retyped in place. The ticket.md frontmatter records `promoted_from: CTX-###` so history is preserved.
+- Sprint folders are named `Sprint {N}` — do not use dates
+- All `ticket.md` files include frontmatter fields for the remote issue:
+  - **GitHub backend**: `github_issue` (issue number) and `project_item_id` (PVTI_…)
+  - **Jira backend**: `jira_issue` (issue key, e.g. `JAK-123`) and `jira_issue_id` (numeric id returned by the MCP)
+- `plan.md` is always a stub when first created — fill it in before starting work
