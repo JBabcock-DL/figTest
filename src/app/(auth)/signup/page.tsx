@@ -193,26 +193,30 @@ export default function SignupPage() {
             )}
           </div>
 
-          <div className="flex items-center gap-[var(--space-md,12px)]">
+          <Label
+            className={cn(
+              "flex cursor-pointer items-center gap-[var(--space-md,12px)] select-none font-normal"
+            )}
+          >
             <Checkbox
               id="signup-terms"
               className={cn(
-                "h-5 w-5 rounded-[8px]",
+                "h-5 w-5 shrink-0 rounded-[8px]",
                 "border-[var(--color-border)]",
                 "data-[state=checked]:border-[var(--color-primary)] data-[state=checked]:bg-[var(--color-primary)]"
               )}
               checked={values.acceptTerms}
               onCheckedChange={(v) =>
-                setValues((cur) => ({ ...cur, acceptTerms: Boolean(v) }))
+                setValues((cur) => ({ ...cur, acceptTerms: v === true }))
               }
               onBlur={() => setTouched((t) => ({ ...t, acceptTerms: true }))}
               aria-invalid={!!visibleErrors.acceptTerms}
               aria-describedby={visibleErrors.acceptTerms ? "signup-terms-error" : undefined}
             />
-            <Label htmlFor="signup-terms" className="select-none">
+            <span className="text-sm font-medium leading-snug text-foreground">
               I agree to the Terms of Service and Privacy Policy.
-            </Label>
-          </div>
+            </span>
+          </Label>
           {visibleErrors.acceptTerms && (
             <p
               id="signup-terms-error"
