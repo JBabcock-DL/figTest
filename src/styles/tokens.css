@@ -157,6 +157,18 @@
   --color-inverse-brand:             var(--color-primary-300);
   --color-scrim:                     rgba(0, 0, 0, 0.32);
   --color-shadow-tint:               rgba(0, 0, 0, 0.15);
+  --color-state-primary-hover:       rgba(103, 80, 164, 0.08);
+  --color-state-primary-pressed:     rgba(103, 80, 164, 0.12);
+  --color-state-primary-focus:       rgba(103, 80, 164, 0.12);
+  --color-state-secondary-hover:     rgba(98, 91, 113, 0.08);
+  --color-state-secondary-pressed:   rgba(98, 91, 113, 0.12);
+  --color-state-secondary-focus:     rgba(98, 91, 113, 0.12);
+  --color-state-tertiary-hover:      rgba(125, 82, 96, 0.08);
+  --color-state-tertiary-pressed:    rgba(125, 82, 96, 0.12);
+  --color-state-tertiary-focus:      rgba(125, 82, 96, 0.12);
+  --color-state-error-hover:         rgba(135, 29, 23, 0.08);
+  --color-state-error-pressed:       rgba(135, 29, 23, 0.12);
+  --color-state-error-focus:         rgba(135, 29, 23, 0.12);
 
   --color-primary:                   var(--color-primary-500);
   --color-on-primary:                var(--color-primary-50);
@@ -277,6 +289,18 @@
   --color-inverse-brand:             var(--color-primary-700);
   --color-scrim:                     rgba(0, 0, 0, 0.32);
   --color-shadow-tint:               rgba(0, 0, 0, 0.40);
+  --color-state-primary-hover:       rgba(143, 125, 191, 0.08);
+  --color-state-primary-pressed:     rgba(143, 125, 191, 0.12);
+  --color-state-primary-focus:       rgba(143, 125, 191, 0.12);
+  --color-state-secondary-hover:     rgba(154, 148, 169, 0.08);
+  --color-state-secondary-pressed:   rgba(154, 148, 169, 0.12);
+  --color-state-secondary-focus:     rgba(154, 148, 169, 0.12);
+  --color-state-tertiary-hover:      rgba(178, 138, 151, 0.08);
+  --color-state-tertiary-pressed:    rgba(178, 138, 151, 0.12);
+  --color-state-tertiary-focus:      rgba(178, 138, 151, 0.12);
+  --color-state-error-hover:         rgba(227, 96, 89, 0.08);
+  --color-state-error-pressed:       rgba(227, 96, 89, 0.12);
+  --color-state-error-focus:         rgba(227, 96, 89, 0.12);
 
   --color-primary:                   var(--color-primary-400);
   --color-on-primary:                var(--color-primary-50);
@@ -396,6 +420,18 @@
     --color-inverse-brand:             var(--color-primary-700);
     --color-scrim:                     rgba(0, 0, 0, 0.32);
     --color-shadow-tint:               rgba(0, 0, 0, 0.40);
+    --color-state-primary-hover:       rgba(143, 125, 191, 0.08);
+    --color-state-primary-pressed:     rgba(143, 125, 191, 0.12);
+    --color-state-primary-focus:       rgba(143, 125, 191, 0.12);
+    --color-state-secondary-hover:     rgba(154, 148, 169, 0.08);
+    --color-state-secondary-pressed:   rgba(154, 148, 169, 0.12);
+    --color-state-secondary-focus:     rgba(154, 148, 169, 0.12);
+    --color-state-tertiary-hover:      rgba(178, 138, 151, 0.08);
+    --color-state-tertiary-pressed:    rgba(178, 138, 151, 0.12);
+    --color-state-tertiary-focus:      rgba(178, 138, 151, 0.12);
+    --color-state-error-hover:         rgba(227, 96, 89, 0.08);
+    --color-state-error-pressed:       rgba(227, 96, 89, 0.12);
+    --color-state-error-focus:         rgba(227, 96, 89, 0.12);
     --color-primary:                   var(--color-primary-400);
     --color-on-primary:                var(--color-primary-50);
     --color-primary-subtle:              var(--color-primary-800);

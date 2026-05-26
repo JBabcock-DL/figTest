@@ -1,0 +1,103 @@
+{
+  "schema": "designops-create-component-step6-progress",
+  "version": 1,
+  "ctxFile": "C:\\Users\\jbabc\\Documents\\GitHub\\figTest\\.designops\\badge.ctx.js",
+  "repoRoot": "C:\\Users\\jbabc\\.claude\\plugins\\marketplaces\\local-desktop-app-uploads\\labs-design-ops",
+  "component": "badge",
+  "layout": "chip",
+  "fileKey": "uCpQaRsW4oiXW3DsC6cLZm",
+  "sequence": [
+    "cc-scaffold",
+    "cc-properties",
+    "cc-component-chip",
+    "cc-matrix",
+    "cc-usage"
+  ],
+  "startedAt": "2026-05-26T13:26:26.281Z",
+  "updatedAt": "2026-05-26T13:26:26.520Z",
+  "orchestrationOk": true,
+  "steps": [
+    {
+      "slug": "cc-scaffold",
+      "assembledPath": "C:\\Users\\jbabc\\Documents\\GitHub\\figTest\\.designops\\badge-bundles\\assembled-cc-scaffold.mjs",
+      "charLength": 16626,
+      "checkPayloadExit": 0,
+      "checkMcpArgsExit": null,
+      "errors": [],
+      "finishedAt": "2026-05-26T13:26:26.329Z"
+    },
+    {
+      "slug": "cc-properties",
+      "assembledPath": "C:\\Users\\jbabc\\Documents\\GitHub\\figTest\\.designops\\badge-bundles\\assembled-cc-properties.mjs",
+      "charLength": 10588,
+      "checkPayloadExit": 0,
+      "checkMcpArgsExit": null,
+      "errors": [],
+      "finishedAt": "2026-05-26T13:26:26.378Z"
+    },
+    {
+      "slug": "cc-component-chip",
+      "assembledPath": "C:\\Users\\jbabc\\Documents\\GitHub\\figTest\\.designops\\badge-bundles\\assembled-cc-component-chip.mjs",
+      "charLength": 27094,
+      "checkPayloadExit": 0,
+      "checkMcpArgsExit": null,
+      "errors": [],
+      "finishedAt": "2026-05-26T13:26:26.426Z"
+    },
+    {
+      "slug": "cc-matrix",
+      "assembledPath": "C:\\Users\\jbabc\\Documents\\GitHub\\figTest\\.designops\\badge-bundles\\assembled-cc-matrix.mjs",
+      "charLength": 21369,
+      "checkPayloadExit": 0,
+      "checkMcpArgsExit": null,
+      "errors": [],
+      "finishedAt": "2026-05-26T13:26:26.473Z"
+    },
+    {
+      "slug": "cc-usage",
+      "assembledPath": "C:\\Users\\jbabc\\Documents\\GitHub\\figTest\\.designops\\badge-bundles\\assembled-cc-usage.mjs",
+      "charLength": 16609,
+      "checkPayloadExit": 0,
+      "checkMcpArgsExit": null,
+      "errors": [],
+      "finishedAt": "2026-05-26T13:26:26.520Z"
+    }
+  ],
+  "invokeHints": [
+    {
+      "step": "cc-scaffold",
+      "assembledCodePath": "C:\\Users\\jbabc\\Documents\\GitHub\\figTest\\.designops\\badge-bundles\\assembled-cc-scaffold.mjs",
+      "fileKey": "uCpQaRsW4oiXW3DsC6cLZm",
+      "description": "create-component — scaffold (badge)"
+    },
+    {
+      "step": "cc-properties",
+      "assembledCodePath": "C:\\Users\\jbabc\\Documents\\GitHub\\figTest\\.designops\\badge-bundles\\assembled-cc-properties.mjs",
+      "fileKey": "uCpQaRsW4oiXW3DsC6cLZm",
+      "description": "create-component — properties (badge)"
+    },
+    {
+      "step": "cc-component-chip",
+      "assembledCodePath": "C:\\Users\\jbabc\\Documents\\GitHub\\figTest\\.designops\\badge-bundles\\assembled-cc-component-chip.mjs",
+      "fileKey": "uCpQaRsW4oiXW3DsC6cLZm",
+      "description": "create-component — component-chip (badge)"
+    },
+    {
+      "step": "cc-matrix",
+      "assembledCodePath": "C:\\Users\\jbabc\\Documents\\GitHub\\figTest\\.designops\\badge-bundles\\assembled-cc-matrix.mjs",
+      "fileKey": "uCpQaRsW4oiXW3DsC6cLZm",
+      "description": "create-component — matrix (badge)"
+    },
+    {
+      "step": "cc-usage",
+      "assembledCodePath": "C:\\Users\\jbabc\\Documents\\GitHub\\figTest\\.designops\\badge-bundles\\assembled-cc-usage.mjs",
+      "fileKey": "uCpQaRsW4oiXW3DsC6cLZm",
+      "description": "create-component — usage (badge)"
+    }
+  ],
+  "policy": {
+    "sequentialTasksOnly": "Never launch parallel Task/canvas-bundle-runner for two cc-* steps; run five invocations strictly in order.",
+    "runnerSkill": "skills/canvas-bundle-runner/SKILL.md",
+    "agentsRunAssembly": "npm/node assembly steps are executed by the agent from the DesignOps-plugin repo per AGENTS.md — not manual designer terminal homework."
+  }
+}

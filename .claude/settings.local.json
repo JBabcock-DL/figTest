@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__5c854f4e-2eda-4526-a654-c9e1facfa94f__use_figma",
+      "mcp__5c854f4e-2eda-4526-a654-c9e1facfa94f__get_design_context",
+      "mcp__5c854f4e-2eda-4526-a654-c9e1facfa94f__get_metadata",
+      "mcp__5c854f4e-2eda-4526-a654-c9e1facfa94f__get_screenshot",
+      "mcp__5c854f4e-2eda-4526-a654-c9e1facfa94f__search_design_system",
+      "mcp__5c854f4e-2eda-4526-a654-c9e1facfa94f__get_variable_defs",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\jbabc\\\\Documents\\\\GitHub\\\\designops-plugin\" -Directory)",
+      "Bash(Select-Object -First 20)",
+      "Bash(find \"C:\\\\Users\\\\jbabc\\\\Documents\\\\GitHub\\\\designops-plugin\" -maxdepth 2 -type d | head -20)",
+      "Bash(node skills/create-design-system/scripts/bundle-canvas-mcp.mjs)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\jbabc\\\\.claude\\\\plugins\\\\marketplaces\\\\local-desktop-app-uploads\\\\labs-design-ops\\\\skills\\\\create-design-system\\\\phases\\\\\" -Recurse | Select-Object Name, FullName | Sort-Object Name)",
+      "Bash(ls -Recurse \"C:\\\\Users\\\\jbabc\\\\.claude\\\\plugins\\\\marketplaces\\\\local-desktop-app-uploads\\\\labs-design-ops\\\\skills\\\\create-design-system\\\\phases\\\\\" 2>/dev/null | grep -E '\\\\.\\(md|txt\\)$' | head -20)",
+      "Bash(grep -r \"Doc/Section\\\\|Doc/TokenName\\\\|Doc/Code\\\\|Doc/Caption\" \"/c/Users/jbabc/.claude/plugins/marketplaces/local-desktop-app-uploads/labs-design-ops/skills/create-design-system/\" --include=\"*.md\" --include=\"*.js\" 2>/dev/null | head -20)",
+      "Bash(xargs grep -l \"Step 11 close\")"
+    ]
+  }
+}

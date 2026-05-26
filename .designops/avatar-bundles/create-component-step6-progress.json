@@ -1,0 +1,103 @@
+{
+  "schema": "designops-create-component-step6-progress",
+  "version": 1,
+  "ctxFile": "C:\\Users\\jbabc\\Documents\\GitHub\\figTest\\.designops\\avatar.ctx.js",
+  "repoRoot": "C:\\Users\\jbabc\\.claude\\plugins\\marketplaces\\local-desktop-app-uploads\\labs-design-ops",
+  "component": "avatar",
+  "layout": "tiny",
+  "fileKey": "uCpQaRsW4oiXW3DsC6cLZm",
+  "sequence": [
+    "cc-scaffold",
+    "cc-properties",
+    "cc-component-tiny",
+    "cc-matrix",
+    "cc-usage"
+  ],
+  "startedAt": "2026-05-26T13:26:56.385Z",
+  "updatedAt": "2026-05-26T13:26:56.616Z",
+  "orchestrationOk": true,
+  "steps": [
+    {
+      "slug": "cc-scaffold",
+      "assembledPath": "C:\\Users\\jbabc\\Documents\\GitHub\\figTest\\.designops\\avatar-bundles\\assembled-cc-scaffold.mjs",
+      "charLength": 16194,
+      "checkPayloadExit": 0,
+      "checkMcpArgsExit": null,
+      "errors": [],
+      "finishedAt": "2026-05-26T13:26:56.433Z"
+    },
+    {
+      "slug": "cc-properties",
+      "assembledPath": "C:\\Users\\jbabc\\Documents\\GitHub\\figTest\\.designops\\avatar-bundles\\assembled-cc-properties.mjs",
+      "charLength": 10156,
+      "checkPayloadExit": 0,
+      "checkMcpArgsExit": null,
+      "errors": [],
+      "finishedAt": "2026-05-26T13:26:56.480Z"
+    },
+    {
+      "slug": "cc-component-tiny",
+      "assembledPath": "C:\\Users\\jbabc\\Documents\\GitHub\\figTest\\.designops\\avatar-bundles\\assembled-cc-component-tiny.mjs",
+      "charLength": 36987,
+      "checkPayloadExit": 0,
+      "checkMcpArgsExit": null,
+      "errors": [],
+      "finishedAt": "2026-05-26T13:26:56.525Z"
+    },
+    {
+      "slug": "cc-matrix",
+      "assembledPath": "C:\\Users\\jbabc\\Documents\\GitHub\\figTest\\.designops\\avatar-bundles\\assembled-cc-matrix.mjs",
+      "charLength": 20937,
+      "checkPayloadExit": 0,
+      "checkMcpArgsExit": null,
+      "errors": [],
+      "finishedAt": "2026-05-26T13:26:56.571Z"
+    },
+    {
+      "slug": "cc-usage",
+      "assembledPath": "C:\\Users\\jbabc\\Documents\\GitHub\\figTest\\.designops\\avatar-bundles\\assembled-cc-usage.mjs",
+      "charLength": 16177,
+      "checkPayloadExit": 0,
+      "checkMcpArgsExit": null,
+      "errors": [],
+      "finishedAt": "2026-05-26T13:26:56.616Z"
+    }
+  ],
+  "invokeHints": [
+    {
+      "step": "cc-scaffold",
+      "assembledCodePath": "C:\\Users\\jbabc\\Documents\\GitHub\\figTest\\.designops\\avatar-bundles\\assembled-cc-scaffold.mjs",
+      "fileKey": "uCpQaRsW4oiXW3DsC6cLZm",
+      "description": "create-component — scaffold (avatar)"
+    },
+    {
+      "step": "cc-properties",
+      "assembledCodePath": "C:\\Users\\jbabc\\Documents\\GitHub\\figTest\\.designops\\avatar-bundles\\assembled-cc-properties.mjs",
+      "fileKey": "uCpQaRsW4oiXW3DsC6cLZm",
+      "description": "create-component — properties (avatar)"
+    },
+    {
+      "step": "cc-component-tiny",
+      "assembledCodePath": "C:\\Users\\jbabc\\Documents\\GitHub\\figTest\\.designops\\avatar-bundles\\assembled-cc-component-tiny.mjs",
+      "fileKey": "uCpQaRsW4oiXW3DsC6cLZm",
+      "description": "create-component — component-tiny (avatar)"
+    },
+    {
+      "step": "cc-matrix",
+      "assembledCodePath": "C:\\Users\\jbabc\\Documents\\GitHub\\figTest\\.designops\\avatar-bundles\\assembled-cc-matrix.mjs",
+      "fileKey": "uCpQaRsW4oiXW3DsC6cLZm",
+      "description": "create-component — matrix (avatar)"
+    },
+    {
+      "step": "cc-usage",
+      "assembledCodePath": "C:\\Users\\jbabc\\Documents\\GitHub\\figTest\\.designops\\avatar-bundles\\assembled-cc-usage.mjs",
+      "fileKey": "uCpQaRsW4oiXW3DsC6cLZm",
+      "description": "create-component — usage (avatar)"
+    }
+  ],
+  "policy": {
+    "sequentialTasksOnly": "Never launch parallel Task/canvas-bundle-runner for two cc-* steps; run five invocations strictly in order.",
+    "runnerSkill": "skills/canvas-bundle-runner/SKILL.md",
+    "agentsRunAssembly": "npm/node assembly steps are executed by the agent from the DesignOps-plugin repo per AGENTS.md — not manual designer terminal homework."
+  }
+}
