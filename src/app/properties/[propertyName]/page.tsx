@@ -1,3 +1,8 @@
+/**
+ * SSG route for `/properties/[propertyName]`.
+ * Params are generated from {@link getAllProperties}.
+ */
+
 import { notFound } from "next/navigation"
 
 import { PropertyDetail } from "@/components/layout/property-detail"

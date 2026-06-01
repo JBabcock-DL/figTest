@@ -1,5 +1,17 @@
 "use client"
 
+/**
+ * Infinite property image carousel with breakpoint-specific slide sizing.
+ *
+ * - **Desktop:** fixed width from `--layout-carousel-slide-width`
+ * - **Mobile/tablet:** fluid width via `ResizeObserver` on the container
+ * - Auto-advances every 5s; manual prev/next controls
+ *
+ * Used inside {@link CarouselReveal} on the property detail page.
+ *
+ * @module components/ui/property-carousel
+ */
+
 import * as React from "react"
 import Image from "next/image"
 import { ArrowLeft, ArrowRight } from "lucide-react"
@@ -11,10 +23,12 @@ import { cn } from "@/lib/utils"
 const TRANSITION_MS = 1000
 const AUTO_ADVANCE_MS = 5000
 
+/** Image URLs (public paths) in display order; cloned for infinite loop internally. */
 export interface PropertyCarouselProps {
   images: string[]
 }
 
+/** Property image carousel for the detail page hero band. */
 function PropertyCarousel({ images }: PropertyCarouselProps) {
   const count = images.length
   const breakpoint = useBreakpoint()

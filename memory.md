@@ -13,6 +13,8 @@
 - **Current sprint folder:** `.github/Sprint 1/`
 - **Stack / runtimes (if this is an app repo):** Node (see `package.json`), npm (lockfile present)
 - **This repo is:** application codebase
+- **App docs:** `README.md`, `docs/ARCHITECTURE.md`, `docs/CODE_REVIEW.md`, `CONTRIBUTING.md`
+- **Production URL:** https://figtest.vercel.app
 
 ---
 

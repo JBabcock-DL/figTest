@@ -1,5 +1,14 @@
 "use client"
 
+/**
+ * Interactive neighborhood map (Campus Martius / 300 River Place demo).
+ *
+ * Uses CARTO Positron tiles (no API key). Marker icons are served from `/public/leaflet/`
+ * because Leaflet's default paths break under Next.js bundling.
+ *
+ * @module components/layout/neighborhood-map
+ */
+
 import "leaflet/dist/leaflet.css"
 import L from "leaflet"
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
@@ -12,8 +21,10 @@ L.Icon.Default.mergeOptions({
   shadowUrl: "/leaflet/marker-shadow.png",
 })
 
+/** Approximate coordinates for the demo property. */
 const POSITION: [number, number] = [42.3314, -83.0458]
 
+/** Default export required by `next/dynamic` in {@link NeighborhoodMapWrapper}. */
 export default function NeighborhoodMap() {
   return (
     <MapContainer

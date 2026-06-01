@@ -1,7 +1,12 @@
 {
   "name": "figtest",
   "version": "0.1.0",
+  "description": "Bedrock property detail — Next.js + Foundations design tokens (figTest)",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JBabcock-DL/figTest.git"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

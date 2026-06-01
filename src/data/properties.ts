@@ -1,6 +1,12 @@
-// Static property data for the Property Detail Page.
-// Content + imagery mirror the Figma source (node 35:1383, file OrDMGL6zOS3U9qYwXvPAvc).
-// Images were exported from Figma into /public/properties.
+/**
+ * Static property content for SSG property pages.
+ *
+ * This module is the single source of truth until a CMS or API exists.
+ * Copy and image paths mirror Figma (node `35:1383`, file `OrDMGL6zOS3U9qYwXvPAvc`);
+ * assets live under `/public/properties/`.
+ *
+ * @module data/properties
+ */
 
 export interface PropertyDetailField {
   label: string
@@ -90,10 +96,15 @@ export const PROPERTIES: Property[] = [RIVER_PLACE]
 /** The property rendered at the site index (`/`). */
 export const DEFAULT_PROPERTY = RIVER_PLACE
 
+/** All properties included in `generateStaticParams`. */
 export function getAllProperties(): Property[] {
   return PROPERTIES
 }
 
+/**
+ * Resolve a property by URL slug (`propertyName` route segment).
+ * @param slug - e.g. `"300-river-place"`
+ */
 export function getPropertyBySlug(slug: string): Property | undefined {
   return PROPERTIES.find((p) => p.slug === slug)
 }

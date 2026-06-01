@@ -1,3 +1,13 @@
+/**
+ * Bedrock property marketing page — all sections for a single {@link Property}.
+ *
+ * Composes hero, carousel, details, neighborhood map, explore row, and contact form.
+ * Section spacing and mobile full-bleed behavior follow Figma (WO-002 / WO-004).
+ *
+ * @see {@link Property} in `@/data/properties`
+ * @module components/layout/property-detail
+ */
+
 import Image from "next/image"
 import Link from "next/link"
 
@@ -71,6 +81,10 @@ function QuietAction({
   )
 }
 
+/**
+ * Renders the full property detail experience for one listing.
+ * @param property - Static content from {@link getPropertyBySlug} or {@link DEFAULT_PROPERTY}
+ */
 export function PropertyDetail({ property }: { property: Property }) {
   const websiteLabel = property.websiteUrl.replace(/^https?:\/\//, "")
 

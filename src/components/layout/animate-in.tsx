@@ -1,10 +1,25 @@
 "use client"
 
+/**
+ * Scroll-triggered entrance animation for page sections.
+ *
+ * Observes visibility once via `IntersectionObserver`, then applies a CSS transition.
+ * `rootMargin` is computed in pixels via {@link getRevealObserverRootMargin}.
+ *
+ * @remarks
+ * **Explore More tiles** wrap the full card (including `next/image`) and use
+ * `unoptimized` images so fade/slide on this wrapper does not block image decode
+ * (see `property-detail.tsx`).
+ *
+ * @module components/layout/animate-in
+ */
+
 import { useEffect, useRef, useState } from "react"
 
 import { getRevealObserverRootMargin } from "@/lib/css-length"
 
-interface AnimateInProps {
+/** Props for {@link AnimateIn}. */
+export interface AnimateInProps {
   children: React.ReactNode
   className?: string
   /** Stagger delay in ms before the transition starts */
@@ -15,6 +30,12 @@ interface AnimateInProps {
   variant?: "fade-slide" | "scale"
 }
 
+/**
+ * Fades and slides content into view when it intersects the viewport.
+ *
+ * - `fade-slide`: opacity 0→1 and translateY(±28px)→0
+ * - `scale`: scales inner content 110%→100%; adds corner light overlay (hero image)
+ */
 export function AnimateIn({
   children,
   className,

@@ -1,9 +1,18 @@
 "use client"
 
+/**
+ * Dim overlay on the property image carousel until the block scrolls into view.
+ *
+ * Pairs with {@link PropertyCarousel} inside `property-detail.tsx`.
+ *
+ * @module components/layout/carousel-reveal
+ */
+
 import { useEffect, useRef, useState } from "react"
 
 import { getRevealObserverRootMargin } from "@/lib/css-length"
 
+/** Fades a semi-transparent black overlay from 50% → 0% when the carousel intersects. */
 export function CarouselReveal({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
