@@ -6,73 +6,131 @@ import { ArrowLeft, ArrowRight } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-// Figma: img wrapper 1728×960 (bg black), slides 1280×960 laid side-by-side with a 4px gap.
 const SLIDE_WIDTH = 1280
 const SLIDE_GAP = 4
-const SEGMENTS = 4
+const TRANSITION_MS = 500
 
 export interface PropertyCarouselProps {
   images: string[]
 }
 
 function PropertyCarousel({ images }: PropertyCarouselProps) {
-  const [activeIndex, setActiveIndex] = React.useState<number>(0)
-  const lastIndex = images.length - 1
+  const count = images.length
 
-  const goPrev = () => setActiveIndex((i) => Math.max(0, i - 1))
-  const goNext = () => setActiveIndex((i) => Math.min(lastIndex, i + 1))
+  // Slide strip: [clone_of_last, ...images, clone_of_first]
+  // internalIndex starts at 1 (the real first image).
+  const slides = React.useMemo(
+    () => [images[count - 1], ...images, images[0]],
+    [images, count]
+  )
 
-  // The active slide is left-aligned in the viewport; the strip translates by one
-  // slide (+gap) per step, matching the Figma layout (active sharp, others dimmed).
-  const offset = activeIndex * (SLIDE_WIDTH + SLIDE_GAP)
+  const [internalIndex, setInternalIndex] = React.useState(1)
+  const [animated, setAnimated] = React.useState(true)
+  const snapTimer = React.useRef<ReturnType<typeof setTimeout>>(undefined)
 
-  // Progress bar: first segment is a fixed 60px, the remaining three are flexible.
-  // Only the segment for the current slide is highlighted (one at a time).
-  const barIndex = Math.min(activeIndex, SEGMENTS - 1)
+  const goNext = () => {
+    setAnimated(true)
+    setInternalIndex((i) => i + 1)
+  }
+
+  const goPrev = () => {
+    setAnimated(true)
+    setInternalIndex((i) => i - 1)
+  }
+
+  // After landing on a clone, wait for the CSS transition then snap to the real slide.
+  React.useEffect(() => {
+    clearTimeout(snapTimer.current)
+
+    if (internalIndex === 0) {
+      // Animated to clone-of-last → snap to real last
+      snapTimer.current = setTimeout(() => {
+        setAnimated(false)
+        setInternalIndex(count)
+      }, TRANSITION_MS)
+    } else if (internalIndex === slides.length - 1) {
+      // Animated to clone-of-first → snap to real first
+      snapTimer.current = setTimeout(() => {
+        setAnimated(false)
+        setInternalIndex(1)
+      }, TRANSITION_MS)
+    }
+
+    return () => clearTimeout(snapTimer.current)
+  }, [internalIndex, count, slides.length])
+
+  // Re-enable animation one frame after a snap so the next click animates.
+  React.useEffect(() => {
+    if (!animated) {
+      const raf = requestAnimationFrame(() => setAnimated(true))
+      return () => cancelAnimationFrame(raf)
+    }
+  }, [animated])
+
+  // Map internal index to the real image index (0-based) for indicators.
+  const activeIndex =
+    internalIndex === 0
+      ? count - 1
+      : internalIndex === slides.length - 1
+        ? 0
+        : internalIndex - 1
+
+  const offset = internalIndex * (SLIDE_WIDTH + SLIDE_GAP)
 
   return (
-    <section className="flex w-full flex-col items-start justify-center gap-[var(--space-xl)]" aria-roledescription="carousel" aria-label="Property images">
+    <section
+      className="flex w-full flex-col items-start justify-center gap-[var(--space-xl)]"
+      aria-roledescription="carousel"
+      aria-label="Property images"
+    >
       {/* Image strip */}
       <div className="relative h-[960px] w-full overflow-hidden bg-black">
         <div
-          className="flex h-full transition-transform duration-500 ease-out"
-          style={{ gap: `${SLIDE_GAP}px`, transform: `translateX(-${offset}px)` }}
+          className="flex h-full"
+          style={{
+            gap: `${SLIDE_GAP}px`,
+            transform: `translateX(-${offset}px)`,
+            transition: animated ? `transform ${TRANSITION_MS}ms ease-out` : "none",
+          }}
         >
-          {images.map((src, i) => (
-            <div
-              key={i}
-              className="relative h-[960px] w-[1280px] shrink-0 overflow-hidden"
-              aria-hidden={i === activeIndex ? undefined : true}
-            >
-              <Image
-                src={src}
-                alt={i === activeIndex ? `Property photo ${i + 1} of ${images.length}` : ""}
-                fill
-                className="object-cover"
-                sizes="1280px"
-                priority={i === 0}
-              />
+          {slides.map((src, i) => {
+            const isActive = i === internalIndex
+            return (
               <div
-                className={cn(
-                  "absolute inset-0 transition-colors",
-                  i === activeIndex ? "bg-transparent" : "bg-black/60"
-                )}
-              />
-            </div>
-          ))}
+                key={i}
+                className="relative h-[960px] w-[1280px] shrink-0 overflow-hidden"
+                aria-hidden={isActive ? undefined : true}
+              >
+                <Image
+                  src={src}
+                  alt={isActive ? `Property photo ${activeIndex + 1} of ${count}` : ""}
+                  fill
+                  className="object-cover"
+                  sizes="1280px"
+                  priority={i <= 2}
+                />
+                <div
+                  className={cn(
+                    "absolute inset-0 transition-colors",
+                    isActive ? "bg-transparent" : "bg-black/60"
+                  )}
+                />
+              </div>
+            )
+          })}
         </div>
       </div>
 
-      {/* Control row — progress bar left, arrows right */}
+      {/* Control row — one indicator per real image, arrows always enabled */}
       <div className="flex w-full items-center justify-between px-[var(--space-4xl)]">
-        <div className="flex h-[5px] w-[200px] items-stretch" style={{ gap: "10px" }}>
-          {Array.from({ length: SEGMENTS }).map((_, i) => (
+        <div className="flex h-[5px] items-stretch" style={{ gap: "10px" }}>
+          {images.map((_, i) => (
             <span
               key={i}
               className={cn(
                 "h-full rounded-full",
-                i === 0 ? "w-[60px] shrink-0" : "min-w-px flex-1",
-                i === barIndex
+                i === 0 ? "w-[60px] shrink-0" : "w-[37px] shrink-0",
+                i === activeIndex
                   ? "bg-[var(--color-primary)]"
                   : "bg-[var(--color-primary-subtle)]"
               )}
@@ -84,18 +142,16 @@ function PropertyCarousel({ images }: PropertyCarouselProps) {
           <button
             type="button"
             onClick={goPrev}
-            disabled={activeIndex === 0}
             aria-label="Previous image"
-            className="flex size-6 items-center justify-center text-[var(--color-content)] outline-none transition-opacity hover:opacity-70 focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] disabled:pointer-events-none disabled:opacity-30"
+            className="flex size-6 items-center justify-center text-[var(--color-content)] outline-none transition-opacity hover:opacity-70 focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
           >
             <ArrowLeft className="size-6" />
           </button>
           <button
             type="button"
             onClick={goNext}
-            disabled={activeIndex === lastIndex}
             aria-label="Next image"
-            className="flex size-6 items-center justify-center text-[var(--color-content)] outline-none transition-opacity hover:opacity-70 focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] disabled:pointer-events-none disabled:opacity-30"
+            className="flex size-6 items-center justify-center text-[var(--color-content)] outline-none transition-opacity hover:opacity-70 focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
           >
             <ArrowRight className="size-6" />
           </button>
