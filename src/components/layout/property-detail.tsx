@@ -1,5 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
+
+import { NeighborhoodMapWrapper } from "@/components/layout/neighborhood-map-wrapper"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -145,13 +147,7 @@ export function PropertyDetail({ property }: { property: Property }) {
       <section className="flex w-full flex-col items-center justify-center px-[var(--space-4xl)] py-[160px]">
         <div className="flex w-full max-w-[1560px] flex-wrap items-center gap-[var(--space-4xl)] bg-[var(--color-background-bright)]">
           <div className="relative size-[712px] shrink-0 overflow-hidden bg-[#d9d9d9]">
-            <Image
-              src={property.mapImage}
-              alt=""
-              fill
-              className="object-cover"
-              sizes="712px"
-            />
+            <NeighborhoodMapWrapper />
           </div>
 
           <div className="flex min-w-[500px] flex-1 flex-col gap-[var(--space-3xl)] p-[var(--space-4xl)]">

@@ -15,17 +15,17 @@ Install `leaflet` + `react-leaflet` + `@types/leaflet`. Create a `"use client"` 
 
 ## Steps
 
-- [ ] Step 1 — Install dependencies: `npm install leaflet react-leaflet` and `npm install -D @types/leaflet`
-- [ ] Step 2 — Create `src/components/layout/neighborhood-map.tsx` as a `"use client"` component:
+- [x] Step 1 — Install dependencies: `npm install leaflet react-leaflet` and `npm install -D @types/leaflet`
+- [x] Step 2 — Create `src/components/layout/neighborhood-map.tsx` as a `"use client"` component:
   - Import `leaflet/dist/leaflet.css`
   - Fix broken default marker icons (delete `_getIconUrl` from `L.Icon.Default.prototype` and set `iconUrl`, `iconRetinaUrl`, `shadowUrl` from the `leaflet/dist/images/` paths)
   - Render `<MapContainer center={[42.3314, -83.0458]} zoom={14} style={{ width: "100%", height: "100%" }} aria-label="Neighborhood map for 300 River Place, Detroit MI">` with a `TileLayer` (CartoDB Positron URL) and a `Marker` + `Popup` at the coordinates
-- [ ] Step 3 — Update `src/components/layout/property-detail.tsx`:
+- [x] Step 3 — Update `src/components/layout/property-detail.tsx`:
   - Add `import dynamic from "next/dynamic"` and `const NeighborhoodMap = dynamic(() => import("@/components/layout/neighborhood-map"), { ssr: false, loading: () => <div className="size-full bg-[#d9d9d9]" /> })`
   - Replace the `<Image src={property.mapImage} ... />` element (and only that element) with `<NeighborhoodMap />` inside the existing `div` wrapper (`relative size-[712px] shrink-0 overflow-hidden bg-[#d9d9d9]`) — wrapper is unchanged
   - Remove the unused `property.mapImage` reference (the `Image` import can stay as it is used elsewhere in the file)
-- [ ] Step 4 — Create `.env.example` in the project root documenting that no map key is required for this implementation
-- [ ] Step 5 — Run `npx tsc --noEmit` and `npm run build` to confirm no type errors or build failures
+- [x] Step 4 — Create `.env.example` in the project root documenting that no map key is required for this implementation
+- [x] Step 5 — Run `npx tsc --noEmit` and `npm run build` to confirm no type errors or build failures
 
 ## Build Agents
 
