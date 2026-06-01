@@ -25,7 +25,7 @@ export function CarouselReveal({ children }: { children: React.ReactNode }) {
   }, [])
 
   return (
-    <div ref={ref} className="relative w-full">
+    <div ref={ref} className="relative w-full min-w-0 overflow-hidden">
       {children}
       <div
         className="pointer-events-none absolute inset-0 bg-black"

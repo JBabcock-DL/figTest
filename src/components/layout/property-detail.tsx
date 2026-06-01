@@ -14,15 +14,22 @@ import { PropertyCarousel } from "@/components/ui/property-carousel"
 import type { Property } from "@/data/properties"
 
 const FORM_FIELDS = [
-  { id: "first-name", label: "First Name", half: true },
-  { id: "last-name", label: "Last Name", half: true },
-  { id: "email", label: "Email", half: true },
-  { id: "phone", label: "Phone", half: true },
-  { id: "company-name", label: "Company Name", half: false },
-  { id: "message", label: "Message", half: false, multiline: true },
+  { id: "first-name", label: "First Name", half: true, placeholder: "Jane" },
+  { id: "last-name", label: "Last Name", half: true, placeholder: "Doe" },
+  { id: "email", label: "Email", half: true, placeholder: "you@example.com" },
+  { id: "phone", label: "Phone", half: true, placeholder: "(555) 555-5555" },
+  { id: "company-name", label: "Company Name", half: false, placeholder: "Company name" },
+  { id: "message", label: "Message", half: false, multiline: true, placeholder: "How can we help?" },
 ] as const
 
-const FORM_PLACEHOLDER = "you@example.com"
+const SECTION_PX = "px-[var(--space-4xl)] max-lg:px-[var(--space-md)]"
+/** Mobile vertical rhythm: 4xl padding unless the section ends on full-bleed media. */
+const MOBILE_PY = "max-lg:py-[var(--space-4xl)]"
+const MOBILE_PB_FLUSH = "max-lg:pb-0"
+
+/** Counteract section horizontal padding so media spans the mobile viewport (Figma `56:2962`). */
+const MOBILE_FULL_BLEED =
+  "max-lg:relative max-lg:left-1/2 max-lg:w-screen max-lg:max-w-none max-lg:-translate-x-1/2"
 
 const QUIET_HOVER =
   "p-[var(--space-xs)] transition-colors duration-200 ease-in-out hover:bg-[color-mix(in_srgb,var(--color-primary)_20%,transparent)]"
@@ -68,11 +75,13 @@ export function PropertyDetail({ property }: { property: Property }) {
   const websiteLabel = property.websiteUrl.replace(/^https?:\/\//, "")
 
   return (
-    <div className="w-full bg-[var(--color-background-bright)] text-[var(--color-content)]">
+    <div className="w-full min-w-0 overflow-x-clip bg-[var(--color-background-bright)] text-[var(--color-content)]">
       {/* 1. Hero */}
-      <section className="flex w-full flex-col items-center px-[var(--space-4xl)] pt-[160px]">
-        <div className="flex w-full max-w-[1560px] flex-wrap items-start gap-[var(--space-4xl)]">
-          <AnimateIn className="flex min-w-[500px] flex-1 flex-col gap-[var(--space-2xl)] pr-[var(--space-4xl)]">
+      <section
+        className={`flex w-full flex-col items-center ${SECTION_PX} pt-[160px] max-lg:pt-[calc(72px+var(--space-4xl))] ${MOBILE_PB_FLUSH}`}
+      >
+        <div className="flex w-full max-w-[1560px] flex-col flex-wrap items-stretch gap-[var(--space-4xl)] max-lg:gap-[var(--space-xl)] lg:flex-row lg:items-start">
+          <AnimateIn className="flex min-w-0 flex-1 flex-col gap-[var(--space-2xl)] lg:min-w-[280px] lg:pb-[var(--space-3xl)] lg:pr-[var(--space-4xl)]">
             <Link
               href="/properties"
               className={
@@ -112,13 +121,16 @@ export function PropertyDetail({ property }: { property: Property }) {
             </a>
           </AnimateIn>
 
-          <AnimateIn variant="scale" className="relative size-[750px] shrink-0 overflow-hidden">
+          <AnimateIn
+            variant="scale"
+            className={`relative min-w-0 w-full max-w-[750px] flex-1 aspect-square overflow-hidden lg:max-w-[750px] ${MOBILE_FULL_BLEED}`}
+          >
             <Image
               src={property.heroImage}
               alt={property.name}
               fill
               className="object-cover"
-              sizes="750px"
+              sizes="(max-width: 1023px) 100vw, 750px"
               priority
             />
           </AnimateIn>
@@ -126,9 +138,11 @@ export function PropertyDetail({ property }: { property: Property }) {
       </section>
 
       {/* 2. Property Details — dark */}
-      <section className="flex w-full items-center justify-center bg-[var(--color-inverse-surface)] p-[var(--space-4xl)] text-[var(--color-inverse-content)]">
-        <div className="flex w-full max-w-[1560px] flex-wrap items-start justify-between gap-y-[64px] py-[var(--space-xl)]">
-          <div className="flex min-w-[350px] max-w-[650px] flex-1 flex-col gap-[var(--space-2xl)]">
+      <section
+        className={`flex w-full items-center justify-center bg-[var(--color-inverse-surface)] p-[var(--space-4xl)] max-lg:px-[var(--space-md)] ${MOBILE_PY} text-[var(--color-inverse-content)]`}
+      >
+        <div className="flex w-full max-w-[1560px] flex-col items-start gap-y-[var(--space-4xl)] py-[var(--space-xl)] lg:flex-row lg:flex-wrap lg:items-start lg:justify-between lg:gap-y-[64px]">
+          <div className="flex w-full min-w-0 max-w-[650px] flex-col gap-[var(--space-2xl)] lg:flex-1 lg:min-w-[280px]">
             <AnimateIn delay={100}>
               <h2 className="text-display-lg text-[var(--color-inverse-content)]">Property Details</h2>
             </AnimateIn>
@@ -139,9 +153,13 @@ export function PropertyDetail({ property }: { property: Property }) {
             </AnimateIn>
           </div>
 
-          <dl className="flex min-w-[400px] flex-1 flex-wrap gap-[var(--space-4xl)]">
+          <dl className="flex w-full min-w-0 flex-1 flex-col gap-[var(--space-4xl)] sm:flex-row sm:flex-wrap">
             {property.details.map((field, i) => (
-              <AnimateIn key={field.label} delay={200 + i * 100} className="flex w-[250px] flex-col gap-[var(--space-sm)]">
+              <AnimateIn
+                key={field.label}
+                delay={200 + i * 100}
+                className="flex min-w-[200px] max-w-[250px] flex-1 flex-col gap-[var(--space-sm)]"
+              >
                 <dt className="text-title-lg font-bold! text-[var(--color-inverse-content)]">
                   {field.label}
                 </dt>
@@ -153,23 +171,21 @@ export function PropertyDetail({ property }: { property: Property }) {
       </section>
 
       {/* 3. Image carousel — full-bleed with overlay reveal */}
-      <section className="w-full">
+      <section className="w-full min-w-0 overflow-hidden">
         <CarouselReveal>
           <PropertyCarousel images={property.images} />
         </CarouselReveal>
       </section>
 
       {/* 4. Map + Neighborhood */}
-      <section className="flex w-full flex-col items-center justify-center px-[var(--space-4xl)] py-[160px]">
-        <div className="flex w-full max-w-[1560px] flex-wrap items-center gap-[var(--space-4xl)] bg-[var(--color-background-bright)]">
-          <AnimateIn from="above" delay={0} className="relative size-[712px] shrink-0 overflow-hidden bg-[#d9d9d9]">
-            <NeighborhoodMapWrapper />
-          </AnimateIn>
-
+      <section
+        className={`flex w-full flex-col items-center justify-center ${SECTION_PX} py-[160px] max-lg:pt-[var(--space-4xl)] ${MOBILE_PB_FLUSH}`}
+      >
+        <div className="flex w-full max-w-[1560px] flex-col items-stretch gap-[var(--space-4xl)] bg-[var(--color-background-bright)] max-lg:gap-[var(--space-4xl)] lg:flex-row lg:items-center">
           <AnimateIn
             from="below"
             delay={0}
-            className="flex min-w-[500px] flex-1 flex-col gap-[var(--space-3xl)] p-[var(--space-4xl)]"
+            className="flex min-w-0 flex-1 flex-col gap-[var(--space-3xl)] p-[var(--space-4xl)] max-lg:p-0 lg:order-2 lg:min-w-[280px]"
           >
             <div className="flex flex-col gap-[var(--space-xl)]">
               <h2 className="text-display-lg text-[var(--color-content)]">{property.neighborhoodName}</h2>
@@ -179,27 +195,41 @@ export function PropertyDetail({ property }: { property: Property }) {
               Get Directions
             </QuietAction>
           </AnimateIn>
+
+          <AnimateIn
+            from="above"
+            delay={0}
+            className={`relative min-w-0 w-full max-w-[712px] flex-1 aspect-square overflow-hidden bg-[#d9d9d9] lg:order-1 lg:max-w-[712px] ${MOBILE_FULL_BLEED}`}
+          >
+            <NeighborhoodMapWrapper />
+          </AnimateIn>
         </div>
       </section>
 
       {/* 5. Explore More — dark */}
-      <section className="flex w-full items-center justify-center bg-[var(--color-inverse-surface)] p-[var(--space-4xl)] text-[var(--color-inverse-content)]">
-        <div className="flex w-full max-w-[1560px] flex-col gap-[var(--space-4xl)] py-[var(--space-xl)]">
+      <section
+        className={`flex w-full items-center justify-center bg-[var(--color-inverse-surface)] p-[var(--space-4xl)] max-lg:px-[var(--space-md)] ${MOBILE_PY} text-[var(--color-inverse-content)]`}
+      >
+        <div className="flex w-full max-w-[1560px] flex-col gap-[var(--space-4xl)] py-[var(--space-xl)] max-lg:py-0">
           <AnimateIn delay={100}>
             <h2 className="text-display-lg text-[var(--color-inverse-content)]">Explore More</h2>
           </AnimateIn>
 
-          <div className="flex flex-wrap gap-[var(--space-xl)]">
+          <div className="flex w-full min-w-0 max-w-full flex-wrap gap-[var(--space-xl)] max-lg:flex-nowrap max-lg:overflow-x-auto max-lg:overscroll-x-contain max-lg:[scrollbar-width:none] max-lg:[&::-webkit-scrollbar]:hidden lg:flex-wrap">
             {property.exploreTiles.map((tile, i) => (
-              <AnimateIn key={i} delay={200 + i * 100} className="w-[372px]">
+              <AnimateIn
+                key={i}
+                delay={200 + i * 100}
+                className="min-w-0 w-full max-w-[372px] flex-[1_1_280px] max-lg:min-w-[280px] max-lg:max-w-[280px] max-lg:shrink-0 max-lg:flex-none"
+              >
                 <Link href={tile.href} className="explore-tile-hover group flex flex-col gap-[var(--space-md)]">
-                  <div className="relative size-[372px] overflow-hidden">
+                  <div className="relative aspect-square w-full overflow-hidden">
                     <Image
                       src={tile.image}
                       alt=""
                       fill
                       className="object-cover transition-transform duration-1000 ease-in-out group-hover:scale-110"
-                      sizes="372px"
+                      sizes="(max-width: 1023px) 280px, 372px"
                     />
                     <div aria-hidden className="corner-light-overlay explore-tile-light" />
                   </div>
@@ -225,27 +255,13 @@ export function PropertyDetail({ property }: { property: Property }) {
       {/* 6. Contact form */}
       <section
         id="contact-form"
-        className="flex w-full flex-col items-center justify-center bg-[var(--color-background-bright)] p-[var(--space-4xl)] scroll-mt-[120px]"
+        className={`flex w-full flex-col items-center justify-center bg-[var(--color-background-bright)] p-[var(--space-4xl)] max-lg:px-[var(--space-md)] max-lg:pt-[var(--space-4xl)] ${MOBILE_PB_FLUSH} scroll-mt-[120px]`}
       >
-        <div className="flex w-full max-w-[1560px] flex-wrap items-center gap-[var(--space-3xl)] py-[var(--space-3xl)]">
-          <AnimateIn
-            from="above"
-            delay={200}
-            className="relative h-[960px] min-w-[600px] max-w-[646px] flex-1 overflow-hidden"
-          >
-            <Image
-              src={property.formImage}
-              alt=""
-              fill
-              className="object-cover"
-              sizes="646px"
-            />
-          </AnimateIn>
-
+        <div className="flex w-full max-w-[1560px] flex-col items-stretch gap-[var(--space-3xl)] py-[var(--space-3xl)] max-lg:gap-[var(--space-3xl)] max-lg:py-0 lg:flex-row lg:items-center">
           <AnimateIn
             from="below"
             delay={200}
-            className="flex min-w-[600px] flex-1 flex-col gap-[var(--space-3xl)] p-[var(--space-3xl)]"
+            className="flex min-w-0 flex-1 flex-col gap-[var(--space-3xl)] p-[var(--space-3xl)] max-lg:w-full max-lg:p-0 lg:order-2 lg:min-w-[320px]"
           >
             <h2 className="text-display-lg text-[var(--color-content)]">Find the perfect space.</h2>
 
@@ -253,13 +269,17 @@ export function PropertyDetail({ property }: { property: Property }) {
               {FORM_FIELDS.map((field) => (
                 <Field
                   key={field.id}
-                  className={field.half ? "w-[calc(50%-16px)] min-w-[240px]" : "w-full"}
+                  className={
+                    field.half
+                      ? "w-full min-w-0 max-lg:w-full lg:w-[calc(50%-16px)] lg:min-w-[240px]"
+                      : "w-full"
+                  }
                 >
                   <FieldLabel htmlFor={field.id}>{field.label}</FieldLabel>
                   {"multiline" in field && field.multiline ? (
-                    <Textarea id={field.id} placeholder={FORM_PLACEHOLDER} />
+                    <Textarea id={field.id} placeholder={field.placeholder} />
                   ) : (
-                    <Input id={field.id} placeholder={FORM_PLACEHOLDER} variant="default" size="lg" />
+                    <Input id={field.id} placeholder={field.placeholder} variant="default" size="lg" />
                   )}
                 </Field>
               ))}
@@ -268,6 +288,20 @@ export function PropertyDetail({ property }: { property: Property }) {
             <Button type="submit" variant="default" size="lg" className="w-fit">
               Send Message
             </Button>
+          </AnimateIn>
+
+          <AnimateIn
+            from="above"
+            delay={200}
+            className={`relative min-w-0 w-full max-w-[646px] flex-1 aspect-square overflow-hidden max-lg:max-h-none max-lg:max-w-none lg:order-1 lg:aspect-[646/960] lg:max-h-[min(960px,70vh)] lg:max-w-[646px] ${MOBILE_FULL_BLEED}`}
+          >
+            <Image
+              src={property.formImage}
+              alt=""
+              fill
+              className="object-cover"
+              sizes="(max-width: 1023px) 100vw, 646px"
+            />
           </AnimateIn>
         </div>
       </section>

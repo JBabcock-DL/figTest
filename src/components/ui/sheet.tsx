@@ -52,30 +52,31 @@ const sheetVariants = cva(
 
 interface SheetContentProps
   extends React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>,
-    VariantProps<typeof sheetVariants> {}
+    VariantProps<typeof sheetVariants> {
+  overlayClassName?: string
+  hideDefaultClose?: boolean
+}
 
 const SheetContent = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Content>,
   SheetContentProps
->(({ side = "right", className, children, ...props }, ref) => (
+>(({ side = "right", className, overlayClassName, hideDefaultClose, children, ...props }, ref) => (
   <SheetPortal>
-    <SheetOverlay />
+    <SheetOverlay className={overlayClassName} />
     <SheetPrimitive.Content
       ref={ref}
       className={cn(sheetVariants({ side }), className)}
       {...props}
     >
       {children}
-      <SheetPrimitive.Close asChild>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="absolute right-4 top-4"
-        >
-          <X className="h-4 w-4" />
-          <span className="sr-only">Close</span>
-        </Button>
-      </SheetPrimitive.Close>
+      {!hideDefaultClose ? (
+        <SheetPrimitive.Close asChild>
+          <Button variant="ghost" size="icon" className="absolute right-4 top-4">
+            <X className="h-4 w-4" />
+            <span className="sr-only">Close</span>
+          </Button>
+        </SheetPrimitive.Close>
+      ) : null}
     </SheetPrimitive.Content>
   </SheetPortal>
 ))

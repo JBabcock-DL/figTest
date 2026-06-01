@@ -11,19 +11,19 @@ Refactor property detail and global chrome in three passes: (1) shared breakpoin
 
 ## Steps
 
-- [ ] Step 1 — Pull Figma MCP `get_design_context` (and screenshot) for `file_key` `OrDMGL6zOS3U9qYwXvPAvc`, nodes `56:2962` and `56:4076`; write `research/figma-design-truth.md` per `skills/conventions/03-figma-design-truth.md` (layout hierarchy + shell only; note tokens come from repo CSS).
-- [ ] Step 2 — Add `src/hooks/use-breakpoint.ts` returning `"mobile" | "tablet" | "desktop"` (`<768`, `768–1023`, `≥1024`); export shared `NAV_LINKS` (flat 5) from `src/components/layout/nav-links.ts` for nav + menus.
-- [ ] Step 3 — Update `src/components/layout/site-nav.tsx`: remove `ACCOUNT_LINKS` and divider; desktop (`lg+`) inline `NAV_LINKS` only; below `lg` show Menu/Close (`aria-expanded`, `aria-controls`); `max-lg:px-[var(--space-md)]`; keep scroll-direction hide behavior.
-- [ ] Step 4 — Implement mobile/tablet menu in `site-nav.tsx` or `src/components/layout/mobile-nav-menu.tsx`: tablet (`md`–`lg-1`) — shadcn `Sheet` `side="right"`, `w-[min(100vw,360px)]`, scrim ~40% opacity; mobile (`<md`) — full-viewport panel per Figma `56:4076` shell; flat 5 `Link`s with `text-body-lg`, active route style, close on navigate; no account links; focus trap via Radix.
-- [ ] Step 5 — Hero (`property-detail.tsx` §1): `flex-col lg:flex-row`; text `min-w-0 flex-1 lg:min-w-[280px]`; image `min-w-0 w-full max-w-[750px] flex-1 aspect-square` (no `size-[750px] shrink-0`); `sizes="(max-width: 1023px) 100vw, 750px"`.
-- [ ] Step 6 — Facts (§2) + neighborhood (§4): `dl` and map row `min-w-0`; map `w-full max-w-[712px] flex-1 aspect-square`; copy `min-w-0 flex-1 lg:min-w-[280px]`; `flex-col lg:flex-row` on neighborhood wrapper.
-- [ ] Step 7 — Explore More (§5): row `flex-wrap lg:flex-nowrap max-lg:overflow-x-auto`; tiles `flex-[1_1_280px] min-w-[280px] max-w-[372px] max-lg:shrink-0 max-lg:flex-none max-lg:w-[280px]`; images `aspect-square w-full` (not `size-[372px]`).
-- [ ] Step 8 — Contact (§6): `flex-col lg:flex-row`; image `min-w-0 w-full max-w-[646px] flex-1 aspect-[646/960] max-h-[min(960px,70vh)]`; form `min-w-0 flex-1 lg:min-w-[320px]`; responsive `sizes` on form image.
-- [ ] Step 9 — `src/components/ui/property-carousel.tsx`: measure container width (`ResizeObserver` or ref); set slide width = container width; replace fixed `h-[960px]` with `aspect-[1280/960] max-h-[60vh]` (or equivalent); keep infinite-loop snap logic working at all widths.
-- [ ] Step 10 — `src/components/layout/site-footer.tsx`: replace `w-[800px] min-w-[800px]` with `min-w-0 w-full max-w-[800px] flex-1 flex-wrap`; left/address blocks `min-w-0 flex-1 lg:min-w-[280px]`; **preserve** Sign in / Create account block (L104–111).
-- [ ] Step 11 — Section padding pass: add `max-lg:px-[var(--space-md)]` on property-detail outer sections where `space-4xl` causes pinch at 375px (hero, map, contact, explore) if QA shows edge overflow.
-- [ ] Step 12 — Run `npx tsc --noEmit` and `npm run build`; fix any type or build errors.
-- [ ] Step 13 — Manual QA on a property detail URL at 375px, 768px, 1024px, 1440px: nav modes (inline / drawer / fullscreen), Explore More mode, no `document.documentElement.scrollWidth > clientWidth + 1`, footer auth only in footer, keyboard menu open/close.
+- [x] Step 1 — Pull Figma MCP `get_design_context` (and screenshot) for `file_key` `OrDMGL6zOS3U9qYwXvPAvc`, nodes `56:2962` and `56:4076`; write `research/figma-design-truth.md` per `skills/conventions/03-figma-design-truth.md` (layout hierarchy + shell only; note tokens come from repo CSS).
+- [x] Step 2 — Add `src/hooks/use-breakpoint.ts` returning `"mobile" | "tablet" | "desktop"` (`<768`, `768–1023`, `≥1024`); export shared `NAV_LINKS` (flat 5) from `src/components/layout/nav-links.ts` for nav + menus.
+- [x] Step 3 — Update `src/components/layout/site-nav.tsx`: remove `ACCOUNT_LINKS` and divider; desktop (`lg+`) inline `NAV_LINKS` only; below `lg` show Menu/Close (`aria-expanded`, `aria-controls`); `max-lg:px-[var(--space-md)]`; keep scroll-direction hide behavior.
+- [x] Step 4 — Implement mobile/tablet menu in `site-nav.tsx` or `src/components/layout/mobile-nav-menu.tsx`: tablet (`md`–`lg-1`) — shadcn `Sheet` `side="right"`, `w-[min(100vw,360px)]`, scrim ~40% opacity; mobile (`<md`) — full-viewport panel per Figma `56:4076` shell; flat 5 `Link`s with `text-body-lg`, active route style, close on navigate; no account links; focus trap via Radix.
+- [x] Step 5 — Hero (`property-detail.tsx` §1): `flex-col lg:flex-row`; text `min-w-0 flex-1 lg:min-w-[280px]`; image `min-w-0 w-full max-w-[750px] flex-1 aspect-square` (no `size-[750px] shrink-0`); `sizes="(max-width: 1023px) 100vw, 750px"`.
+- [x] Step 6 — Facts (§2) + neighborhood (§4): `dl` and map row `min-w-0`; map `w-full max-w-[712px] flex-1 aspect-square`; copy `min-w-0 flex-1 lg:min-w-[280px]`; `flex-col lg:flex-row` on neighborhood wrapper.
+- [x] Step 7 — Explore More (§5): row `flex-wrap lg:flex-nowrap max-lg:overflow-x-auto`; tiles `flex-[1_1_280px] min-w-[280px] max-w-[372px] max-lg:shrink-0 max-lg:flex-none max-lg:w-[280px]`; images `aspect-square w-full` (not `size-[372px]`).
+- [x] Step 8 — Contact (§6): `flex-col lg:flex-row`; image `min-w-0 w-full max-w-[646px] flex-1 aspect-[646/960] max-h-[min(960px,70vh)]`; form `min-w-0 flex-1 lg:min-w-[320px]`; responsive `sizes` on form image.
+- [x] Step 9 — `src/components/ui/property-carousel.tsx`: measure container width (`ResizeObserver` or ref); set slide width = container width; replace fixed `h-[960px]` with `aspect-[1280/960] max-h-[60vh]` (or equivalent); keep infinite-loop snap logic working at all widths.
+- [x] Step 10 — `src/components/layout/site-footer.tsx`: replace `w-[800px] min-w-[800px]` with `min-w-0 w-full max-w-[800px] flex-1 flex-wrap`; left/address blocks `min-w-0 flex-1 lg:min-w-[280px]`; **preserve** Sign in / Create account block (L104–111).
+- [x] Step 11 — Section padding pass: add `max-lg:px-[var(--space-md)]` on property-detail outer sections where `space-4xl` causes pinch at 375px (hero, map, contact, explore) if QA shows edge overflow.
+- [x] Step 12 — Run `npx tsc --noEmit` and `npm run build`; fix any type or build errors.
+- [x] Step 13 — Manual QA on a property detail URL at 375px, 768px, 1024px, 1440px: nav modes (inline / drawer / fullscreen), Explore More mode, no `document.documentElement.scrollWidth > clientWidth + 1`, footer auth only in footer, keyboard menu open/close.
 
 ## Build Agents
 
@@ -72,3 +72,4 @@ Optional during build (default if unspecified):
 - `use-mobile.tsx` (768) may remain; prefer `use-breakpoint.ts` for menu variant selection.
 - Carousel refactor is in scope — fixed `SLIDE_WIDTH = 1280` breaks mobile framing.
 - After build, run `/vqa` against Figma VQA checklist nodes `56:2962` / `56:4076`.
+- **Build constraint (2026-06-01):** layout/breakpoints only — no Figma color or typography token imports.

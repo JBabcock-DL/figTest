@@ -165,7 +165,11 @@ As a visitor on tablet or phone, I need the property detail page to scale with t
 
 ## Ready for `/build`
 
-- Plan approved; run `/build` or Phase 1 `code-build` per plan.md.
+- [x] Complete — responsive layout shipped; Jira `phase:completed`.
+
+## Status
+
+- **Completed** — 2026-06-01 (`JAK-7`, label `phase:completed`). Follow-up typography: **WO-005** / `JAK-8`.
 
 ## References
 

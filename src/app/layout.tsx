@@ -14,8 +14,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light" data-font-scale="100">
-      <body className="bg-[var(--color-background-bright)]">
+    <html lang="en" data-theme="light" data-font-scale="100" className="overflow-x-hidden">
+      <body className="overflow-x-hidden bg-[var(--color-background-bright)]">
         {/* Persistent chrome — present on every route */}
         <SiteNav />
         {children}

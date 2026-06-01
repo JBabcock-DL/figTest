@@ -8,7 +8,6 @@ const QUIET_HOVER =
 
 type IconProps = { className?: string }
 
-// Brand marks (simple-icons paths / primitives), monochrome via currentColor.
 function InstagramIcon({ className }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
@@ -63,10 +62,9 @@ const COLUMNS: { title: string; href: string; links: string[] }[] = [
 
 export function SiteFooter() {
   return (
-    <footer className="flex w-full items-center justify-center bg-[var(--color-inverse-surface)] px-[var(--space-4xl)] py-[var(--space-4xl)] text-[var(--color-inverse-content)]">
-      <div className="flex w-full max-w-[1560px] flex-wrap items-start justify-between gap-y-[64px] py-[var(--space-xl)]">
-        {/* Left block — Connect with us + social */}
-        <div className="flex min-w-[500px] flex-1 flex-col gap-[var(--space-4xl)]">
+    <footer className="flex w-full items-center justify-center bg-[var(--color-inverse-surface)] px-[var(--space-4xl)] py-[var(--space-4xl)] max-lg:px-[var(--space-md)] max-lg:py-[var(--space-4xl)] text-[var(--color-inverse-content)]">
+      <div className="flex w-full max-w-[1560px] flex-col gap-[var(--space-4xl)] py-[var(--space-xl)] lg:flex-row lg:flex-wrap lg:items-start lg:justify-between lg:gap-y-[64px]">
+        <div className="flex w-full min-w-0 flex-col gap-[var(--space-4xl)] lg:min-w-[500px] lg:flex-1 lg:w-auto">
           <AnimateIn delay={100}>
             <div className="flex flex-col gap-[var(--space-lg)]">
               <h2 className="text-display-lg text-[var(--color-background-bright)]">Connect with us.</h2>
@@ -114,13 +112,12 @@ export function SiteFooter() {
           </AnimateIn>
         </div>
 
-        {/* Columns block — staggered like Explore More tiles */}
-        <div className="flex w-[800px] min-w-[800px] flex-wrap items-start gap-[var(--space-3xl)]">
+        <div className="grid w-full min-w-0 grid-cols-1 gap-[var(--space-3xl)] sm:grid-cols-2 lg:flex lg:w-[800px] lg:min-w-[800px] lg:shrink-0 lg:flex-wrap lg:items-start lg:gap-[var(--space-3xl)]">
           {COLUMNS.map((col, i) => (
             <AnimateIn
               key={col.title}
               delay={200 + i * 100}
-              className="flex min-w-px flex-1 flex-col gap-[var(--space-md)]"
+              className="flex min-w-0 w-full flex-col gap-[var(--space-md)] lg:min-w-px lg:flex-1"
             >
               <Link
                 href={col.href}
@@ -144,10 +141,9 @@ export function SiteFooter() {
           ))}
         </div>
 
-        {/* Address + copyright */}
         <AnimateIn
           delay={200 + COLUMNS.length * 100}
-          className="flex min-w-[500px] flex-1 flex-col gap-[var(--space-lg)] text-body-lg text-[var(--color-background-bright)]"
+          className="flex w-full min-w-0 flex-col gap-[var(--space-lg)] text-body-lg text-[var(--color-background-bright)] lg:min-w-[500px] lg:flex-1 lg:w-auto"
         >
           <address className="not-italic">
             630 Woodward Avenue, Detroit, MI 48226

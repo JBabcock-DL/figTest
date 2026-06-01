@@ -24,6 +24,12 @@
   body {
     background: var(--background);
     color: var(--foreground);
+    overflow-x: clip;
+  }
+
+  .leaflet-container {
+    overflow: hidden;
+    max-width: 100%;
   }
 }
 
@@ -178,6 +184,13 @@
     font-size: var(--headline-md-font-size);
     font-weight: var(--headline-md-font-weight);
     line-height: var(--headline-md-line-height);
+  }
+
+  .text-headline-lg {
+    font-family: var(--headline-lg-font-family);
+    font-size: var(--headline-lg-font-size);
+    font-weight: var(--headline-lg-font-weight);
+    line-height: var(--headline-lg-line-height);
   }
 
   /* Filled surfaces — state overlay on solid role fill (Figma state-layer frames) */

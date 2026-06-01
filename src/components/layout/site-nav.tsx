@@ -1,34 +1,17 @@
 "use client"
 
-import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
-
+import { BedrockLogo } from "@/components/layout/bedrock-logo"
+import { MOBILE_TOP_BAR_HEIGHT } from "@/components/layout/mobile-top-bar"
+import { MobileNavMenu } from "@/components/layout/mobile-nav-menu"
+import { NavMenuIcon } from "@/components/layout/nav-menu-icons"
+import { NAV_LINKS } from "@/components/layout/nav-links"
+import { useBreakpoint } from "@/hooks/use-breakpoint"
 import { cn } from "@/lib/utils"
 
-const NAV_LINKS = [
-  { label: "Our Story", href: "/our-story" },
-  { label: "Our Properties", href: "/properties" },
-  { label: "News", href: "/news" },
-  { label: "Careers", href: "/careers" },
-  { label: "Contact Us", href: "/contact" },
-]
-
-const ACCOUNT_LINKS = [
-  { label: "Sign in", href: "/sign-in" },
-  { label: "Create account", href: "/signup" },
-]
-
-function NavLink({
-  href,
-  label,
-  emphasis = false,
-}: {
-  href: string
-  label: string
-  emphasis?: boolean
-}) {
+function NavLink({ href, label }: { href: string; label: string }) {
   const pathname = usePathname()
   const isActive = pathname === href || pathname.startsWith(`${href}/`)
 
@@ -41,9 +24,7 @@ function NavLink({
       <span
         className={cn(
           "text-body-lg whitespace-nowrap",
-          emphasis
-            ? "text-[var(--color-primary)]"
-            : "text-[var(--color-content)]"
+          isActive ? "text-[var(--color-primary)]" : "text-[var(--color-content)]"
         )}
       >
         {label}
@@ -63,12 +44,12 @@ function NavLink({
 
 export function SiteNav() {
   const [visible, setVisible] = useState(true)
+  const [menuOpen, setMenuOpen] = useState(false)
   const lastScrollY = useRef(0)
-
+  const breakpoint = useBreakpoint()
   useEffect(() => {
     const onScroll = () => {
       const current = window.scrollY
-      // Show when scrolling up or at the very top; hide when scrolling down
       setVisible(current < lastScrollY.current || current < 10)
       lastScrollY.current = current
     }
@@ -77,36 +58,49 @@ export function SiteNav() {
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
-  return (
-    <nav
-      className="fixed left-0 top-0 z-[1100] flex w-full items-start justify-center bg-[var(--color-background-bright)] px-[var(--space-4xl)] py-[var(--space-xl)]"
-      style={{
-        transform: visible ? "translateY(0)" : "translateY(-100%)",
-        transition: "transform 500ms ease-in-out",
-      }}
-    >
-      <div className="flex w-full max-w-[1600px] items-start justify-between">
-        <Link href="/" className="flex h-[60px] items-center" aria-label="Bedrock — home">
-          <Image
-            src="/bedrock-logo.svg"
-            alt="Bedrock"
-            width={171}
-            height={60}
-            className="h-[60px] w-auto"
-            priority
-          />
-        </Link>
+  useEffect(() => {
+    if (breakpoint === "desktop") setMenuOpen(false)
+  }, [breakpoint])
 
-        <div className="flex items-start gap-[var(--space-3xl)]">
-          {NAV_LINKS.map((link) => (
-            <NavLink key={link.href} {...link} />
-          ))}
-          <span aria-hidden="true" className="mt-[var(--space-lg)] h-6 w-px bg-[var(--color-border)]" />
-          {ACCOUNT_LINKS.map((link, i) => (
-            <NavLink key={link.href} {...link} emphasis={i === 1} />
-          ))}
+  return (
+    <>
+      <nav
+        className={cn(
+          "fixed left-0 top-0 z-[1100] flex w-full items-start justify-center bg-[var(--color-background-bright)] px-[var(--space-4xl)] py-[var(--space-xl)] max-lg:items-center max-lg:px-[var(--space-md)] max-lg:py-0",
+          MOBILE_TOP_BAR_HEIGHT,
+          menuOpen && breakpoint !== "desktop" && "max-lg:invisible max-lg:pointer-events-none"
+        )}
+        style={{
+          transform: visible ? "translateY(0)" : "translateY(-100%)",
+          transition: "transform 500ms ease-in-out",
+        }}
+      >
+        <div className="flex h-full w-full max-w-[1600px] items-center justify-between max-lg:h-[72px]">
+          <Link href="/" className="flex h-[60px] items-center max-lg:h-[40px]" aria-label="Bedrock — home">
+            <BedrockLogo variant="full" className="max-lg:hidden" priority />
+            <BedrockLogo variant="minimal" className="hidden max-lg:block" priority />
+          </Link>
+
+          <div className="hidden items-start gap-[var(--space-3xl)] lg:flex">
+            {NAV_LINKS.map((link) => (
+              <NavLink key={link.href} {...link} />
+            ))}
+          </div>
+
+          <button
+            type="button"
+            className="flex size-8 items-center justify-center text-[var(--color-content)] outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] lg:hidden"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav-menu"
+            aria-label="Open menu"
+            onClick={() => setMenuOpen(true)}
+          >
+            <NavMenuIcon name="menu" />
+          </button>
         </div>
-      </div>
-    </nav>
+      </nav>
+
+      <MobileNavMenu open={menuOpen} onOpenChange={setMenuOpen} breakpoint={breakpoint} />
+    </>
   )
 }
