@@ -1,4 +1,4 @@
-<!-- Canonical PR template (edit here). Mirror to `.github/pull_request_template.md` so GitHub auto-fills new PRs. -->
+<!-- GitHub auto-fill entry point. Canonical copy: `.github/templates/pull_request_template.md` — keep in sync when editing. -->
 
 ## Summary
 

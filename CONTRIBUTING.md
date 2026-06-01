@@ -46,6 +46,8 @@ Avoid hand-editing generated token blocks in `tokens.css` without a design-syste
 
 ## Pull requests
 
+Use [.github/templates/pull_request_template.md](.github/templates/pull_request_template.md) as the PR body template (also linked from `.github/pull_request_template.md` for GitHub’s auto-fill).
+
 Include in the PR description:
 
 - Ticket link or WO-ID

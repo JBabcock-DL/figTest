@@ -89,6 +89,7 @@ Use this list when reviewing PRs for **figTest**. Not every item applies to ever
 ## Documentation
 
 - [ ] README or `docs/ARCHITECTURE.md` updated for structural changes
+- [ ] PR uses `.github/templates/pull_request_template.md` when opening the PR
 - [ ] Public APIs (data module, hooks, lib helpers) have JSDoc when behavior is non-obvious
 - [ ] Sprint ticket / plan updated when work is ticket-driven (`.github/Sprint 1/`)
 

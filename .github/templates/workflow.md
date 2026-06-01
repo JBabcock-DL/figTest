@@ -27,10 +27,12 @@ memory.md                  # Short running memory to save agent context (see Con
 .github/
 ├── templates/             # Ticket templates and agent workflow context
 │   ├── workflow.md        # This file — agent context document
+│   ├── pull_request_template.md  # PR description template (canonical copy)
 │   ├── bug_report.md      # Template for bug tickets
 │   ├── work_order.md      # Template for work order tickets
 │   ├── context.md         # Template for context tickets
 │   └── agent-handoff.md   # Prompt block for new agent sessions
+├── pull_request_template.md      # Mirror of templates/pull_request_template.md (required for GitHub auto-fill)
 └── Sprint {N}/            # One folder per sprint
     └── {TICKET-ID}-{slug}/  # One folder per ticket (BUG-###, WO-###, or CTX-###)
         ├── ticket.md        # The ticket definition (synced to the backend)
