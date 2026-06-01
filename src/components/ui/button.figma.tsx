@@ -1,4 +1,6 @@
 import figma from '@figma/code-connect'
+import { Plus } from 'lucide-react'
+
 import { Button } from './button'
 
 figma.connect(
@@ -21,9 +23,21 @@ figma.connect(
         icon: 'icon',
       }),
       children: figma.string('Label'),
+      leadingIcon: figma.boolean('Leading icon', {
+        true: <Plus />,
+        false: undefined,
+      }),
+      trailingIcon: figma.boolean('Trailing icon', {
+        true: <Plus />,
+        false: undefined,
+      }),
     },
-    example: ({ variant, size, children }) => (
-      <Button variant={variant} size={size}>{children}</Button>
+    example: ({ variant, size, children, leadingIcon, trailingIcon }) => (
+      <Button variant={variant} size={size}>
+        {leadingIcon}
+        {children}
+        {trailingIcon}
+      </Button>
     ),
   }
 )
