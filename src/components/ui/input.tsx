@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const inputVariants = cva(
-  "flex w-full rounded-[var(--radius-md)] border bg-[var(--color-background-bright)] px-[var(--space-md)] ring-offset-[var(--color-background)] file:border-0 file:bg-transparent file:text-label-md file:text-[var(--color-content)] placeholder:text-[var(--color-content-muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+  "flex w-full rounded-none border bg-[var(--color-background-bright)] p-[var(--space-xl)] ring-offset-[var(--color-background)] file:border-0 file:bg-transparent file:text-label-md file:text-[var(--color-content)] placeholder:text-[var(--color-content-muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
   {
     variants: {
       variant: {
@@ -13,9 +13,9 @@ const inputVariants = cva(
         disabled: "border-[var(--color-field)] text-[var(--color-content-muted)] opacity-50 cursor-not-allowed",
       },
       size: {
-        sm: "h-8 py-[var(--space-xs)] text-body-sm",
-        default: "h-10 py-[var(--space-sm)] text-body-md",
-        lg: "h-12 py-[var(--space-md)] text-body-lg",
+        sm: "text-body-sm",
+        default: "text-body-md",
+        lg: "text-body-lg",
       },
     },
     defaultVariants: {

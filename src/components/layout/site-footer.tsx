@@ -1,6 +1,11 @@
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 
+import { AnimateIn } from "@/components/layout/animate-in"
+
+const QUIET_HOVER =
+  "p-[var(--space-xs)] transition-colors duration-200 ease-in-out hover:bg-[color-mix(in_srgb,var(--color-primary)_20%,transparent)]"
+
 type IconProps = { className?: string }
 
 // Brand marks (simple-icons paths / primitives), monochrome via currentColor.
@@ -62,48 +67,61 @@ export function SiteFooter() {
       <div className="flex w-full max-w-[1560px] flex-wrap items-start justify-between gap-y-[64px] py-[var(--space-xl)]">
         {/* Left block — Connect with us + social */}
         <div className="flex min-w-[500px] flex-1 flex-col gap-[var(--space-4xl)]">
-          <div className="flex flex-col gap-[var(--space-lg)]">
-            <h2 className="text-display-lg text-[var(--color-background-bright)]">Connect with us.</h2>
-            <Link
-              href="#contact-form"
-              className="flex w-fit items-center gap-[var(--space-xs)] rounded-[var(--space-xs)] text-body-lg font-bold! text-[var(--color-inverse-content)] outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
-            >
-              Let&apos;s Talk
-              <ArrowRight className="size-6" aria-hidden="true" />
-            </Link>
-          </div>
+          <AnimateIn delay={100}>
+            <div className="flex flex-col gap-[var(--space-lg)]">
+              <h2 className="text-display-lg text-[var(--color-background-bright)]">Connect with us.</h2>
+              <Link
+                href="#contact-form"
+                className={
+                  "flex w-fit items-center gap-[var(--space-xs)] rounded-[var(--space-xs)] text-body-lg font-bold! text-[var(--color-inverse-content)] outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] " +
+                  QUIET_HOVER
+                }
+              >
+                Let&apos;s Talk
+                <ArrowRight className="size-6" aria-hidden="true" />
+              </Link>
+            </div>
+          </AnimateIn>
 
-          <ul className="flex items-center gap-[21px]">
-            {SOCIAL.map(({ label, Icon, href }) => (
-              <li key={label}>
-                <a
-                  href={href}
-                  aria-label={label}
-                  className="flex size-8 items-center justify-center text-[var(--color-inverse-content)] outline-none transition-opacity hover:opacity-80 focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
-                >
-                  <Icon className="size-8" />
-                </a>
-              </li>
-            ))}
-          </ul>
+          <AnimateIn delay={200}>
+            <ul className="flex items-center gap-[21px]">
+              {SOCIAL.map(({ label, Icon, href }) => (
+                <li key={label}>
+                  <a
+                    href={href}
+                    aria-label={label}
+                    className="flex size-8 items-center justify-center text-[var(--color-inverse-content)] outline-none transition-opacity hover:opacity-80 focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
+                  >
+                    <Icon className="size-8" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </AnimateIn>
 
-          <div className="flex items-center gap-[var(--space-lg)] text-body-lg">
-            <Link href="/sign-in" className="underline-offset-4 hover:underline">
-              Sign in
-            </Link>
-            <span aria-hidden="true" className="text-[var(--color-primary-fixed-dim)]">
-              |
-            </span>
-            <Link href="/signup" className="underline-offset-4 hover:underline">
-              Create account
-            </Link>
-          </div>
+          <AnimateIn delay={300}>
+            <div className="flex items-center gap-[var(--space-lg)] text-body-lg">
+              <Link href="/sign-in" className="underline-offset-4 hover:underline">
+                Sign in
+              </Link>
+              <span aria-hidden="true" className="text-[var(--color-primary-fixed-dim)]">
+                |
+              </span>
+              <Link href="/signup" className="underline-offset-4 hover:underline">
+                Create account
+              </Link>
+            </div>
+          </AnimateIn>
         </div>
 
-        {/* Columns block */}
+        {/* Columns block — staggered like Explore More tiles */}
         <div className="flex w-[800px] min-w-[800px] flex-wrap items-start gap-[var(--space-3xl)]">
-          {COLUMNS.map((col) => (
-            <div key={col.title} className="flex min-w-px flex-1 flex-col gap-[var(--space-md)]">
+          {COLUMNS.map((col, i) => (
+            <AnimateIn
+              key={col.title}
+              delay={200 + i * 100}
+              className="flex min-w-px flex-1 flex-col gap-[var(--space-md)]"
+            >
               <Link
                 href={col.href}
                 className="w-full border-b border-[var(--color-primary-fixed-dim)] pb-[var(--space-sm)] text-body-lg font-bold! text-[var(--color-inverse-content)]"
@@ -122,12 +140,15 @@ export function SiteFooter() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </AnimateIn>
           ))}
         </div>
 
         {/* Address + copyright */}
-        <div className="flex min-w-[500px] flex-1 flex-col gap-[var(--space-lg)] text-body-lg text-[var(--color-background-bright)]">
+        <AnimateIn
+          delay={200 + COLUMNS.length * 100}
+          className="flex min-w-[500px] flex-1 flex-col gap-[var(--space-lg)] text-body-lg text-[var(--color-background-bright)]"
+        >
           <address className="not-italic">
             630 Woodward Avenue, Detroit, MI 48226
             <br />
@@ -167,7 +188,7 @@ export function SiteFooter() {
               DMCA
             </a>
           </p>
-        </div>
+        </AnimateIn>
       </div>
     </footer>
   )

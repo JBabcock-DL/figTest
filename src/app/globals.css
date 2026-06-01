@@ -124,6 +124,13 @@
     line-height: var(--body-lg-line-height);
   }
 
+  .text-body-lg-emphasis {
+    font-family: var(--body-lg-emphasis-font-family);
+    font-size: var(--body-lg-emphasis-font-size);
+    font-weight: var(--body-lg-emphasis-font-weight);
+    line-height: var(--body-lg-emphasis-line-height);
+  }
+
   .text-title-sm {
     font-family: var(--title-sm-font-family);
     font-size: var(--title-sm-font-size);
@@ -226,5 +233,47 @@
   .state-surface-tertiary:focus,
   .state-surface-tertiary:focus-visible {
     background-color: var(--color-state-tertiary-focus);
+  }
+
+  /* Corner light gradient — Explore More (hover) + image reveal (on load) */
+  .corner-light-overlay {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      145deg,
+      rgb(255 255 255 / 0.65) 0%,
+      rgb(255 255 255 / 0.45) 20%,
+      rgb(255 255 255 / 0.22) 45%,
+      rgb(255 255 255 / 0.08) 70%,
+      transparent 88%
+    );
+  }
+
+  /* Explore More tiles — 1s scale + corner light fade in sync */
+  .explore-tile-hover {
+    --explore-tile-motion-duration: 1000ms;
+    --explore-tile-motion-ease: ease-in-out;
+  }
+
+  .explore-tile-light {
+    opacity: 0;
+    transition: opacity var(--explore-tile-motion-duration) var(--explore-tile-motion-ease);
+  }
+
+  .explore-tile-hover:hover .explore-tile-light {
+    opacity: 1;
+  }
+
+  /* Hero / scale reveal — corner light fades in on load (subtle vs Explore hover) */
+  .image-reveal-light {
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 700ms ease-in-out;
+    transition-delay: var(--image-reveal-light-delay, 0ms);
+  }
+
+  .image-reveal-light.is-visible {
+    opacity: 0.4;
   }
 }

@@ -8,7 +8,8 @@ import { cn } from "@/lib/utils"
 
 const SLIDE_WIDTH = 1280
 const SLIDE_GAP = 4
-const TRANSITION_MS = 500
+const TRANSITION_MS = 1000
+const AUTO_ADVANCE_MS = 5000
 
 export interface PropertyCarouselProps {
   images: string[]
@@ -67,6 +68,15 @@ function PropertyCarousel({ images }: PropertyCarouselProps) {
     }
   }, [animated])
 
+  // Auto-advance every 5s with a 1s ease transition; timer resets after each slide change.
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setAnimated(true)
+      setInternalIndex((i) => i + 1)
+    }, AUTO_ADVANCE_MS)
+    return () => clearInterval(timer)
+  }, [internalIndex])
+
   // Map internal index to the real image index (0-based) for indicators.
   const activeIndex =
     internalIndex === 0
@@ -90,7 +100,7 @@ function PropertyCarousel({ images }: PropertyCarouselProps) {
           style={{
             gap: `${SLIDE_GAP}px`,
             transform: `translateX(-${offset}px)`,
-            transition: animated ? `transform ${TRANSITION_MS}ms ease-out` : "none",
+            transition: animated ? `transform ${TRANSITION_MS}ms ease` : "none",
           }}
         >
           {slides.map((src, i) => {
