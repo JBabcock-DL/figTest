@@ -108,7 +108,11 @@ Use Figma for **hierarchy validation** only. Colors/spacing stay on repo `var(--
 
 ## Ready for `/plan`
 
-- [ ] Pending — generate full role × viewport px table and resolve open questions from research.
+- [x] Complete — [plan.md](plan.md) (12 steps, role × viewport table, open questions resolved).
+
+## Ready for `/build`
+
+- Plan approved; run `/build` or `code-build` per plan.md Phase 1.
 
 ## References
 
