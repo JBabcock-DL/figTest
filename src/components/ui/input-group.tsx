@@ -37,7 +37,7 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 const inputGroupAddonVariants = cva(
-  "text-[var(--color-content-muted)] flex h-auto cursor-text select-none items-center justify-center gap-[var(--space-sm)] py-[var(--space-xs)] text-label-md group-data-[disabled=true]/input-group:opacity-50 [&>kbd]:rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-4",
+  "text-[var(--color-content-muted)] flex h-auto cursor-text select-none items-center justify-center gap-[var(--space-sm)] py-[var(--space-xs)] text-label-md group-data-[disabled=true]/input-group:opacity-50 [&>kbd]:rounded-[calc(var(--radius) - 0.3125rem)] [&>svg:not([class*='size-'])]:size-4",
   {
     variants: {
       align: {
@@ -84,10 +84,10 @@ const inputGroupButtonVariants = cva(
   {
     variants: {
       size: {
-        xs: "h-6 gap-[var(--space-xs)] rounded-[calc(var(--radius)-5px)] px-[var(--space-sm)] has-[>svg]:px-[var(--space-sm)] [&>svg:not([class*='size-'])]:size-3.5",
+        xs: "h-6 gap-[var(--space-xs)] rounded-[calc(var(--radius) - 0.3125rem)] px-[var(--space-sm)] has-[>svg]:px-[var(--space-sm)] [&>svg:not([class*='size-'])]:size-3.5",
         sm: "h-8 gap-[var(--space-xs)].5 rounded-[var(--radius-md)] px-[var(--space-sm)] has-[>svg]:px-[var(--space-sm)]",
         "icon-xs":
-          "size-6 rounded-[calc(var(--radius)-5px)] p-0 has-[>svg]:p-0",
+          "size-6 rounded-[calc(var(--radius) - 0.3125rem)] p-0 has-[>svg]:p-0",
         "icon-sm": "size-8 p-0 has-[>svg]:p-0",
       },
     },

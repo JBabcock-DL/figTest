@@ -82,15 +82,12 @@ export default function SignupPage() {
         className={cn(
           "flex flex-col",
           "rounded-[var(--radius-xl)] border border-[var(--color-border)] bg-[var(--color-background-bright)]",
-          "shadow-[0px_4px_16px_0px_rgba(0,0,0,0.1)]",
+          "shadow-[var(--shadow-card)]",
           "p-[var(--space-3xl)]",
           "gap-[var(--space-xl)]"
         )}
       >
-        <h1
-          className="text-[27px] leading-[34px] font-bold text-[#1f242e] text-center"
-          style={{ fontFamily: "var(--headline-lg-font-family)" }}
-        >
+        <h1 className="text-headline-lg text-center font-bold text-[var(--color-content)]">
           Create account
         </h1>
 
@@ -195,13 +192,13 @@ export default function SignupPage() {
 
           <Label
             className={cn(
-              "flex cursor-pointer items-center gap-[var(--space-md,12px)] select-none font-normal"
+              "flex cursor-pointer items-center gap-[var(--space-md)] select-none font-normal"
             )}
           >
             <Checkbox
               id="signup-terms"
               className={cn(
-                "h-5 w-5 shrink-0 rounded-[8px]",
+                "h-5 w-5 shrink-0 rounded-[var(--radius-sm)]",
                 "border-[var(--color-border)]",
                 "data-[state=checked]:border-[var(--color-primary)] data-[state=checked]:bg-[var(--color-primary)]"
               )}

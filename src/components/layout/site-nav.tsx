@@ -32,7 +32,7 @@ function NavLink({ href, label }: { href: string; label: string }) {
       <span
         aria-hidden="true"
         className={cn(
-          "h-[2px] w-full bg-[var(--color-primary)] transition-opacity",
+          "h-[var(--border-nav-active)] w-full bg-[var(--color-primary)] transition-opacity",
           isActive
             ? "opacity-100"
             : "opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100"
@@ -75,8 +75,12 @@ export function SiteNav() {
           transition: "transform 500ms ease-in-out",
         }}
       >
-        <div className="flex h-full w-full max-w-[1600px] items-center justify-between max-lg:h-[72px]">
-          <Link href="/" className="flex h-[60px] items-center max-lg:h-[40px]" aria-label="Bedrock — home">
+        <div className="flex h-full w-full max-w-[var(--layout-nav-max)] items-center justify-between max-lg:h-[var(--layout-nav-height-mobile)]">
+          <Link
+            href="/"
+            className="flex h-[var(--layout-logo-height-full)] items-center max-lg:h-[var(--layout-logo-height-minimal)]"
+            aria-label="Bedrock — home"
+          >
             <BedrockLogo variant="full" className="max-lg:hidden" priority />
             <BedrockLogo variant="minimal" className="hidden max-lg:block" priority />
           </Link>

@@ -5,10 +5,9 @@ import Image from "next/image"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 
 import { useBreakpoint } from "@/hooks/use-breakpoint"
+import { getRootLengthPx } from "@/lib/css-length"
 import { cn } from "@/lib/utils"
 
-const SLIDE_WIDTH = 1280
-const SLIDE_GAP = 4
 const TRANSITION_MS = 1000
 const AUTO_ADVANCE_MS = 5000
 
@@ -21,7 +20,9 @@ function PropertyCarousel({ images }: PropertyCarouselProps) {
   const breakpoint = useBreakpoint()
   const isDesktop = breakpoint === "desktop"
   const containerRef = React.useRef<HTMLDivElement>(null)
-  const [fluidSlideWidth, setFluidSlideWidth] = React.useState(SLIDE_WIDTH)
+  const [fluidSlideWidth, setFluidSlideWidth] = React.useState(0)
+  const [slideGap, setSlideGap] = React.useState(4)
+  const [desktopSlideWidth, setDesktopSlideWidth] = React.useState(1280)
 
   const slides = React.useMemo(
     () => [images[count - 1], ...images, images[0]],
@@ -32,7 +33,12 @@ function PropertyCarousel({ images }: PropertyCarouselProps) {
   const [animated, setAnimated] = React.useState(true)
   const snapTimer = React.useRef<ReturnType<typeof setTimeout>>(undefined)
 
-  const slideWidth = isDesktop ? SLIDE_WIDTH : fluidSlideWidth
+  const slideWidth = isDesktop ? desktopSlideWidth : fluidSlideWidth
+
+  React.useEffect(() => {
+    setSlideGap(getRootLengthPx("--layout-carousel-slide-gap", 0.25))
+    setDesktopSlideWidth(getRootLengthPx("--layout-carousel-slide-width", 80))
+  }, [])
 
   React.useEffect(() => {
     if (isDesktop) return
@@ -101,7 +107,7 @@ function PropertyCarousel({ images }: PropertyCarouselProps) {
         ? 0
         : internalIndex - 1
 
-  const offset = internalIndex * (slideWidth + SLIDE_GAP)
+  const offset = internalIndex * (slideWidth + slideGap)
 
   return (
     <section
@@ -113,13 +119,13 @@ function PropertyCarousel({ images }: PropertyCarouselProps) {
         ref={containerRef}
         className={cn(
           "relative w-full overflow-hidden bg-black",
-          isDesktop ? "h-[960px]" : "aspect-[1280/960] max-h-[60vh]"
+          isDesktop ? "h-[var(--layout-carousel-height)]" : "aspect-[1280/960] max-h-[60vh]"
         )}
       >
         <div
           className="flex h-full"
           style={{
-            gap: `${SLIDE_GAP}px`,
+            gap: "var(--layout-carousel-slide-gap)",
             transform: `translateX(-${offset}px)`,
             transition: animated ? `transform ${TRANSITION_MS}ms ease` : "none",
           }}
@@ -131,7 +137,9 @@ function PropertyCarousel({ images }: PropertyCarouselProps) {
                 key={i}
                 className={cn(
                   "relative shrink-0 overflow-hidden",
-                  isDesktop ? "h-[960px] w-[1280px]" : "h-full"
+                  isDesktop
+                    ? "h-[var(--layout-carousel-height)] w-[var(--layout-carousel-slide-width)]"
+                    : "h-full"
                 )}
                 style={isDesktop ? undefined : { width: slideWidth }}
                 aria-hidden={isActive ? undefined : true}
@@ -141,7 +149,7 @@ function PropertyCarousel({ images }: PropertyCarouselProps) {
                   alt={isActive ? `Property photo ${activeIndex + 1} of ${count}` : ""}
                   fill
                   className="object-cover"
-                  sizes={isDesktop ? "1280px" : "100vw"}
+                  sizes={isDesktop ? "80rem" : "100vw"}
                   priority={i <= 2}
                 />
                 <div
@@ -157,13 +165,15 @@ function PropertyCarousel({ images }: PropertyCarouselProps) {
       </div>
 
       <div className="flex w-full items-center justify-between px-[var(--space-4xl)] max-lg:px-[var(--space-md)]">
-        <div className="flex h-[5px] items-stretch" style={{ gap: "10px" }}>
+        <div className="flex h-[var(--layout-carousel-indicator-height)] items-stretch gap-[var(--layout-carousel-indicator-gap)]">
           {images.map((_, i) => (
             <span
               key={i}
               className={cn(
                 "h-full rounded-full",
-                i === 0 ? "w-[60px] shrink-0" : "w-[37px] shrink-0",
+                i === 0
+                  ? "w-[var(--layout-carousel-indicator-active)] shrink-0"
+                  : "w-[var(--layout-carousel-indicator-inactive)] shrink-0",
                 i === activeIndex
                   ? "bg-[var(--color-primary)]"
                   : "bg-[var(--color-primary-subtle)]"
@@ -179,7 +189,7 @@ function PropertyCarousel({ images }: PropertyCarouselProps) {
             aria-label="Previous image"
             className="flex size-6 items-center justify-center text-[var(--color-content)] outline-none transition-opacity hover:opacity-70 focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
           >
-            <ArrowLeft className="size-6" />
+            <ArrowLeft className="size-6" aria-hidden="true" />
           </button>
           <button
             type="button"
@@ -187,7 +197,7 @@ function PropertyCarousel({ images }: PropertyCarouselProps) {
             aria-label="Next image"
             className="flex size-6 items-center justify-center text-[var(--color-content)] outline-none transition-opacity hover:opacity-70 focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
           >
-            <ArrowRight className="size-6" />
+            <ArrowRight className="size-6" aria-hidden="true" />
           </button>
         </div>
       </div>

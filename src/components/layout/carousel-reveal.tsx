@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react"
 
+import { getRevealObserverRootMargin } from "@/lib/css-length"
+
 export function CarouselReveal({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
@@ -17,7 +19,7 @@ export function CarouselReveal({ children }: { children: React.ReactNode }) {
           observer.disconnect()
         }
       },
-      { threshold: 0, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0, rootMargin: getRevealObserverRootMargin() }
     )
 
     observer.observe(el)

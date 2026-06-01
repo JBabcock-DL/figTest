@@ -63,8 +63,8 @@ const COLUMNS: { title: string; href: string; links: string[] }[] = [
 export function SiteFooter() {
   return (
     <footer className="flex w-full items-center justify-center bg-[var(--color-inverse-surface)] px-[var(--space-4xl)] py-[var(--space-4xl)] max-lg:px-[var(--space-md)] max-lg:py-[var(--space-4xl)] text-[var(--color-inverse-content)]">
-      <div className="flex w-full max-w-[1560px] flex-col gap-[var(--space-4xl)] py-[var(--space-xl)] lg:flex-row lg:flex-wrap lg:items-start lg:justify-between lg:gap-y-[64px]">
-        <div className="flex w-full min-w-0 flex-col gap-[var(--space-4xl)] lg:min-w-[500px] lg:flex-1 lg:w-auto">
+      <div className="flex w-full max-w-[var(--layout-content-max)] flex-col gap-[var(--space-4xl)] py-[var(--space-xl)] lg:flex-row lg:flex-wrap lg:items-start lg:justify-between lg:gap-y-[var(--layout-section-gap-lg)]">
+        <div className="flex w-full min-w-0 flex-col gap-[var(--space-4xl)] lg:min-w-[var(--layout-footer-col-min)] lg:flex-1 lg:w-auto">
           <AnimateIn delay={100}>
             <div className="flex flex-col gap-[var(--space-lg)]">
               <h2 className="text-display-md text-[var(--color-background-bright)]">Connect with us.</h2>
@@ -82,7 +82,7 @@ export function SiteFooter() {
           </AnimateIn>
 
           <AnimateIn delay={200}>
-            <ul className="flex items-center gap-[21px]">
+            <ul className="flex items-center gap-[var(--layout-social-gap)]">
               {SOCIAL.map(({ label, Icon, href }) => (
                 <li key={label}>
                   <a
@@ -112,7 +112,7 @@ export function SiteFooter() {
           </AnimateIn>
         </div>
 
-        <div className="grid w-full min-w-0 grid-cols-1 gap-[var(--space-3xl)] sm:grid-cols-2 lg:flex lg:w-[800px] lg:min-w-[800px] lg:shrink-0 lg:flex-wrap lg:items-start lg:gap-[var(--space-3xl)]">
+        <div className="grid w-full min-w-0 grid-cols-1 gap-[var(--space-3xl)] sm:grid-cols-2 lg:flex lg:w-[var(--layout-footer-nav-width)] lg:min-w-[var(--layout-footer-nav-width)] lg:shrink-0 lg:flex-wrap lg:items-start lg:gap-[var(--space-3xl)]">
           {COLUMNS.map((col, i) => (
             <AnimateIn
               key={col.title}
@@ -143,7 +143,7 @@ export function SiteFooter() {
 
         <AnimateIn
           delay={200 + COLUMNS.length * 100}
-          className="flex w-full min-w-0 flex-col gap-[var(--space-lg)] text-body-lg text-[var(--color-background-bright)] lg:min-w-[500px] lg:flex-1 lg:w-auto"
+          className="flex w-full min-w-0 flex-col gap-[var(--space-lg)] text-body-lg text-[var(--color-background-bright)] lg:min-w-[var(--layout-footer-col-min)] lg:flex-1 lg:w-auto"
         >
           <address className="not-italic">
             630 Woodward Avenue, Detroit, MI 48226

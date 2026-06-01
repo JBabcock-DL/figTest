@@ -16,7 +16,7 @@ export function BedrockLogo({ variant = "full", className, priority }: BedrockLo
         alt="Bedrock"
         width={47}
         height={40}
-        className={cn("h-[40px] w-auto", className)}
+        className={cn("h-[var(--layout-logo-height-minimal)] w-auto", className)}
         priority={priority}
       />
     )
@@ -28,7 +28,7 @@ export function BedrockLogo({ variant = "full", className, priority }: BedrockLo
       alt="Bedrock"
       width={171}
       height={60}
-      className={cn("h-[60px] w-auto", className)}
+      className={cn("h-[var(--layout-logo-height-full)] w-auto", className)}
       priority={priority}
     />
   )

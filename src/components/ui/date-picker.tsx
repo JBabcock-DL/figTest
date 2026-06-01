@@ -41,7 +41,7 @@ export function DatePicker({
           disabled={disabled}
           data-empty={!value}
           className={cn(
-            "w-[280px] justify-start text-left font-normal data-[empty=true]:text-[var(--color-content-muted)]",
+            "w-[var(--field-date-picker-width)] justify-start text-left font-normal data-[empty=true]:text-[var(--color-content-muted)]",
             className
           )}
         >

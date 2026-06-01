@@ -55,13 +55,18 @@ export function MobileNavMenu({ open, onOpenChange, breakpoint }: MobileNavMenuP
           "z-[1200] flex flex-col gap-0 bg-[var(--color-background-bright)] p-0",
           isMobile
             ? "inset-0 h-full w-full max-w-none border-0 sm:max-w-none"
-            : "w-[min(100vw,360px)] max-w-[360px] gap-[var(--space-2xl)] p-[var(--space-4xl)]"
+            : "w-[min(100vw,var(--layout-sheet-max-width))] max-w-[var(--layout-sheet-max-width)] gap-[var(--space-2xl)] p-[var(--space-4xl)]"
         )}
       >
         <SheetTitle className="sr-only">Site navigation</SheetTitle>
 
         <div className={MOBILE_TOP_BAR}>
-          <Link href="/" onClick={close} className="flex h-[40px] items-center" aria-label="Bedrock — home">
+          <Link
+            href="/"
+            onClick={close}
+            className="flex h-[var(--layout-logo-height-minimal)] items-center"
+            aria-label="Bedrock — home"
+          >
             <BedrockLogo variant={isMobile ? "minimal" : "full"} />
           </Link>
           <button

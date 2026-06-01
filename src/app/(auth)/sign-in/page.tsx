@@ -4,10 +4,7 @@ export default function SignInPage() {
   return (
     <div className="w-full max-w-lg">
       <div className="rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-background-bright)] p-[var(--space-3xl)]">
-        <h1
-          className="text-[length:var(--headline-lg-font-size)] leading-[var(--headline-lg-line-height)] font-normal"
-          style={{ fontFamily: "var(--headline-lg-font-family)" }}
-        >
+        <h1 className="text-headline-lg font-normal text-[var(--color-content)]">
           Sign in (placeholder)
         </h1>
         <p className="text-muted-foreground mt-2">

@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react"
 
+import { getRevealObserverRootMargin } from "@/lib/css-length"
+
 interface AnimateInProps {
   children: React.ReactNode
   className?: string
@@ -34,7 +36,7 @@ export function AnimateIn({
           observer.disconnect()
         }
       },
-      { threshold: 0, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0, rootMargin: getRevealObserverRootMargin() }
     )
 
     observer.observe(el)
@@ -43,9 +45,7 @@ export function AnimateIn({
 
   const hiddenY = from === "above" ? "-28px" : "28px"
 
-  const isScale = variant === "scale"
-
-  if (isScale) {
+  if (variant === "scale") {
     const scaleTransform = visible ? "scale(1)" : "scale(1.1)"
     return (
       <div ref={ref} className={className}>

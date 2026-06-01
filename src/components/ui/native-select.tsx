@@ -18,7 +18,7 @@ function NativeSelect({
         data-size={size}
         className={cn(
           "h-9 w-full min-w-0 appearance-none rounded-[var(--radius-md)] border border-[var(--color-field)] bg-transparent px-[var(--space-md)] py-[var(--space-sm)] pr-9 text-label-md shadow-xs transition-[color,box-shadow] outline-none selection:bg-[var(--color-primary)] selection:text-[var(--color-on-primary)] placeholder:text-[var(--color-content-muted)] disabled:pointer-events-none disabled:cursor-not-allowed data-[size=sm]:h-8 data-[size=sm]:py-1 dark:bg-[color-mix(in_srgb,var(--color-field)_30%,transparent)] dark:hover:bg-[color-mix(in_srgb,var(--color-field)_50%,transparent)]",
-          "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-[color-mix(in_srgb,var(--color-focus-ring)_50%,transparent)]",
+          "focus-visible:border-ring focus-visible:ring-[var(--focus-ring-width)] focus-visible:ring-[color-mix(in_srgb,var(--color-focus-ring)_50%,transparent)]",
           "aria-invalid:border-[var(--color-danger)] aria-invalid:ring-[color-mix(in_srgb,var(--color-danger)_20%,transparent)] dark:aria-invalid:ring-[color-mix(in_srgb,var(--color-danger)_40%,transparent)]",
           className
         )}

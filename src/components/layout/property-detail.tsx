@@ -34,7 +34,7 @@ const MOBILE_FULL_BLEED =
 const QUIET_HOVER =
   "p-[var(--space-xs)] transition-colors duration-200 ease-in-out hover:bg-[color-mix(in_srgb,var(--color-primary)_20%,transparent)]"
 
-/** Quiet (text + 24px arrow) action — the design's "button size/quiet". */
+/** Quiet (text + icon) action — the design's "button size/quiet". */
 function QuietAction({
   href,
   children,
@@ -78,10 +78,10 @@ export function PropertyDetail({ property }: { property: Property }) {
     <div className="w-full min-w-0 overflow-x-clip bg-[var(--color-background-bright)] text-[var(--color-content)]">
       {/* 1. Hero */}
       <section
-        className={`flex w-full flex-col items-center ${SECTION_PX} pt-[160px] max-lg:pt-[calc(72px+var(--space-4xl))] ${MOBILE_PB_FLUSH}`}
+        className={`flex w-full flex-col items-center ${SECTION_PX} pt-[var(--layout-nav-offset-top)] max-lg:pt-[calc(var(--layout-nav-height-mobile)+var(--space-4xl))] ${MOBILE_PB_FLUSH}`}
       >
-        <div className="flex w-full max-w-[1560px] flex-col flex-wrap items-stretch gap-[var(--space-4xl)] max-lg:gap-[var(--space-xl)] lg:flex-row lg:items-start">
-          <AnimateIn className="flex min-w-0 flex-1 flex-col gap-[var(--space-2xl)] lg:min-w-[280px] lg:pb-[var(--space-3xl)] lg:pr-[var(--space-4xl)]">
+        <div className="flex w-full max-w-[var(--layout-content-max)] flex-col flex-wrap items-stretch gap-[var(--space-4xl)] max-lg:gap-[var(--space-xl)] lg:flex-row lg:items-start">
+          <AnimateIn className="flex min-w-0 flex-1 flex-col gap-[var(--space-2xl)] lg:min-w-[var(--layout-column-min)] lg:pb-[var(--space-3xl)] lg:pr-[var(--space-4xl)]">
             <Link
               href="/properties"
               className={
@@ -123,14 +123,14 @@ export function PropertyDetail({ property }: { property: Property }) {
 
           <AnimateIn
             variant="scale"
-            className={`relative min-w-0 w-full max-w-[750px] flex-1 aspect-square overflow-hidden lg:max-w-[750px] ${MOBILE_FULL_BLEED}`}
+            className={`relative min-w-0 w-full max-w-[var(--layout-hero-image-max)] flex-1 aspect-square overflow-hidden lg:max-w-[var(--layout-hero-image-max)] ${MOBILE_FULL_BLEED}`}
           >
             <Image
               src={property.heroImage}
               alt={property.name}
               fill
               className="object-cover"
-              sizes="(max-width: 1023px) 100vw, 750px"
+              sizes="(max-width: 63.9375rem) 100vw, 46.875rem"
               priority
             />
           </AnimateIn>
@@ -141,8 +141,8 @@ export function PropertyDetail({ property }: { property: Property }) {
       <section
         className={`flex w-full items-center justify-center bg-[var(--color-inverse-surface)] p-[var(--space-4xl)] max-lg:px-[var(--space-md)] ${MOBILE_PY} text-[var(--color-inverse-content)]`}
       >
-        <div className="flex w-full max-w-[1560px] flex-col items-start gap-y-[var(--space-4xl)] py-[var(--space-xl)] lg:flex-row lg:flex-wrap lg:items-start lg:justify-between lg:gap-y-[64px]">
-          <div className="flex w-full min-w-0 max-w-[650px] flex-col gap-[var(--space-2xl)] lg:flex-1 lg:min-w-[280px]">
+        <div className="flex w-full max-w-[var(--layout-content-max)] flex-col items-start gap-y-[var(--space-4xl)] py-[var(--space-xl)] lg:flex-row lg:flex-wrap lg:items-start lg:justify-between lg:gap-y-[var(--layout-section-gap-lg)]">
+          <div className="flex w-full min-w-0 max-w-[var(--layout-details-col-max)] flex-col gap-[var(--space-2xl)] lg:flex-1 lg:min-w-[var(--layout-column-min)]">
             <AnimateIn delay={100}>
               <h2 className="text-display-md text-[var(--color-inverse-content)]">Property Details</h2>
             </AnimateIn>
@@ -158,7 +158,7 @@ export function PropertyDetail({ property }: { property: Property }) {
               <AnimateIn
                 key={field.label}
                 delay={200 + i * 100}
-                className="flex min-w-[200px] max-w-[250px] flex-1 flex-col gap-[var(--space-sm)]"
+                className="flex min-w-[var(--layout-details-field-min)] max-w-[var(--layout-details-field-max)] flex-1 flex-col gap-[var(--space-sm)]"
               >
                 <dt className="text-title-lg font-bold! text-[var(--color-inverse-content)]">
                   {field.label}
@@ -179,13 +179,13 @@ export function PropertyDetail({ property }: { property: Property }) {
 
       {/* 4. Map + Neighborhood */}
       <section
-        className={`flex w-full flex-col items-center justify-center ${SECTION_PX} py-[160px] max-lg:pt-[var(--space-4xl)] ${MOBILE_PB_FLUSH}`}
+        className={`flex w-full flex-col items-center justify-center ${SECTION_PX} py-[var(--layout-nav-offset-top)] max-lg:pt-[var(--space-4xl)] ${MOBILE_PB_FLUSH}`}
       >
-        <div className="flex w-full max-w-[1560px] flex-col items-stretch gap-[var(--space-4xl)] bg-[var(--color-background-bright)] max-lg:gap-[var(--space-4xl)] lg:flex-row lg:items-center">
+        <div className="flex w-full max-w-[var(--layout-content-max)] flex-col items-stretch gap-[var(--space-4xl)] bg-[var(--color-background-bright)] max-lg:gap-[var(--space-4xl)] lg:flex-row lg:items-center">
           <AnimateIn
             from="below"
             delay={0}
-            className="flex min-w-0 flex-1 flex-col gap-[var(--space-3xl)] p-[var(--space-4xl)] max-lg:p-0 lg:order-2 lg:min-w-[280px]"
+            className="flex min-w-0 flex-1 flex-col gap-[var(--space-3xl)] p-[var(--space-4xl)] max-lg:p-0 lg:order-2 lg:min-w-[var(--layout-column-min)]"
           >
             <div className="flex flex-col gap-[var(--space-xl)]">
               <h2 className="text-display-md text-[var(--color-content)]">{property.neighborhoodName}</h2>
@@ -199,7 +199,7 @@ export function PropertyDetail({ property }: { property: Property }) {
           <AnimateIn
             from="above"
             delay={0}
-            className={`relative min-w-0 w-full max-w-[712px] flex-1 aspect-square overflow-hidden bg-[#d9d9d9] lg:order-1 lg:max-w-[712px] ${MOBILE_FULL_BLEED}`}
+            className={`relative min-w-0 w-full max-w-[var(--layout-map-image-max)] flex-1 aspect-square overflow-hidden bg-[var(--color-neutral-200)] lg:order-1 lg:max-w-[var(--layout-map-image-max)] ${MOBILE_FULL_BLEED}`}
           >
             <NeighborhoodMapWrapper />
           </AnimateIn>
@@ -210,7 +210,7 @@ export function PropertyDetail({ property }: { property: Property }) {
       <section
         className={`flex w-full items-center justify-center bg-[var(--color-inverse-surface)] p-[var(--space-4xl)] max-lg:px-[var(--space-md)] ${MOBILE_PY} text-[var(--color-inverse-content)]`}
       >
-        <div className="flex w-full max-w-[1560px] flex-col gap-[var(--space-4xl)] py-[var(--space-xl)] max-lg:py-0">
+        <div className="flex w-full max-w-[var(--layout-content-max)] flex-col gap-[var(--space-4xl)] py-[var(--space-xl)] max-lg:py-0">
           <AnimateIn delay={100}>
             <h2 className="text-display-md text-[var(--color-inverse-content)]">Explore More</h2>
           </AnimateIn>
@@ -228,6 +228,7 @@ export function PropertyDetail({ property }: { property: Property }) {
                       src={tile.image}
                       alt=""
                       fill
+                      unoptimized
                       className="object-cover transition-transform duration-1000 ease-in-out group-hover:scale-110"
                       sizes="(max-width: 1023px) 280px, 372px"
                     />
@@ -255,13 +256,13 @@ export function PropertyDetail({ property }: { property: Property }) {
       {/* 6. Contact form */}
       <section
         id="contact-form"
-        className={`flex w-full flex-col items-center justify-center bg-[var(--color-background-bright)] p-[var(--space-4xl)] max-lg:px-[var(--space-md)] max-lg:pt-[var(--space-4xl)] ${MOBILE_PB_FLUSH} scroll-mt-[120px]`}
+        className={`flex w-full flex-col items-center justify-center bg-[var(--color-background-bright)] p-[var(--space-4xl)] max-lg:px-[var(--space-md)] max-lg:pt-[var(--space-4xl)] ${MOBILE_PB_FLUSH} scroll-mt-[var(--layout-scroll-anchor-offset)]`}
       >
-        <div className="flex w-full max-w-[1560px] flex-col items-stretch gap-[var(--space-3xl)] py-[var(--space-3xl)] max-lg:gap-[var(--space-3xl)] max-lg:py-0 lg:flex-row lg:items-center">
+        <div className="flex w-full max-w-[var(--layout-content-max)] flex-col items-stretch gap-[var(--space-3xl)] py-[var(--space-3xl)] max-lg:gap-[var(--space-3xl)] max-lg:py-0 lg:flex-row lg:items-center">
           <AnimateIn
             from="below"
             delay={200}
-            className="flex min-w-0 flex-1 flex-col gap-[var(--space-3xl)] p-[var(--space-3xl)] max-lg:w-full max-lg:p-0 lg:order-2 lg:min-w-[320px]"
+            className="flex min-w-0 flex-1 flex-col gap-[var(--space-3xl)] p-[var(--space-3xl)] max-lg:w-full max-lg:p-0 lg:order-2 lg:min-w-[var(--layout-contact-col-min)]"
           >
             <h2 className="text-display-md text-[var(--color-content)]">Find the perfect space.</h2>
 
@@ -271,7 +272,7 @@ export function PropertyDetail({ property }: { property: Property }) {
                   key={field.id}
                   className={
                     field.half
-                      ? "w-full min-w-0 max-lg:w-full lg:w-[calc(50%-16px)] lg:min-w-[240px]"
+                      ? "w-full min-w-0 max-lg:w-full lg:w-[calc(50%-var(--space-lg))] lg:min-w-[var(--layout-form-col-min)]"
                       : "w-full"
                   }
                 >
@@ -293,14 +294,14 @@ export function PropertyDetail({ property }: { property: Property }) {
           <AnimateIn
             from="above"
             delay={200}
-            className={`relative min-w-0 w-full max-w-[646px] flex-1 aspect-square overflow-hidden max-lg:max-h-none max-lg:max-w-none lg:order-1 lg:aspect-[646/960] lg:max-h-[min(960px,70vh)] lg:max-w-[646px] ${MOBILE_FULL_BLEED}`}
+            className={`relative min-w-0 w-full max-w-[var(--layout-contact-image-max)] flex-1 aspect-square overflow-hidden max-lg:max-h-none max-lg:max-w-none lg:order-1 lg:aspect-[646/960] lg:max-h-[min(var(--layout-contact-image-height-max),70vh)] lg:max-w-[var(--layout-contact-image-max)] ${MOBILE_FULL_BLEED}`}
           >
             <Image
               src={property.formImage}
               alt=""
               fill
               className="object-cover"
-              sizes="(max-width: 1023px) 100vw, 646px"
+              sizes="(max-width: 63.9375rem) 100vw, 40.375rem"
             />
           </AnimateIn>
         </div>

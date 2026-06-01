@@ -232,7 +232,7 @@ function ComboboxChips({
     <ComboboxPrimitive.Chips
       data-slot="combobox-chips"
       className={cn(
-        "flex min-h-9 flex-wrap items-center gap-[var(--space-xs)].5 rounded-[var(--radius-md)] border border-[var(--color-field)] bg-transparent bg-clip-padding px-[var(--space-sm)] py-[var(--space-xs)] text-label-md shadow-xs transition-[color,box-shadow] focus-within:border-ring focus-within:ring-[3px] focus-within:ring-[var(--color-focus-ring)]/50 has-aria-invalid:border-[var(--color-danger)] has-aria-invalid:ring-[3px] has-aria-invalid:ring-[color-mix(in_srgb,var(--color-danger)_20%,transparent)] has-data-[slot=combobox-chip]:px-1.5 dark:bg-[color-mix(in_srgb,var(--color-field)_30%,transparent)] dark:has-aria-invalid:border-[var(--color-danger)]/50 dark:has-aria-invalid:ring-destructive/40",
+        "flex min-h-9 flex-wrap items-center gap-[var(--space-xs)].5 rounded-[var(--radius-md)] border border-[var(--color-field)] bg-transparent bg-clip-padding px-[var(--space-sm)] py-[var(--space-xs)] text-label-md shadow-xs transition-[color,box-shadow] focus-within:border-ring focus-within:ring-[var(--focus-ring-width)] focus-within:ring-[var(--color-focus-ring)]/50 has-aria-invalid:border-[var(--color-danger)] has-aria-invalid:ring-[var(--focus-ring-width)] has-aria-invalid:ring-[color-mix(in_srgb,var(--color-danger)_20%,transparent)] has-data-[slot=combobox-chip]:px-1.5 dark:bg-[color-mix(in_srgb,var(--color-field)_30%,transparent)] dark:has-aria-invalid:border-[var(--color-danger)]/50 dark:has-aria-invalid:ring-destructive/40",
         className
       )}
       {...props}

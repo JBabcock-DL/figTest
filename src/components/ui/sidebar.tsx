@@ -250,7 +250,7 @@ const Sidebar = React.forwardRef<
               : "right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]",
             // Adjust the padding for floating and inset variants.
             variant === "floating" || variant === "inset"
-              ? "p-[var(--space-sm)] group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+2px)]"
+              ? "p-[var(--space-sm)] group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+var(--border-nav-active))]"
               : "group-data-[collapsible=icon]:w-[--sidebar-width-icon] group-data-[side=left]:border-r group-data-[side=right]:border-l",
             className
           )}
@@ -310,7 +310,7 @@ const SidebarRail = React.forwardRef<
       onClick={toggleSidebar}
       title="Toggle Sidebar"
       className={cn(
-        "absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-linear after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] hover:after:bg-[var(--color-sidebar)]-border group-data-[side=left]:-right-4 group-data-[side=right]:left-0 sm:flex",
+        "absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-linear after:absolute after:inset-y-0 after:left-1/2 after:w-[var(--border-nav-active)] hover:after:bg-[var(--color-sidebar)]-border group-data-[side=left]:-right-4 group-data-[side=right]:left-0 sm:flex",
         "[[data-side=left]_&]:cursor-w-resize [[data-side=right]_&]:cursor-e-resize",
         "[[data-side=left][data-state=collapsed]_&]:cursor-e-resize [[data-side=right][data-state=collapsed]_&]:cursor-w-resize",
         "group-data-[collapsible=offcanvas]:translate-x-0 group-data-[collapsible=offcanvas]:after:left-full group-data-[collapsible=offcanvas]:hover:bg-[var(--color-sidebar)]",
@@ -528,7 +528,7 @@ const sidebarMenuButtonVariants = cva(
       variant: {
         default: "hover:text-[var(--color-on-accent)]",
         outline:
-          "bg-[var(--color-background-bright)] shadow-[0_0_0_1px_var(--sidebar-border)] hover:text-[var(--color-on-accent)] hover:shadow-[0_0_0_1px_var(--sidebar-accent)]",
+          "bg-[var(--color-background-bright)] shadow-[0_0_0_var(--border-hairline)_var(--sidebar-border)] hover:text-[var(--color-on-accent)] hover:shadow-[0_0_0_var(--border-hairline)_var(--sidebar-accent)]",
       },
       size: {
         default: "h-8 text-label-md",

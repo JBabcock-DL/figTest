@@ -1,4 +1,4 @@
-/** Figma `56:4132` — 40px logo + 16px horizontal padding, 72px total bar height */
-export const MOBILE_TOP_BAR_HEIGHT = "h-[72px]"
+/** Figma `56:4132` — minimal logo + md horizontal padding, mobile nav bar height token */
+export const MOBILE_TOP_BAR_HEIGHT = "h-[var(--layout-nav-height-mobile)]"
 export const MOBILE_TOP_BAR =
-  "flex h-[72px] shrink-0 items-center justify-between px-[var(--space-md)]"
+  "flex h-[var(--layout-nav-height-mobile)] shrink-0 items-center justify-between px-[var(--space-md)]"
