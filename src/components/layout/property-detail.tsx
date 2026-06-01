@@ -1,6 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
 
+import { AnimateIn } from "@/components/layout/animate-in"
+import { CarouselReveal } from "@/components/layout/carousel-reveal"
 import { NeighborhoodMapWrapper } from "@/components/layout/neighborhood-map-wrapper"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 
@@ -64,7 +66,7 @@ export function PropertyDetail({ property }: { property: Property }) {
     <div className="w-full bg-[var(--color-background-bright)] text-[var(--color-content)]">
       {/* 1. Hero */}
       <section className="flex w-full flex-col items-center px-[var(--space-4xl)] pt-[160px]">
-        <div className="flex w-full max-w-[1560px] flex-wrap items-start gap-[var(--space-4xl)]">
+        <AnimateIn className="flex w-full max-w-[1560px] flex-wrap items-start gap-[var(--space-4xl)]">
           <div className="flex min-w-[500px] flex-1 flex-col gap-[var(--space-2xl)] pr-[var(--space-4xl)]">
             <Link
               href="/properties"
@@ -112,12 +114,12 @@ export function PropertyDetail({ property }: { property: Property }) {
               priority
             />
           </div>
-        </div>
+        </AnimateIn>
       </section>
 
-      {/* 2. Property Details — dark (no gap above: hero image sits flush to the bottom) */}
+      {/* 2. Property Details — dark */}
       <section className="flex w-full items-center justify-center bg-[var(--color-inverse-surface)] p-[var(--space-4xl)] text-[var(--color-inverse-content)]">
-        <div className="flex w-full max-w-[1560px] flex-wrap items-start justify-between gap-y-[64px] py-[var(--space-xl)]">
+        <AnimateIn className="flex w-full max-w-[1560px] flex-wrap items-start justify-between gap-y-[64px] py-[var(--space-xl)]">
           <div className="flex min-w-[350px] max-w-[650px] flex-1 flex-col gap-[var(--space-2xl)]">
             <h2 className="text-display-lg text-[var(--color-inverse-content)]">Property Details</h2>
             <QuietAction href="#contact-form" light>
@@ -135,17 +137,19 @@ export function PropertyDetail({ property }: { property: Property }) {
               </div>
             ))}
           </dl>
-        </div>
+        </AnimateIn>
       </section>
 
-      {/* 3. Image carousel — full-bleed */}
+      {/* 3. Image carousel — full-bleed with overlay reveal */}
       <section className="w-full">
-        <PropertyCarousel images={property.images} />
+        <CarouselReveal>
+          <PropertyCarousel images={property.images} />
+        </CarouselReveal>
       </section>
 
-      {/* 4. Map + Neighborhood (content centered in a tall section → ~160px top/bottom) */}
+      {/* 4. Map + Neighborhood */}
       <section className="flex w-full flex-col items-center justify-center px-[var(--space-4xl)] py-[160px]">
-        <div className="flex w-full max-w-[1560px] flex-wrap items-center gap-[var(--space-4xl)] bg-[var(--color-background-bright)]">
+        <AnimateIn className="flex w-full max-w-[1560px] flex-wrap items-center gap-[var(--space-4xl)] bg-[var(--color-background-bright)]">
           <div className="relative size-[712px] shrink-0 overflow-hidden bg-[#d9d9d9]">
             <NeighborhoodMapWrapper />
           </div>
@@ -159,12 +163,12 @@ export function PropertyDetail({ property }: { property: Property }) {
               Get Directions
             </QuietAction>
           </div>
-        </div>
+        </AnimateIn>
       </section>
 
       {/* 5. Explore More — dark */}
       <section className="flex w-full items-center justify-center bg-[var(--color-inverse-surface)] p-[var(--space-4xl)] text-[var(--color-inverse-content)]">
-        <div className="flex w-full max-w-[1560px] flex-col gap-[var(--space-4xl)] py-[var(--space-xl)]">
+        <AnimateIn className="flex w-full max-w-[1560px] flex-col gap-[var(--space-4xl)] py-[var(--space-xl)]">
           <h2 className="text-display-lg text-[var(--color-inverse-content)]">Explore More</h2>
 
           <div className="flex flex-wrap gap-[var(--space-xl)]">
@@ -186,7 +190,7 @@ export function PropertyDetail({ property }: { property: Property }) {
               View all properties
             </QuietAction>
           </div>
-        </div>
+        </AnimateIn>
       </section>
 
       {/* 6. Contact form */}
@@ -194,7 +198,7 @@ export function PropertyDetail({ property }: { property: Property }) {
         id="contact-form"
         className="flex w-full flex-col items-center justify-center bg-[var(--color-background-bright)] p-[var(--space-4xl)] scroll-mt-[120px]"
       >
-        <div className="flex w-full max-w-[1560px] flex-wrap items-center gap-[var(--space-3xl)] py-[var(--space-3xl)]">
+        <AnimateIn className="flex w-full max-w-[1560px] flex-wrap items-center gap-[var(--space-3xl)] py-[var(--space-3xl)]">
           <div className="relative h-[960px] min-w-[600px] max-w-[646px] flex-1 overflow-hidden">
             <Image
               src={property.formImage}
@@ -228,7 +232,7 @@ export function PropertyDetail({ property }: { property: Property }) {
               Send Message
             </Button>
           </div>
-        </div>
+        </AnimateIn>
       </section>
     </div>
   )

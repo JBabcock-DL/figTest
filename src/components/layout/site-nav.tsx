@@ -3,6 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { useEffect, useRef, useState } from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -61,8 +62,29 @@ function NavLink({
 }
 
 export function SiteNav() {
+  const [visible, setVisible] = useState(true)
+  const lastScrollY = useRef(0)
+
+  useEffect(() => {
+    const onScroll = () => {
+      const current = window.scrollY
+      // Show when scrolling up or at the very top; hide when scrolling down
+      setVisible(current < lastScrollY.current || current < 10)
+      lastScrollY.current = current
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
+
   return (
-    <nav className="absolute left-0 top-0 z-50 flex w-full items-start justify-center bg-[var(--color-background-bright)] px-[var(--space-4xl)] py-[var(--space-xl)]">
+    <nav
+      className="fixed left-0 top-0 z-[1100] flex w-full items-start justify-center bg-[var(--color-background-bright)] px-[var(--space-4xl)] py-[var(--space-xl)]"
+      style={{
+        transform: visible ? "translateY(0)" : "translateY(-100%)",
+        transition: "transform 500ms ease-in-out",
+      }}
+    >
       <div className="flex w-full max-w-[1600px] items-start justify-between">
         <Link href="/" className="flex h-[60px] items-center" aria-label="Bedrock — home">
           <Image
