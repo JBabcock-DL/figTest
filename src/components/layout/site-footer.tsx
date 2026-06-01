@@ -67,7 +67,7 @@ export function SiteFooter() {
         <div className="flex w-full min-w-0 flex-col gap-[var(--space-4xl)] lg:min-w-[500px] lg:flex-1 lg:w-auto">
           <AnimateIn delay={100}>
             <div className="flex flex-col gap-[var(--space-lg)]">
-              <h2 className="text-display-lg text-[var(--color-background-bright)]">Connect with us.</h2>
+              <h2 className="text-display-md text-[var(--color-background-bright)]">Connect with us.</h2>
               <Link
                 href="#contact-form"
                 className={

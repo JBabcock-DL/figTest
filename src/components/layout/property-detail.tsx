@@ -93,7 +93,7 @@ export function PropertyDetail({ property }: { property: Property }) {
               Back
             </Link>
 
-            <div className="flex flex-col gap-[var(--space-xs)]">
+            <div className="flex flex-col gap-[var(--space-sm)]">
               <h1 className="text-display-lg text-[var(--color-content)]">{property.name}</h1>
               <p className="text-title-lg text-[var(--color-content-muted)]">{property.address}</p>
             </div>
@@ -144,7 +144,7 @@ export function PropertyDetail({ property }: { property: Property }) {
         <div className="flex w-full max-w-[1560px] flex-col items-start gap-y-[var(--space-4xl)] py-[var(--space-xl)] lg:flex-row lg:flex-wrap lg:items-start lg:justify-between lg:gap-y-[64px]">
           <div className="flex w-full min-w-0 max-w-[650px] flex-col gap-[var(--space-2xl)] lg:flex-1 lg:min-w-[280px]">
             <AnimateIn delay={100}>
-              <h2 className="text-display-lg text-[var(--color-inverse-content)]">Property Details</h2>
+              <h2 className="text-display-md text-[var(--color-inverse-content)]">Property Details</h2>
             </AnimateIn>
             <AnimateIn delay={200}>
               <QuietAction href="#contact-form" light>
@@ -188,7 +188,7 @@ export function PropertyDetail({ property }: { property: Property }) {
             className="flex min-w-0 flex-1 flex-col gap-[var(--space-3xl)] p-[var(--space-4xl)] max-lg:p-0 lg:order-2 lg:min-w-[280px]"
           >
             <div className="flex flex-col gap-[var(--space-xl)]">
-              <h2 className="text-display-lg text-[var(--color-content)]">{property.neighborhoodName}</h2>
+              <h2 className="text-display-md text-[var(--color-content)]">{property.neighborhoodName}</h2>
               <p className="text-body-lg text-[var(--color-content)]">{property.neighborhoodDescription}</p>
             </div>
             <QuietAction href={property.neighborhoodDirectionsUrl} external>
@@ -212,7 +212,7 @@ export function PropertyDetail({ property }: { property: Property }) {
       >
         <div className="flex w-full max-w-[1560px] flex-col gap-[var(--space-4xl)] py-[var(--space-xl)] max-lg:py-0">
           <AnimateIn delay={100}>
-            <h2 className="text-display-lg text-[var(--color-inverse-content)]">Explore More</h2>
+            <h2 className="text-display-md text-[var(--color-inverse-content)]">Explore More</h2>
           </AnimateIn>
 
           <div className="flex w-full min-w-0 max-w-full flex-wrap gap-[var(--space-xl)] max-lg:flex-nowrap max-lg:overflow-x-auto max-lg:overscroll-x-contain max-lg:[scrollbar-width:none] max-lg:[&::-webkit-scrollbar]:hidden lg:flex-wrap">
@@ -263,7 +263,7 @@ export function PropertyDetail({ property }: { property: Property }) {
             delay={200}
             className="flex min-w-0 flex-1 flex-col gap-[var(--space-3xl)] p-[var(--space-3xl)] max-lg:w-full max-lg:p-0 lg:order-2 lg:min-w-[320px]"
           >
-            <h2 className="text-display-lg text-[var(--color-content)]">Find the perfect space.</h2>
+            <h2 className="text-display-md text-[var(--color-content)]">Find the perfect space.</h2>
 
             <div className="flex flex-wrap gap-[var(--space-2xl)]">
               {FORM_FIELDS.map((field) => (

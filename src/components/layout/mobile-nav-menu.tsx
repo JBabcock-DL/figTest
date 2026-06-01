@@ -15,10 +15,6 @@ import {
 import { cn } from "@/lib/utils"
 import type { Breakpoint } from "@/hooks/use-breakpoint"
 
-/** Headline/SM — menu links on mobile/tablet (`56:4076`). */
-const MENU_LINK_TYPO =
-  "text-[length:var(--headline-sm-font-size)] leading-[var(--headline-sm-line-height)] [font-family:var(--headline-sm-font-family)] font-bold!"
-
 type MobileNavMenuProps = {
   open: boolean
   onOpenChange: (open: boolean) => void
@@ -35,7 +31,6 @@ function MenuNavLink({ href, label, onNavigate }: { href: string; label: string;
       onClick={onNavigate}
       aria-current={isActive ? "page" : undefined}
       className={cn(
-        MENU_LINK_TYPO,
         "outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]",
         isActive ? "text-[var(--color-primary)]" : "text-[var(--color-content)]"
       )}

@@ -49,7 +49,7 @@ Use Figma for **hierarchy validation** only. Colors/spacing stay on repo `var(--
 
 - **Display-lg mobile** — Target ~36–41px after shifts (research suggests step +7–+8); VQA against `56:2962`.
 - **Line heights** — Non-body: ~1.25× font size (rounded). Body: fixed 24px.
-- **Nav** — Default: desktop nav stays **16px** (step 0); mobile menu uses headline-sm ladder (confirm 20px vs 24px in plan — see Open Questions in research).
+- **Nav** — Desktop nav stays **16px** (`text-body-lg`); mobile menu uses **`text-headline-lg`** (responsive ladder).
 
 ### Technical / architectural
 
@@ -75,6 +75,7 @@ Use Figma for **hierarchy validation** only. Colors/spacing stay on repo `var(--
 - Copy changes.
 - Auth/signup pages (optional follow-up).
 - Replacing M3 font families or weights.
+- **Figma variable / type-scale mode reconciliation** — file does not yet mirror the code major-second ladder; track as a follow-up WO.
 
 ---
 
@@ -112,7 +113,12 @@ Use Figma for **hierarchy validation** only. Colors/spacing stay on repo `var(--
 
 ## Ready for `/build`
 
-- Plan approved; run `/build` or `code-build` per plan.md Phase 1.
+- [x] Code complete on `main` (uncommitted): `tokens.css` ladder + breakpoint overrides + body lock; `mobile-nav-menu.tsx` uses `text-headline-lg`. VQA in browser + optional `/vqa`.
+
+## Build status
+
+- **Phase 1 (code):** Done — see [build-qa.md](research/build-qa.md).
+- **Figma sync:** Deferred (separate ticket).
 
 ## References
 

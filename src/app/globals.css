@@ -172,6 +172,13 @@
     line-height: var(--display-sm-line-height);
   }
 
+  .text-display-md {
+    font-family: var(--display-md-font-family);
+    font-size: var(--display-md-font-size);
+    font-weight: var(--display-md-font-weight);
+    line-height: var(--display-md-line-height);
+  }
+
   .text-display-lg {
     font-family: var(--display-lg-font-family);
     font-size: var(--display-lg-font-size);
@@ -289,4 +296,12 @@
   .image-reveal-light.is-visible {
     opacity: 0.4;
   }
+}
+
+/* Mobile nav sheet links — headline-lg ladder (WO-005); unlayered so it wins over utility font-weight */
+#mobile-nav-menu nav[aria-label="Primary"] a {
+  font-family: var(--headline-lg-font-family);
+  font-size: var(--headline-lg-font-size);
+  line-height: var(--headline-lg-line-height);
+  font-weight: 700;
 }
