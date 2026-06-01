@@ -1,5 +1,7 @@
 node_modules/
 .next/
+.vercel/
+.env*.local
 *.tsbuildinfo
 .figma-run/
 .mcp-*.json
@@ -13,3 +15,5 @@ mcp-invoke-use-figma.json
 _mcp-b64.txt
 create-component-debug.log
 slice-out.js
+
+.vercel

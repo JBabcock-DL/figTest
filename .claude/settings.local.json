@@ -15,7 +15,9 @@
       "Bash(ls -Recurse \"C:\\\\Users\\\\jbabc\\\\.claude\\\\plugins\\\\marketplaces\\\\local-desktop-app-uploads\\\\labs-design-ops\\\\skills\\\\create-design-system\\\\phases\\\\\" 2>/dev/null | grep -E '\\\\.\\(md|txt\\)$' | head -20)",
       "Bash(grep -r \"Doc/Section\\\\|Doc/TokenName\\\\|Doc/Code\\\\|Doc/Caption\" \"/c/Users/jbabc/.claude/plugins/marketplaces/local-desktop-app-uploads/labs-design-ops/skills/create-design-system/\" --include=\"*.md\" --include=\"*.js\" 2>/dev/null | head -20)",
       "Bash(xargs grep -l \"Step 11 close\")",
-      "mcp__5c854f4e-2eda-4526-a654-c9e1facfa94f__get_libraries"
+      "mcp__5c854f4e-2eda-4526-a654-c9e1facfa94f__get_libraries",
+      "mcp__5c854f4e-2eda-4526-a654-c9e1facfa94f__get_figjam",
+      "mcp__5c854f4e-2eda-4526-a654-c9e1facfa94f__generate_diagram"
     ]
   }
 }
