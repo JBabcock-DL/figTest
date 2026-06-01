@@ -171,44 +171,50 @@ As a prospective tenant or visitor, I want to view a rich detail page for a spec
 | `node_id` | `35:1383` |
 | Figma deep link | `https://www.figma.com/design/OrDMGL6zOS3U9qYwXvPAvc?node-id=35-1383` |
 | Frame / scope | Property Detail Page — full page |
-| Captured at | |
+| Captured at | 2026-06-01 |
 
 **Assertions** *(agent fills `Design (Figma)` and `Build (implemented)` columns, then marks Result):*
 
 | # | Category | Property | Design (Figma) | Build (implemented) | Result |
 | --- | --- | --- | --- | --- | --- |
-| 1 | Layout | Frame width × height | | | |
-| 2 | Layout | Auto-layout direction / gap | | | |
-| 3 | Layout | Padding (T/R/B/L) | | | |
-| 4 | Layout | Alignment / distribution | | | |
-| 5 | Typography | Font family | | | |
-| 6 | Typography | Font weight | | | |
-| 7 | Typography | Font size | | | |
-| 8 | Typography | Line height | | | |
-| 9 | Typography | Letter spacing | | | |
-| 10 | Typography | Text token (display/body/etc.) | | | |
-| 11 | Color | Background fill (hex / token) | | | |
-| 12 | Color | Foreground / text fill (hex / token) | | | |
-| 13 | Color | Border / stroke (hex / token) | | | |
-| 14 | Color | State variants (hover / pressed / disabled) | | | |
-| 15 | Spacing | Margin / gap tokens | | | |
-| 16 | Effects | Border radius | | | |
-| 17 | Effects | Shadow / elevation token | | | |
-| 18 | Effects | Opacity | | | |
-| 19 | Iconography | Icon set / size | | | |
-| 20 | Components | Code Connect target / shadcn primitive used | | | |
-| 21 | Components | Component variants present (size, intent, state) | | | |
-| 22 | Content | Copy matches Figma exactly | | | |
-| 23 | Content | Localization placeholders honored | | | |
-| 24 | Responsive | Breakpoint behavior matches Figma variants | | | |
-| 25 | Accessibility | Contrast ratio (WCAG AA / AAA) | | | |
-| 26 | Accessibility | Hit target >= 44x44 pt | | | |
-| 27 | Accessibility | Focus ring visible & token-based | | | |
-| 28 | Screenshot | Side-by-side overlay diff (path) | | | |
+| 1 | Layout | Frame width × height | 1728 × 6020 (content block 1560 wide, x=84 inset) | `max-w-[1560px]` centered `<main>`; carousel full-bleed 1728px | PASS |
+| 2 | Layout | Auto-layout direction / gap | Hero row; detail grid gap-x 64 / gap-y 32; section gaps via space tokens | Hero `flex-row` gap `--space-2xl`; grid `gap-x-[--space-4xl] gap-y-[--space-2xl]` | PASS |
+| 3 | Layout | Padding (T/R/B/L) | Outer x=84 (≈`--space-4xl` 64 + frame); hero top 160; dark section pad 64 | `px-[--space-4xl]` (64), hero `paddingTop:160px`, dark section `p-[--space-4xl]` | PASS |
+| 4 | Layout | Alignment / distribution | Hero left col `flex:1`, hero img right; detail heading/CTA space-between | `flex:1 0 0 min-width:500px`; `justify-between` heading row | PASS |
+| 5 | Typography | Font family | Inter (all slots) | `var(--*-font-family)` = Inter via tokens.css | PASS |
+| 6 | Typography | Font weight | Display/LG 500; Title/LG 400; Body/LG 400; Headline/MD 400 | Display/LG via token = 400 (tokens.css); others match | FAIL |
+| 7 | Typography | Font size | Display/LG 56; Title/LG 22; Body/LG 16; Headline/MD 28 | Display/LG token = 57; Title 22, Body 16, Headline 28 | PASS |
+| 8 | Typography | Line height | Display/LG 64; Title/LG 28; Body/LG 24; Headline/MD 36 | Matches tokens.css (64/28/24/36) | PASS |
+| 9 | Typography | Letter spacing | 0 across all slots | Default 0 (no override) | PASS |
+| 10 | Typography | Text token (display/body/etc.) | display-lg, title-lg, body-lg, headline-md, label-md | `.text-display-lg`, `.text-title-lg`, `.text-body-lg`, `.text-headline-md`, `text-label-md` | PASS |
+| 11 | Color | Background fill (hex / token) | bright #ffffff; inverse-surface #070708 | `bg-[var(--color-background-bright)]`, `bg-[var(--color-inverse-surface)]` | PASS |
+| 12 | Color | Foreground / text fill (hex / token) | content #0d0c0e; content-muted #49454f; inverse-content #f7f7f8; primary #6750a4 | `--color-content`, `--color-content-muted`, `--color-inverse-content`, `--color-primary` | PASS |
+| 13 | Color | Border / stroke (hex / token) | footer nav border primary-fixed-dim #d0c8e4 | `border-[var(--color-primary-fixed-dim)]` | PASS |
+| 14 | Color | State variants (hover / pressed / disabled) | nav link hover underline; carousel arrow disabled at ends | Nav active via `usePathname`; carousel arrows `disabled:opacity-50`; hover-only nav state not rendered | FAIL |
+| 15 | Spacing | Margin / gap tokens | Space/100=4, 600=24, 1200=48, 1600=64; carousel seg gap 10 | `--space-xs/xl/3xl/4xl`; carousel seg `gap:10px` | PASS |
+| 16 | Effects | Border radius | back button corner/100 = 4px; tiles/img 0 | back button `rounded-[var(--space-xs)]` = 4px (token name differs from `corner/100`, undefined in tokens.css) | FAIL |
+| 17 | Effects | Shadow / elevation token | none on this frame | none applied | PASS |
+| 18 | Effects | Opacity | inactive carousel img overlay rgba(0,0,0,0.5–0.6) | inactive layer `bg-black/50` (0.5) | PASS |
+| 19 | Iconography | Icon set / size | arrow-left / arrow-right 24×24; social icons 32×32 | lucide `ArrowLeft`/`ArrowRight` `size-6` (24); social `size-8` (32) | PASS |
+| 20 | Components | Code Connect target / shadcn primitive used | Input ComponentSet, Button ComponentSet | `@/components/ui/input` + `@/components/ui/button`; Field wrappers | PASS |
+| 21 | Components | Component variants present (size, intent, state) | Input default sm; Button default lg; quiet buttons | Input `variant=default size=sm`; Button `variant=default size=lg`; quiet = `Button variant=ghost` | PASS |
+| 22 | Content | Copy matches Figma exactly | See per-row deviations | Headings, labels, footer, address, copyright match; body/bullets differ | FAIL |
+| 23 | Content | Localization placeholders honored | N/A (no i18n in scope) | N/A | N/A |
+| 24 | Responsive | Breakpoint behavior matches Figma variants | Desktop 1728 only (out of scope) | Desktop-only build | N/A |
+| 25 | Accessibility | Contrast ratio (WCAG AA / AAA) | content #0d0c0e on #fff ≈ 19:1; inverse-content #f7f7f8 on #070708 ≈ 19:1; primary #6750a4 on #fff ≈ 5.3:1 | Same token pairs; all ≥ 4.5:1 AA | PASS |
+| 26 | Accessibility | Hit target >= 44×44 pt | nav links 48 tall; carousel arrows 24; back button 24 | Carousel arrows `size-8` (32px) icon, no padding → < 44px; nav links inline | FAIL |
+| 27 | Accessibility | Focus ring visible & token-based | Inputs ring token; buttons inherit | Input `focus-visible:ring-[--color-focus-ring]`; quiet `<a>`/native buttons rely on UA default ring | FAIL |
+| 28 | Screenshot | Side-by-side overlay diff (path) | research/figma-source.png | No headless browser available in env; build screenshot not captured | N/A |
 
 **Per-row deviations:**
 
--
+- Row 6 — Display/LG weight: Figma 500, build 400 (tokens.css `--display-lg-font-weight: 400`). Documented plan decision to follow tokens.css over the Figma spec. Fix (if design fidelity required): set Display/LG weight to 500 in tokens.css or override on the headings. Owner: `/figma-build` (reconcile token) or `/code-build`.
+- Row 14 — Nav hover state: Figma `nav link hover` underline variant is not implemented; build only toggles the active-route underline via `usePathname()`. No hover/pressed style on quiet buttons either. Fix: add `hover:opacity-100` / hover underline to nav links. Owner: `/code-build`.
+- Row 16 — Back-button radius token: Figma binds `corner/100` (4px); build uses `var(--space-xs)` (4px). Pixel-equal but token-name mismatch, and `--corner/100` is undefined in tokens.css. Plan documents the substitution; strict design-system fidelity = FAIL. Fix: add/use a `--corner-extra-small` (4px) radius token instead of a spacing token for radius. Owner: `/code-build` + `/figma-build`.
+- Row 22 — Copy fidelity: Figma description, Property Information bullets, Property Details grid values (e.g. "Office, Residential, Retail", "484,000 SF", "23", "1965", "1993"), and tile labels ("1234 Main St / Detroit, MI") differ from the placeholder data in `src/data/properties.ts` ("Office / Retail", "350,000 sq ft", "5", etc.). Acceptable for a placeholder-data build (real data out of scope), but copy is not 1:1 with Figma. Fix: bind to real content when the data layer lands. Owner: `/code-build` (data) — non-gating.
+- Row 26 — Hit target: carousel prev/next are 32px icon buttons with no padding (< 44×44). Fix: add `p-2`/min size to reach 44×44. Owner: `/code-build`.
+- Row 27 — Focus ring: quiet action buttons render as `Button variant="ghost"` (`asChild` → `<a>`) and native carousel `<button>`s without an explicit token-based focus ring; they fall back to the UA outline. Inputs do use the token ring. Fix: add `focus-visible:ring-[var(--color-focus-ring)]` to quiet buttons / carousel controls. Owner: `/code-build`.
+- Row 28 — No headless browser (Playwright/Puppeteer) or `public/placeholder.jpg` asset in the environment, so a build screenshot / overlay could not be produced. Comparison done code + rendered-DOM (HTTP 200, all sections present). figma-source.png captured.
 
 ---
 

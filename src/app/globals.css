@@ -159,6 +159,20 @@
     line-height: var(--display-sm-line-height);
   }
 
+  .text-display-lg {
+    font-family: var(--display-lg-font-family);
+    font-size: var(--display-lg-font-size);
+    font-weight: var(--display-lg-font-weight);
+    line-height: var(--display-lg-line-height);
+  }
+
+  .text-headline-md {
+    font-family: var(--headline-md-font-family);
+    font-size: var(--headline-md-font-size);
+    font-weight: var(--headline-md-font-weight);
+    line-height: var(--headline-md-line-height);
+  }
+
   /* Filled surfaces — state overlay on solid role fill (Figma state-layer frames) */
   .state-filled-primary {
     background-color: var(--color-primary);
