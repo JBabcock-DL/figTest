@@ -17,7 +17,9 @@
       "Bash(xargs grep -l \"Step 11 close\")",
       "mcp__5c854f4e-2eda-4526-a654-c9e1facfa94f__get_libraries",
       "mcp__5c854f4e-2eda-4526-a654-c9e1facfa94f__get_figjam",
-      "mcp__5c854f4e-2eda-4526-a654-c9e1facfa94f__generate_diagram"
+      "mcp__5c854f4e-2eda-4526-a654-c9e1facfa94f__generate_diagram",
+      "Read(//c/Users/jbabc/.claude/plugins/**)",
+      "Read(//c/Users/jbabc/.claude/**)"
     ]
   }
 }
