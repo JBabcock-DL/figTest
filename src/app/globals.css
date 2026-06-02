@@ -204,47 +204,57 @@
     line-height: var(--headline-lg-line-height);
   }
 
-  /* Filled surfaces — state overlay on solid role fill (Figma state-layer frames) */
+  /*
+   * Filled buttons/chips — M3-style state on top of role fill.
+   * Theme --color-state-* tokens target tonal surfaces; filled controls use
+   * on-role overlays (visible lightening/darkening on solid fills).
+   */
   .state-filled-primary {
     background-color: var(--color-primary);
-    background-image: linear-gradient(transparent, transparent);
+    transition: background-color 200ms ease-in-out;
   }
-  .state-filled-primary:hover {
-    background-image: linear-gradient(var(--color-state-primary-hover), var(--color-state-primary-hover));
+  @media (hover: hover) {
+    .state-filled-primary:hover {
+      background-color: color-mix(in srgb, var(--color-on-primary) 8%, var(--color-primary));
+    }
   }
   .state-filled-primary:active {
-    background-image: linear-gradient(var(--color-state-primary-pressed), var(--color-state-primary-pressed));
+    background-color: color-mix(in srgb, var(--color-on-primary) 12%, var(--color-primary));
   }
   .state-filled-primary:focus-visible {
-    background-image: linear-gradient(var(--color-state-primary-focus), var(--color-state-primary-focus));
+    background-color: color-mix(in srgb, var(--color-on-primary) 12%, var(--color-primary));
   }
 
   .state-filled-secondary {
     background-color: var(--color-secondary);
-    background-image: linear-gradient(transparent, transparent);
+    transition: background-color 200ms ease-in-out;
   }
-  .state-filled-secondary:hover {
-    background-image: linear-gradient(var(--color-state-secondary-hover), var(--color-state-secondary-hover));
+  @media (hover: hover) {
+    .state-filled-secondary:hover {
+      background-color: color-mix(in srgb, var(--color-on-secondary) 8%, var(--color-secondary));
+    }
   }
   .state-filled-secondary:active {
-    background-image: linear-gradient(var(--color-state-secondary-pressed), var(--color-state-secondary-pressed));
+    background-color: color-mix(in srgb, var(--color-on-secondary) 12%, var(--color-secondary));
   }
   .state-filled-secondary:focus-visible {
-    background-image: linear-gradient(var(--color-state-secondary-focus), var(--color-state-secondary-focus));
+    background-color: color-mix(in srgb, var(--color-on-secondary) 12%, var(--color-secondary));
   }
 
   .state-filled-error {
     background-color: var(--color-danger);
-    background-image: linear-gradient(transparent, transparent);
+    transition: background-color 200ms ease-in-out;
   }
-  .state-filled-error:hover {
-    background-image: linear-gradient(var(--color-state-error-hover), var(--color-state-error-hover));
+  @media (hover: hover) {
+    .state-filled-error:hover {
+      background-color: color-mix(in srgb, var(--color-on-danger) 8%, var(--color-danger));
+    }
   }
   .state-filled-error:active {
-    background-image: linear-gradient(var(--color-state-error-pressed), var(--color-state-error-pressed));
+    background-color: color-mix(in srgb, var(--color-on-danger) 12%, var(--color-danger));
   }
   .state-filled-error:focus-visible {
-    background-image: linear-gradient(var(--color-state-error-focus), var(--color-state-error-focus));
+    background-color: color-mix(in srgb, var(--color-on-danger) 12%, var(--color-danger));
   }
 
   /* Surface / tonal — state tint on bright or transparent backgrounds */

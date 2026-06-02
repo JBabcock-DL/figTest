@@ -16,21 +16,9 @@ import { CarouselReveal } from "@/components/layout/carousel-reveal"
 import { NeighborhoodMapWrapper } from "@/components/layout/neighborhood-map-wrapper"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Field, FieldLabel } from "@/components/ui/field"
+import { ContactForm } from "@/components/layout/contact-form"
 import { PropertyCarousel } from "@/components/ui/property-carousel"
 import type { Property } from "@/data/properties"
-
-const FORM_FIELDS = [
-  { id: "first-name", label: "First Name", half: true, placeholder: "Jane" },
-  { id: "last-name", label: "Last Name", half: true, placeholder: "Doe" },
-  { id: "email", label: "Email", half: true, placeholder: "you@example.com" },
-  { id: "phone", label: "Phone", half: true, placeholder: "(555) 555-5555" },
-  { id: "company-name", label: "Company Name", half: false, placeholder: "Company name" },
-  { id: "message", label: "Message", half: false, multiline: true, placeholder: "How can we help?" },
-] as const
 
 const SECTION_PX = "px-[var(--space-4xl)] max-lg:px-[var(--space-md)]"
 /** Mobile vertical rhythm: 4xl padding unless the section ends on full-bleed media. */
@@ -276,33 +264,9 @@ export function PropertyDetail({ property }: { property: Property }) {
           <AnimateIn
             from="below"
             delay={200}
-            className="flex min-w-0 flex-1 flex-col gap-[var(--space-3xl)] p-[var(--space-3xl)] max-lg:w-full max-lg:p-0 lg:order-2 lg:min-w-[var(--layout-contact-col-min)]"
+            className="flex min-w-0 flex-1 flex-col p-[var(--space-3xl)] max-lg:w-full max-lg:p-0 lg:order-2 lg:min-w-[var(--layout-contact-col-min)]"
           >
-            <h2 className="text-display-md text-[var(--color-content)]">Find the perfect space.</h2>
-
-            <div className="flex flex-wrap gap-[var(--space-2xl)]">
-              {FORM_FIELDS.map((field) => (
-                <Field
-                  key={field.id}
-                  className={
-                    field.half
-                      ? "w-full min-w-0 max-lg:w-full lg:w-[calc(50%-var(--space-lg))] lg:min-w-[var(--layout-form-col-min)]"
-                      : "w-full"
-                  }
-                >
-                  <FieldLabel htmlFor={field.id}>{field.label}</FieldLabel>
-                  {"multiline" in field && field.multiline ? (
-                    <Textarea id={field.id} placeholder={field.placeholder} />
-                  ) : (
-                    <Input id={field.id} placeholder={field.placeholder} variant="default" size="lg" />
-                  )}
-                </Field>
-              ))}
-            </div>
-
-            <Button type="submit" variant="default" size="lg" className="w-fit">
-              Send Message
-            </Button>
+            <ContactForm />
           </AnimateIn>
 
           <AnimateIn
