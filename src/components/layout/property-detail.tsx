@@ -14,7 +14,7 @@ import Link from "next/link"
 import { AnimateIn } from "@/components/layout/animate-in"
 import { CarouselReveal } from "@/components/layout/carousel-reveal"
 import { NeighborhoodMapWrapper } from "@/components/layout/neighborhood-map-wrapper"
-import { ArrowLeft, ArrowRight } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 
 import { ContactForm } from "@/components/layout/contact-form"
 import { PropertyCarousel } from "@/components/ui/property-carousel"
@@ -80,21 +80,10 @@ export function PropertyDetail({ property }: { property: Property }) {
     <div className="w-full min-w-0 overflow-x-clip bg-[var(--color-background-bright)] text-[var(--color-content)]">
       {/* 1. Hero */}
       <section
-        className={`flex w-full flex-col items-center ${SECTION_PX} pt-[var(--layout-nav-offset-top)] max-lg:pt-[calc(var(--layout-nav-height-mobile)+var(--space-4xl))] ${MOBILE_PB_FLUSH}`}
+        className={`flex w-full flex-col items-center ${SECTION_PX} pt-[var(--layout-nav-offset-top)] max-lg:pt-[calc(var(--layout-nav-height-mobile)+var(--space-xl))] ${MOBILE_PB_FLUSH}`}
       >
         <div className="flex w-full max-w-[var(--layout-content-max)] flex-col flex-wrap items-stretch gap-[var(--space-4xl)] max-lg:gap-[var(--space-xl)] lg:flex-row lg:items-start">
-          <AnimateIn className="flex min-w-0 flex-1 flex-col gap-[var(--space-2xl)] lg:min-w-[var(--layout-column-min)] lg:pb-[var(--space-3xl)] lg:pr-[var(--space-4xl)]">
-            <Link
-              href="/properties"
-              className={
-                "flex w-fit items-center gap-[var(--space-xs)] rounded-[var(--space-xs)] text-body-lg font-bold! text-[var(--color-content)] outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] " +
-                QUIET_HOVER
-              }
-            >
-              <ArrowLeft className="size-6" aria-hidden="true" />
-              Back
-            </Link>
-
+          <AnimateIn className="flex min-w-0 flex-1 flex-col gap-[var(--space-2xl)] lg:min-w-[var(--layout-column-min)] lg:pt-[var(--space-3xl)] lg:pb-[var(--space-3xl)] lg:pr-[var(--space-4xl)]">
             <div className="flex flex-col gap-[var(--space-sm)]">
               <h1 className="text-display-lg text-[var(--color-content)]">{property.name}</h1>
               <p className="text-title-lg text-[var(--color-content-muted)]">{property.address}</p>
