@@ -247,13 +247,13 @@ export function PropertyDetail({ property }: { property: Property }) {
       {/* 6. Contact form */}
       <section
         id="contact-form"
-        className={`flex w-full flex-col items-center justify-center bg-[var(--color-background-bright)] p-[var(--space-4xl)] max-lg:px-[var(--space-md)] max-lg:pt-[var(--space-4xl)] ${MOBILE_PB_FLUSH} scroll-mt-[var(--layout-scroll-anchor-offset)]`}
+        className={`flex w-full flex-col items-center bg-[var(--color-background-bright)] p-[var(--space-4xl)] max-lg:justify-center max-lg:px-[var(--space-md)] max-lg:pt-[var(--space-4xl)] ${MOBILE_PB_FLUSH} scroll-mt-[var(--layout-scroll-anchor-offset)] lg:min-h-screen lg:justify-center`}
       >
-        <div className="flex w-full max-w-[var(--layout-content-max)] flex-col items-stretch gap-[var(--space-3xl)] py-[var(--space-3xl)] max-lg:gap-[var(--space-3xl)] max-lg:py-0 lg:flex-row lg:items-center">
+        <div className="flex w-full max-w-[var(--layout-content-max)] flex-col items-stretch gap-[var(--space-3xl)] py-[var(--space-3xl)] max-lg:gap-[var(--space-3xl)] max-lg:py-0 lg:grid lg:min-h-[calc(100svh-2*var(--space-4xl))] lg:w-full lg:grid-cols-[minmax(0,var(--layout-contact-image-max))_minmax(var(--layout-contact-col-min),1fr)] lg:gap-[var(--space-3xl)] lg:py-0">
           <AnimateIn
             from="below"
             delay={200}
-            className="flex min-w-0 flex-1 flex-col p-[var(--space-3xl)] max-lg:w-full max-lg:p-0 lg:order-2 lg:min-w-[var(--layout-contact-col-min)]"
+            className="flex min-w-0 flex-col justify-center p-[var(--space-3xl)] max-lg:w-full max-lg:p-0 lg:order-2 lg:min-w-0"
           >
             <ContactForm />
           </AnimateIn>
@@ -261,7 +261,7 @@ export function PropertyDetail({ property }: { property: Property }) {
           <AnimateIn
             from="above"
             delay={200}
-            className={`relative min-w-0 w-full max-w-[var(--layout-contact-image-max)] flex-1 aspect-square overflow-hidden max-lg:max-h-none max-lg:max-w-none lg:order-1 lg:aspect-[646/960] lg:max-h-[min(var(--layout-contact-image-height-max),70vh)] lg:max-w-[var(--layout-contact-image-max)] ${MOBILE_FULL_BLEED}`}
+            className={`relative w-full overflow-hidden max-lg:aspect-square max-lg:max-w-none lg:order-1 lg:h-full lg:min-h-0 lg:w-full lg:max-w-none ${MOBILE_FULL_BLEED}`}
           >
             <Image
               src={property.formImage}
