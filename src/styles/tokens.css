@@ -110,8 +110,8 @@
   --elevation-1600: 16;
 
   /* Typeface — STRING primitives */
-  --typeface-display: "Inter", system-ui, sans-serif;
-  --typeface-body: "Inter", system-ui, sans-serif;
+  --typeface-display: var(--font-geist-sans), system-ui, sans-serif;
+  --typeface-body: var(--font-inter), system-ui, sans-serif;
 }
 /* ─── Layout ──────────────────────────────────────────────────────────────── */
 :root {
@@ -630,17 +630,17 @@
   /* Role tokens — desktop (≥1024px) reference steps */
   --display-lg-font-family:  var(--typeface-display);
   --display-lg-font-size:    4rem;
-  --display-lg-font-weight:  400;
+  --display-lg-font-weight:  600;
   --display-lg-line-height:  4.5rem;
 
   --display-md-font-family:  var(--typeface-display);
   --display-md-font-size:    3.5rem;
-  --display-md-font-weight:  400;
+  --display-md-font-weight:  600;
   --display-md-line-height:  4rem;
 
   --display-sm-font-family:  var(--typeface-display);
   --display-sm-font-size:    2.75rem;
-  --display-sm-font-weight:  400;
+  --display-sm-font-weight:  600;
   --display-sm-line-height:  3.25rem;
 
   --headline-lg-font-family: var(--typeface-display);
