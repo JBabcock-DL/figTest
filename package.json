@@ -12,7 +12,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "tokens:validate-components": "node scripts/validate-component-tokens.mjs"
+    "tokens:validate-components": "node scripts/validate-component-tokens.mjs",
+    "deploy": "vercel",
+    "deploy:prod": "vercel --prod"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
@@ -78,6 +80,7 @@
     "eslint-config-next": "latest",
     "postcss": "latest",
     "tailwindcss": "latest",
-    "typescript": "latest"
+    "typescript": "latest",
+    "vercel": "^54.7.1"
   }
 }
