@@ -80,7 +80,7 @@ export function PropertyDetail({ property }: { property: Property }) {
     <div className="w-full min-w-0 overflow-x-clip bg-[var(--color-background-bright)] text-[var(--color-content)]">
       {/* 1. Hero */}
       <section
-        className={`flex w-full flex-col items-center ${SECTION_PX} pt-[var(--layout-nav-offset-top)] max-lg:pt-[calc(var(--layout-nav-height-mobile)+var(--space-xl))] ${MOBILE_PB_FLUSH} lg:min-h-screen`}
+        className={`flex w-full flex-col items-center ${SECTION_PX} pt-[var(--layout-nav-offset-top)] max-lg:pt-[calc(var(--layout-nav-height-mobile)+var(--space-xl))] ${MOBILE_PB_FLUSH}`}
       >
         <div className="flex w-full max-w-[var(--layout-content-max)] flex-col flex-wrap items-stretch gap-[var(--space-4xl)] max-lg:gap-[var(--space-xl)] lg:flex-row lg:items-start">
           <AnimateIn className="flex min-w-0 flex-1 flex-col gap-[var(--space-2xl)] lg:min-w-[var(--layout-column-min)] lg:pt-[var(--space-3xl)] lg:pb-[var(--space-3xl)] lg:pr-[var(--space-4xl)]">
