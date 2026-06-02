@@ -102,7 +102,7 @@ export function ContactForm() {
     >
       <h2 className="text-display-md text-[var(--color-content)]">Find the perfect space.</h2>
 
-      <div className="flex flex-wrap gap-[var(--space-2xl)]">
+      <div className="flex w-full flex-wrap gap-[var(--space-2xl)]">
         {CONTACT_FIELDS.map((field) => {
           const error = visibleErrors[field.name]
           const hasError = !!error
@@ -113,8 +113,8 @@ export function ContactForm() {
               data-invalid={hasError || undefined}
               className={
                 field.half
-                  ? "w-full min-w-0 max-lg:w-full lg:w-[calc(50%-var(--space-lg))] lg:min-w-[var(--layout-form-col-min)]"
-                  : "w-full"
+                  ? "min-w-[var(--layout-form-col-min)] max-w-full flex-[1_1_calc(50%-var(--space-2xl)/2)]"
+                  : "w-full min-w-0 basis-full"
               }
             >
               <FieldLabel htmlFor={field.id}>{field.label}</FieldLabel>
