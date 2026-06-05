@@ -1,0 +1,18 @@
+{
+  "codeConnect": {
+    "parser": "react",
+    "include": [
+      "src/**/*.figma.tsx",
+      "src/components/ui/**/*.tsx"
+    ],
+    "exclude": ["node_modules/**", ".next/**"],
+    "importPaths": {
+      "src/components/ui/*": "@/components/ui/*"
+    },
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "label": "React",
+    "language": "typescript"
+  }
+}

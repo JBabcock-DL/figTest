@@ -5,7 +5,7 @@ import { Button } from './button'
 
 figma.connect(
   Button,
-  'https://www.figma.com/design/OrDMGL6zOS3U9qYwXvPAvc/handoffTest?node-id=39-926',
+  'https://www.figma.com/design/uCpQaRsW4oiXW3DsC6cLZm?node-id=433-334',
   {
     props: {
       variant: figma.enum('variant', {

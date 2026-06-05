@@ -13,6 +13,8 @@
     "start": "next start",
     "lint": "next lint",
     "tokens:validate-components": "node scripts/validate-component-tokens.mjs",
+    "codeconnect:publish": "figma connect publish",
+    "codeconnect:parse": "figma connect parse",
     "deploy": "vercel",
     "deploy:prod": "vercel --prod"
   },
